@@ -2,7 +2,7 @@ from __future__ import annotations
 import os
 from dotenv import load_dotenv
 
-load_dotenv(os.path.expanduser("~/google-ads-agent/.env"))
+load_dotenv(os.path.expanduser("~/google-ads-rsa-agent/.env"))
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -10,7 +10,7 @@ LOGS_DIR = os.path.join(BASE_DIR, "logs")
 REPORTS_DIR = os.path.join(BASE_DIR, "reports")
 REGIONS_YAML = os.path.join(BASE_DIR, "regions.yaml")
 CLASSIFIED_TERMS_PATH = os.path.join(DATA_DIR, "classified_terms.json")
-GOOGLE_ADS_YAML = os.path.expanduser("~/google-ads-agent/google-ads.yaml")
+GOOGLE_ADS_YAML = os.path.expanduser("~/google-ads-rsa-agent/google-ads.yaml")
 
 CUSTOMER_ID = "<GOOGLE_ADS_CUSTOMER_ID>"
 
