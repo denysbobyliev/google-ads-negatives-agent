@@ -1,0 +1,5238 @@
+regions:
+  asia_pan:
+    ad_group_name: Asia
+    archetype: pan_regional_demonym
+    target_country: null
+    target_region_label: Asia / Asian
+    own_anchors:
+    - asian
+    - asians
+    - asia
+    - asian dating
+    - asian singles
+    - asian women
+    - asian girls
+    - asian ladies
+    - asian girl
+    - asian woman
+    - asian wife
+    - asian bride
+    - east asian
+    - oriental
+    - far east
+    - zendate
+    - cherry
+    - cherry blossoms
+    - cherryblossoms
+    - east meets west
+    parent_anchors: []
+    sibling_anchors:
+    - korea
+    - south korea
+    - korean
+    - north korea
+    - north korean
+    - seoul
+    - busan
+    - incheon
+    - daegu
+    - daejeon
+    - gwangju
+    - pyongyang
+    - kaesong
+    - hamhung
+    - japan
+    - japanese
+    - tokyo
+    - osaka
+    - kyoto
+    - yokohama
+    - nagoya
+    - sapporo
+    - fukuoka
+    - kobe
+    - china
+    - chinese
+    - beijing
+    - shanghai
+    - guangzhou
+    - shenzhen
+    - chengdu
+    - chongqing
+    - hangzhou
+    - nanjing
+    - thailand
+    - thai
+    - bangkok
+    - chiang mai
+    - pattaya
+    - phuket
+    - krabi
+    - hua hin
+    - koh samui
+    - filipina
+    - filipino
+    - philippines
+    - pinay
+    - manila
+    - cebu
+    - davao
+    - quezon city
+    - makati
+    - angeles city
+    - boracay
+    - bangladesh
+    - bangladeshi
+    - bengal
+    - bengali
+    - bhutan
+    - bhutanese
+    - brunei
+    - bruneian
+    - cambodia
+    - cambodian
+    - khmer
+    - indonesia
+    - indonesian
+    - kazakhstan
+    - kazakh
+    - kyrgyzstan
+    - kyrgyz
+    - laos
+    - laotian
+    - malaysia
+    - malaysian
+    - malay
+    - maldives
+    - maldivian
+    - mongolia
+    - mongolian
+    - mongol
+    - myanmar
+    - burma
+    - burmese
+    - nepal
+    - nepali
+    - nepalese
+    - singapore
+    - singaporean
+    - sri lanka
+    - sri lankan
+    - sinhalese
+    - tajikistan
+    - tajik
+    - turkmenistan
+    - turkmen
+    - vietnam
+    - vietnamese
+    - bahrain
+    - bahraini
+    - pakistan
+    - pakistani
+    - india
+    - indian
+    - taiwan
+    - taiwanese
+    - hong kong
+    - hongkong
+    - hongkonger
+    - islamabad
+    - karachi
+    - lahore
+    - rawalpindi
+    - faisalabad
+    - peshawar
+    - multan
+    - delhi
+    - new delhi
+    - mumbai
+    - bangalore
+    - chennai
+    - kolkata
+    - hyderabad
+    - ahmedabad
+    - pune
+    - jaipur
+    - taipei
+    - kaohsiung
+    - taichung
+    - tainan
+    - hsinchu
+    - kowloon
+    - addu
+    - almaty
+    - ashgabat
+    - astana
+    - bali
+    - bandar seri begawan
+    - bishkek
+    - chittagong
+    - coloane
+    - colombo
+    - da nang
+    - darkhan
+    - dhaka
+    - dushanbe
+    - erdenet
+    - galle
+    - hanoi
+    - ho chi minh
+    - hulhumale
+    - jakarta
+    - johor bahru
+    - kandy
+    - karakol
+    - kathmandu
+    - khujand
+    - kuala belait
+    - kuala lumpur
+    - kulob
+    - lalitpur
+    - luang prabang
+    - macau
+    - male
+    - manama
+    - mandalay
+    - mary
+    - muharraq
+    - naypyidaw
+    - osh
+    - pakse
+    - paro
+    - penang
+    - phnom penh
+    - phuentsholing
+    - pokhara
+    - riffa
+    - seria
+    - shymkent
+    - siem reap
+    - sihanoukville
+    - surabaya
+    - sylhet
+    - taipa
+    - thimphu
+    - turkmenbashi
+    - ulaanbaatar
+    - vientiane
+    - yangon
+    - japandates
+    - japansdates
+    - japansdate
+    - japancupid
+    - koreadates
+    - koreandates
+    - koreadate
+    - koreancupid
+    - koreagirls
+    - koreandating
+    - kgirlsdateapp
+    - thaicupid
+    - thaifriendly
+    - thaigirldates
+    - vietnamcupid
+    - sakuraladies
+  asia_countries:
+    ad_group_name: Asian Countries
+    archetype: catch_all
+    target_country: null
+    target_region_label: Asia (non-hero countries)
+    own_anchors:
+    - bangladesh
+    - bangladeshi
+    - bengal
+    - bengali
+    - bhutan
+    - bhutanese
+    - brunei
+    - bruneian
+    - cambodia
+    - cambodian
+    - khmer
+    - indonesia
+    - indonesian
+    - kazakhstan
+    - kazakh
+    - kyrgyzstan
+    - kyrgyz
+    - laos
+    - laotian
+    - malaysia
+    - malaysian
+    - malay
+    - maldives
+    - maldivian
+    - mongolia
+    - mongolian
+    - mongol
+    - myanmar
+    - burma
+    - burmese
+    - nepal
+    - nepali
+    - nepalese
+    - singapore
+    - singaporean
+    - sri lanka
+    - sri lankan
+    - sinhalese
+    - tajikistan
+    - tajik
+    - turkmenistan
+    - turkmen
+    - vietnam
+    - vietnamese
+    - bahrain
+    - bahraini
+    - pakistan
+    - pakistani
+    - india
+    - indian
+    - islamabad
+    - karachi
+    - lahore
+    - rawalpindi
+    - faisalabad
+    - peshawar
+    - multan
+    - delhi
+    - new delhi
+    - mumbai
+    - bangalore
+    - chennai
+    - kolkata
+    - hyderabad
+    - ahmedabad
+    - pune
+    - jaipur
+    - addu
+    - almaty
+    - ashgabat
+    - astana
+    - bali
+    - bandar seri begawan
+    - bishkek
+    - chittagong
+    - colombo
+    - da nang
+    - darkhan
+    - dhaka
+    - dushanbe
+    - erdenet
+    - galle
+    - hanoi
+    - ho chi minh
+    - hulhumale
+    - jakarta
+    - johor bahru
+    - kandy
+    - karakol
+    - kathmandu
+    - khujand
+    - kuala belait
+    - kuala lumpur
+    - kulob
+    - lalitpur
+    - luang prabang
+    - male
+    - manama
+    - mandalay
+    - mary
+    - muharraq
+    - naypyidaw
+    - osh
+    - pakse
+    - paro
+    - penang
+    - phnom penh
+    - phuentsholing
+    - pokhara
+    - riffa
+    - seria
+    - shymkent
+    - siem reap
+    - sihanoukville
+    - surabaya
+    - sylhet
+    - thimphu
+    - turkmenbashi
+    - ulaanbaatar
+    - vientiane
+    - yangon
+    parent_anchors: []
+    sibling_anchors:
+    - korea
+    - south korea
+    - korean
+    - north korea
+    - north korean
+    - seoul
+    - busan
+    - incheon
+    - daegu
+    - daejeon
+    - gwangju
+    - pyongyang
+    - kaesong
+    - hamhung
+    - japan
+    - japanese
+    - tokyo
+    - osaka
+    - kyoto
+    - yokohama
+    - nagoya
+    - sapporo
+    - fukuoka
+    - kobe
+    - china
+    - chinese
+    - beijing
+    - shanghai
+    - guangzhou
+    - shenzhen
+    - chengdu
+    - chongqing
+    - hangzhou
+    - nanjing
+    - thailand
+    - thai
+    - bangkok
+    - chiang mai
+    - pattaya
+    - phuket
+    - krabi
+    - hua hin
+    - koh samui
+    - filipina
+    - filipino
+    - philippines
+    - pinay
+    - manila
+    - cebu
+    - davao
+    - quezon city
+    - makati
+    - angeles city
+    - boracay
+    - asian
+    - asian dating
+    - asian singles
+    - asian women
+    - asian girls
+    - asian ladies
+    - asian girl
+    - asian woman
+    - asian wife
+    - asian bride
+    - east asian
+    - oriental
+    - far east
+  korea:
+    ad_group_name: Korea
+    archetype: hero_country
+    target_country: South Korea
+    target_region_label: South Korea / Korean
+    own_anchors:
+    - korea
+    - south korea
+    - korean
+    - north korea
+    - north korean
+    - seoul
+    - busan
+    - incheon
+    - daegu
+    - daejeon
+    - gwangju
+    - pyongyang
+    - kaesong
+    - hamhung
+    - korrea
+    - corea
+    - koera
+    - kore
+    - koreah
+    - korian
+    - koreon
+    - koreya
+    parent_anchors:
+    - asian
+    - east asian
+    - oriental
+    - far east
+    sibling_anchors:
+    - japan
+    - japanese
+    - tokyo
+    - osaka
+    - kyoto
+    - yokohama
+    - nagoya
+    - sapporo
+    - fukuoka
+    - kobe
+    - china
+    - chinese
+    - beijing
+    - shanghai
+    - guangzhou
+    - shenzhen
+    - chengdu
+    - chongqing
+    - hangzhou
+    - nanjing
+    - thailand
+    - thai
+    - bangkok
+    - chiang mai
+    - pattaya
+    - phuket
+    - krabi
+    - hua hin
+    - koh samui
+    - filipina
+    - filipino
+    - philippines
+    - pinay
+    - manila
+    - cebu
+    - davao
+    - quezon city
+    - makati
+    - angeles city
+    - boracay
+    - bangladesh
+    - bangladeshi
+    - bengal
+    - bengali
+    - bhutan
+    - bhutanese
+    - brunei
+    - bruneian
+    - cambodia
+    - cambodian
+    - khmer
+    - indonesia
+    - indonesian
+    - kazakhstan
+    - kazakh
+    - kyrgyzstan
+    - kyrgyz
+    - laos
+    - laotian
+    - malaysia
+    - malaysian
+    - malay
+    - maldives
+    - maldivian
+    - mongolia
+    - mongolian
+    - mongol
+    - myanmar
+    - burma
+    - burmese
+    - nepal
+    - nepali
+    - nepalese
+    - singapore
+    - singaporean
+    - sri lanka
+    - sri lankan
+    - sinhalese
+    - tajikistan
+    - tajik
+    - turkmenistan
+    - turkmen
+    - vietnam
+    - vietnamese
+    - bahrain
+    - bahraini
+    - pakistan
+    - pakistani
+    - india
+    - indian
+    - taiwan
+    - taiwanese
+    - hong kong
+    - hongkong
+    - hongkonger
+    - islamabad
+    - karachi
+    - lahore
+    - rawalpindi
+    - faisalabad
+    - peshawar
+    - multan
+    - delhi
+    - new delhi
+    - mumbai
+    - bangalore
+    - chennai
+    - kolkata
+    - hyderabad
+    - ahmedabad
+    - pune
+    - jaipur
+    - taipei
+    - kaohsiung
+    - taichung
+    - tainan
+    - hsinchu
+    - kowloon
+    - addu
+    - almaty
+    - ashgabat
+    - astana
+    - bali
+    - bandar seri begawan
+    - bishkek
+    - chittagong
+    - coloane
+    - colombo
+    - da nang
+    - darkhan
+    - dhaka
+    - dushanbe
+    - erdenet
+    - galle
+    - hanoi
+    - ho chi minh
+    - hulhumale
+    - jakarta
+    - johor bahru
+    - kandy
+    - karakol
+    - kathmandu
+    - khujand
+    - kuala belait
+    - kuala lumpur
+    - kulob
+    - lalitpur
+    - luang prabang
+    - macau
+    - male
+    - manama
+    - mandalay
+    - mary
+    - muharraq
+    - naypyidaw
+    - osh
+    - pakse
+    - paro
+    - penang
+    - phnom penh
+    - phuentsholing
+    - pokhara
+    - riffa
+    - seria
+    - shymkent
+    - siem reap
+    - sihanoukville
+    - surabaya
+    - sylhet
+    - taipa
+    - thimphu
+    - turkmenbashi
+    - ulaanbaatar
+    - vientiane
+    - yangon
+  japan:
+    ad_group_name: Japan
+    archetype: hero_country
+    target_country: Japan
+    target_region_label: Japan / Japanese
+    own_anchors:
+    - japan
+    - japanese
+    - tokyo
+    - osaka
+    - kyoto
+    - yokohama
+    - nagoya
+    - sapporo
+    - fukuoka
+    - kobe
+    - japa
+    - japen
+    - jappan
+    - japn
+    - jappanese
+    - japnese
+    - japanase
+    - japaneese
+    parent_anchors:
+    - asian
+    - east asian
+    - oriental
+    - far east
+    sibling_anchors:
+    - korea
+    - south korea
+    - korean
+    - north korea
+    - north korean
+    - seoul
+    - busan
+    - incheon
+    - daegu
+    - daejeon
+    - gwangju
+    - pyongyang
+    - kaesong
+    - hamhung
+    - china
+    - chinese
+    - beijing
+    - shanghai
+    - guangzhou
+    - shenzhen
+    - chengdu
+    - chongqing
+    - hangzhou
+    - nanjing
+    - thailand
+    - thai
+    - bangkok
+    - chiang mai
+    - pattaya
+    - phuket
+    - krabi
+    - hua hin
+    - koh samui
+    - filipina
+    - filipino
+    - philippines
+    - pinay
+    - manila
+    - cebu
+    - davao
+    - quezon city
+    - makati
+    - angeles city
+    - boracay
+    - bangladesh
+    - bangladeshi
+    - bengal
+    - bengali
+    - bhutan
+    - bhutanese
+    - brunei
+    - bruneian
+    - cambodia
+    - cambodian
+    - khmer
+    - indonesia
+    - indonesian
+    - kazakhstan
+    - kazakh
+    - kyrgyzstan
+    - kyrgyz
+    - laos
+    - laotian
+    - malaysia
+    - malaysian
+    - malay
+    - maldives
+    - maldivian
+    - mongolia
+    - mongolian
+    - mongol
+    - myanmar
+    - burma
+    - burmese
+    - nepal
+    - nepali
+    - nepalese
+    - singapore
+    - singaporean
+    - sri lanka
+    - sri lankan
+    - sinhalese
+    - tajikistan
+    - tajik
+    - turkmenistan
+    - turkmen
+    - vietnam
+    - vietnamese
+    - bahrain
+    - bahraini
+    - pakistan
+    - pakistani
+    - india
+    - indian
+    - taiwan
+    - taiwanese
+    - hong kong
+    - hongkong
+    - hongkonger
+    - islamabad
+    - karachi
+    - lahore
+    - rawalpindi
+    - faisalabad
+    - peshawar
+    - multan
+    - delhi
+    - new delhi
+    - mumbai
+    - bangalore
+    - chennai
+    - kolkata
+    - hyderabad
+    - ahmedabad
+    - pune
+    - jaipur
+    - taipei
+    - kaohsiung
+    - taichung
+    - tainan
+    - hsinchu
+    - kowloon
+    - addu
+    - almaty
+    - ashgabat
+    - astana
+    - bali
+    - bandar seri begawan
+    - bishkek
+    - chittagong
+    - coloane
+    - colombo
+    - da nang
+    - darkhan
+    - dhaka
+    - dushanbe
+    - erdenet
+    - galle
+    - hanoi
+    - ho chi minh
+    - hulhumale
+    - jakarta
+    - johor bahru
+    - kandy
+    - karakol
+    - kathmandu
+    - khujand
+    - kuala belait
+    - kuala lumpur
+    - kulob
+    - lalitpur
+    - luang prabang
+    - macau
+    - male
+    - manama
+    - mandalay
+    - mary
+    - muharraq
+    - naypyidaw
+    - osh
+    - pakse
+    - paro
+    - penang
+    - phnom penh
+    - phuentsholing
+    - pokhara
+    - riffa
+    - seria
+    - shymkent
+    - siem reap
+    - sihanoukville
+    - surabaya
+    - sylhet
+    - taipa
+    - thimphu
+    - turkmenbashi
+    - ulaanbaatar
+    - vientiane
+    - yangon
+  china:
+    ad_group_name: China
+    archetype: hero_country
+    target_country: China
+    target_region_label: China / Chinese
+    own_anchors:
+    - china
+    - chinese
+    - beijing
+    - shanghai
+    - guangzhou
+    - shenzhen
+    - chengdu
+    - chongqing
+    - hangzhou
+    - nanjing
+    - chinna
+    - chiina
+    - cina
+    - chinise
+    - chineese
+    - chinease
+    - chineze
+    - chiness
+    - taiwan
+    - taiwanese
+    - hong kong
+    - hongkong
+    - hongkonger
+    - taipei
+    - macau
+    - macao
+    parent_anchors:
+    - asian
+    - east asian
+    - oriental
+    - far east
+    sibling_anchors:
+    - korea
+    - south korea
+    - korean
+    - north korea
+    - north korean
+    - seoul
+    - busan
+    - incheon
+    - daegu
+    - daejeon
+    - gwangju
+    - pyongyang
+    - kaesong
+    - hamhung
+    - japan
+    - japanese
+    - tokyo
+    - osaka
+    - kyoto
+    - yokohama
+    - nagoya
+    - sapporo
+    - fukuoka
+    - kobe
+    - thailand
+    - thai
+    - bangkok
+    - chiang mai
+    - pattaya
+    - phuket
+    - krabi
+    - hua hin
+    - koh samui
+    - filipina
+    - filipino
+    - philippines
+    - pinay
+    - manila
+    - cebu
+    - davao
+    - quezon city
+    - makati
+    - angeles city
+    - boracay
+    - bangladesh
+    - bangladeshi
+    - bengal
+    - bengali
+    - bhutan
+    - bhutanese
+    - brunei
+    - bruneian
+    - cambodia
+    - cambodian
+    - khmer
+    - indonesia
+    - indonesian
+    - kazakhstan
+    - kazakh
+    - kyrgyzstan
+    - kyrgyz
+    - laos
+    - laotian
+    - malaysia
+    - malaysian
+    - malay
+    - maldives
+    - maldivian
+    - mongolia
+    - mongolian
+    - mongol
+    - myanmar
+    - burma
+    - burmese
+    - nepal
+    - nepali
+    - nepalese
+    - singapore
+    - singaporean
+    - sri lanka
+    - sri lankan
+    - sinhalese
+    - tajikistan
+    - tajik
+    - turkmenistan
+    - turkmen
+    - vietnam
+    - vietnamese
+    - bahrain
+    - bahraini
+    - pakistan
+    - pakistani
+    - india
+    - indian
+    - islamabad
+    - karachi
+    - lahore
+    - rawalpindi
+    - faisalabad
+    - peshawar
+    - multan
+    - delhi
+    - new delhi
+    - mumbai
+    - bangalore
+    - chennai
+    - kolkata
+    - hyderabad
+    - ahmedabad
+    - pune
+    - jaipur
+    - kaohsiung
+    - taichung
+    - tainan
+    - hsinchu
+    - kowloon
+    - addu
+    - almaty
+    - ashgabat
+    - astana
+    - bali
+    - bandar seri begawan
+    - bishkek
+    - chittagong
+    - coloane
+    - colombo
+    - da nang
+    - darkhan
+    - dhaka
+    - dushanbe
+    - erdenet
+    - galle
+    - hanoi
+    - ho chi minh
+    - hulhumale
+    - jakarta
+    - johor bahru
+    - kandy
+    - karakol
+    - kathmandu
+    - khujand
+    - kuala belait
+    - kuala lumpur
+    - kulob
+    - lalitpur
+    - luang prabang
+    - male
+    - manama
+    - mandalay
+    - mary
+    - muharraq
+    - naypyidaw
+    - osh
+    - pakse
+    - paro
+    - penang
+    - phnom penh
+    - phuentsholing
+    - pokhara
+    - riffa
+    - seria
+    - shymkent
+    - siem reap
+    - sihanoukville
+    - surabaya
+    - sylhet
+    - taipa
+    - thimphu
+    - turkmenbashi
+    - ulaanbaatar
+    - vientiane
+    - yangon
+    region_notes: Hong Kong, Taiwan, and Macau are within this ad group's scope. Search
+      terms referencing these places — including Chinese-script versions (香港, 台灣/台湾,
+      澳門/澳门) — are on-target here, not in the broader Asia group.
+  thailand:
+    ad_group_name: Thailand
+    archetype: hero_country
+    target_country: Thailand
+    target_region_label: Thailand / Thai
+    own_anchors:
+    - thailand
+    - thai
+    - bangkok
+    - chiang mai
+    - pattaya
+    - phuket
+    - krabi
+    - hua hin
+    - koh samui
+    - tailand
+    - thialand
+    - thaailand
+    - thiland
+    - tahiland
+    - thaland
+    - thialnd
+    - taiand
+    parent_anchors:
+    - asian
+    - east asian
+    - oriental
+    - far east
+    sibling_anchors:
+    - korea
+    - south korea
+    - korean
+    - north korea
+    - north korean
+    - seoul
+    - busan
+    - incheon
+    - daegu
+    - daejeon
+    - gwangju
+    - pyongyang
+    - kaesong
+    - hamhung
+    - japan
+    - japanese
+    - tokyo
+    - osaka
+    - kyoto
+    - yokohama
+    - nagoya
+    - sapporo
+    - fukuoka
+    - kobe
+    - china
+    - chinese
+    - beijing
+    - shanghai
+    - guangzhou
+    - shenzhen
+    - chengdu
+    - chongqing
+    - hangzhou
+    - nanjing
+    - filipina
+    - filipino
+    - philippines
+    - pinay
+    - manila
+    - cebu
+    - davao
+    - quezon city
+    - makati
+    - angeles city
+    - boracay
+    - bangladesh
+    - bangladeshi
+    - bengal
+    - bengali
+    - bhutan
+    - bhutanese
+    - brunei
+    - bruneian
+    - cambodia
+    - cambodian
+    - khmer
+    - indonesia
+    - indonesian
+    - kazakhstan
+    - kazakh
+    - kyrgyzstan
+    - kyrgyz
+    - laos
+    - laotian
+    - malaysia
+    - malaysian
+    - malay
+    - maldives
+    - maldivian
+    - mongolia
+    - mongolian
+    - mongol
+    - myanmar
+    - burma
+    - burmese
+    - nepal
+    - nepali
+    - nepalese
+    - singapore
+    - singaporean
+    - sri lanka
+    - sri lankan
+    - sinhalese
+    - tajikistan
+    - tajik
+    - turkmenistan
+    - turkmen
+    - vietnam
+    - vietnamese
+    - bahrain
+    - bahraini
+    - pakistan
+    - pakistani
+    - india
+    - indian
+    - taiwan
+    - taiwanese
+    - hong kong
+    - hongkong
+    - hongkonger
+    - islamabad
+    - karachi
+    - lahore
+    - rawalpindi
+    - faisalabad
+    - peshawar
+    - multan
+    - delhi
+    - new delhi
+    - mumbai
+    - bangalore
+    - chennai
+    - kolkata
+    - hyderabad
+    - ahmedabad
+    - pune
+    - jaipur
+    - taipei
+    - kaohsiung
+    - taichung
+    - tainan
+    - hsinchu
+    - kowloon
+    - addu
+    - almaty
+    - ashgabat
+    - astana
+    - bali
+    - bandar seri begawan
+    - bishkek
+    - chittagong
+    - coloane
+    - colombo
+    - da nang
+    - darkhan
+    - dhaka
+    - dushanbe
+    - erdenet
+    - galle
+    - hanoi
+    - ho chi minh
+    - hulhumale
+    - jakarta
+    - johor bahru
+    - kandy
+    - karakol
+    - kathmandu
+    - khujand
+    - kuala belait
+    - kuala lumpur
+    - kulob
+    - lalitpur
+    - luang prabang
+    - macau
+    - male
+    - manama
+    - mandalay
+    - mary
+    - muharraq
+    - naypyidaw
+    - osh
+    - pakse
+    - paro
+    - penang
+    - phnom penh
+    - phuentsholing
+    - pokhara
+    - riffa
+    - seria
+    - shymkent
+    - siem reap
+    - sihanoukville
+    - surabaya
+    - sylhet
+    - taipa
+    - thimphu
+    - turkmenbashi
+    - ulaanbaatar
+    - vientiane
+    - yangon
+  filipina:
+    ad_group_name: Filipina
+    archetype: hero_country
+    target_country: Philippines
+    target_region_label: Philippines / Filipina
+    own_anchors:
+    - filipina
+    - filipino
+    - philippines
+    - pinay
+    - manila
+    - cebu
+    - davao
+    - quezon city
+    - makati
+    - angeles city
+    - boracay
+    - phillipina
+    - philippina
+    - filippina
+    - filipeena
+    - filapina
+    - flipina
+    - phillipines
+    - philipines
+    - philipino
+    parent_anchors:
+    - asian
+    - east asian
+    - oriental
+    - far east
+    sibling_anchors:
+    - korea
+    - south korea
+    - korean
+    - north korea
+    - north korean
+    - seoul
+    - busan
+    - incheon
+    - daegu
+    - daejeon
+    - gwangju
+    - pyongyang
+    - kaesong
+    - hamhung
+    - japan
+    - japanese
+    - tokyo
+    - osaka
+    - kyoto
+    - yokohama
+    - nagoya
+    - sapporo
+    - fukuoka
+    - kobe
+    - china
+    - chinese
+    - beijing
+    - shanghai
+    - guangzhou
+    - shenzhen
+    - chengdu
+    - chongqing
+    - hangzhou
+    - nanjing
+    - thailand
+    - thai
+    - bangkok
+    - chiang mai
+    - pattaya
+    - phuket
+    - krabi
+    - hua hin
+    - koh samui
+    - bangladesh
+    - bangladeshi
+    - bengal
+    - bengali
+    - bhutan
+    - bhutanese
+    - brunei
+    - bruneian
+    - cambodia
+    - cambodian
+    - khmer
+    - indonesia
+    - indonesian
+    - kazakhstan
+    - kazakh
+    - kyrgyzstan
+    - kyrgyz
+    - laos
+    - laotian
+    - malaysia
+    - malaysian
+    - malay
+    - maldives
+    - maldivian
+    - mongolia
+    - mongolian
+    - mongol
+    - myanmar
+    - burma
+    - burmese
+    - nepal
+    - nepali
+    - nepalese
+    - singapore
+    - singaporean
+    - sri lanka
+    - sri lankan
+    - sinhalese
+    - tajikistan
+    - tajik
+    - turkmenistan
+    - turkmen
+    - vietnam
+    - vietnamese
+    - bahrain
+    - bahraini
+    - pakistan
+    - pakistani
+    - india
+    - indian
+    - taiwan
+    - taiwanese
+    - hong kong
+    - hongkong
+    - hongkonger
+    - islamabad
+    - karachi
+    - lahore
+    - rawalpindi
+    - faisalabad
+    - peshawar
+    - multan
+    - delhi
+    - new delhi
+    - mumbai
+    - bangalore
+    - chennai
+    - kolkata
+    - hyderabad
+    - ahmedabad
+    - pune
+    - jaipur
+    - taipei
+    - kaohsiung
+    - taichung
+    - tainan
+    - hsinchu
+    - kowloon
+    - addu
+    - almaty
+    - ashgabat
+    - astana
+    - bali
+    - bandar seri begawan
+    - bishkek
+    - chittagong
+    - coloane
+    - colombo
+    - da nang
+    - darkhan
+    - dhaka
+    - dushanbe
+    - erdenet
+    - galle
+    - hanoi
+    - ho chi minh
+    - hulhumale
+    - jakarta
+    - johor bahru
+    - kandy
+    - karakol
+    - kathmandu
+    - khujand
+    - kuala belait
+    - kuala lumpur
+    - kulob
+    - lalitpur
+    - luang prabang
+    - macau
+    - male
+    - manama
+    - mandalay
+    - mary
+    - muharraq
+    - naypyidaw
+    - osh
+    - pakse
+    - paro
+    - penang
+    - phnom penh
+    - phuentsholing
+    - pokhara
+    - riffa
+    - seria
+    - shymkent
+    - siem reap
+    - sihanoukville
+    - surabaya
+    - sylhet
+    - taipa
+    - thimphu
+    - turkmenbashi
+    - ulaanbaatar
+    - vientiane
+    - yangon
+  latina_pan:
+    ad_group_name: Latina
+    archetype: pan_regional_demonym
+    target_country: null
+    target_region_label: Latin America / Latina
+    own_anchors:
+    - latina
+    - latinas
+    - latin
+    - latino
+    - latinos
+    parent_anchors: []
+    sibling_anchors:
+    - mexico
+    - mexican
+    - mexicana
+    - mexico city
+    - guadalajara
+    - monterrey
+    - tijuana
+    - cancun
+    - puebla
+    - merida
+    - oaxaca
+    - puerto rico
+    - puerto rican
+    - boricua
+    - san juan
+    - ponce
+    - bayamon
+    - caguas
+    - mayaguez
+    - arecibo
+    - dominican republic
+    - dominican
+    - dominicana
+    - santo domingo
+    - punta cana
+    - puerto plata
+    - la romana
+    - samana
+    - cuba
+    - cuban
+    - cubana
+    - cubano
+    - havana
+    - santiago de cuba
+    - camaguey
+    - holguin
+    - varadero
+    - trinidad cuba
+    - matanzas
+    - colombia
+    - colombian
+    - colombiana
+    - bogota
+    - medellin
+    - cali
+    - cartagena
+    - barranquilla
+    - bucaramanga
+    - santa marta
+    - brazil
+    - brasil
+    - brazilian
+    - brasileira
+    - brasileiro
+    - rio de janeiro
+    - sao paulo
+    - brasilia
+    - fortaleza
+    - recife
+    - manaus
+    - curitiba
+    - belo horizonte
+    - porto alegre
+    - argentina
+    - argentinian
+    - argentine
+    - belize
+    - belizean
+    - bolivia
+    - bolivian
+    - chile
+    - chilean
+    - costa rica
+    - costa rican
+    - ecuador
+    - ecuadorian
+    - guatemala
+    - guatemalan
+    - guyana
+    - guyanese
+    - haiti
+    - haitian
+    - honduras
+    - honduran
+    - nicaragua
+    - nicaraguan
+    - panama
+    - panamanian
+    - paraguay
+    - paraguayan
+    - peru
+    - peruvian
+    - suriname
+    - surinamese
+    - uruguay
+    - uruguayan
+    - venezuela
+    - venezuelan
+    - salvadoran
+    - salvadorean
+    - salvadorian
+    - caribbean
+    - alajuela
+    - antigua
+    - arequipa
+    - asuncion
+    - belize city
+    - buenos aires
+    - cap-haitien
+    - caracas
+    - ciudad del este
+    - cochabamba
+    - colon
+    - colonia
+    - concepcion
+    - cordoba
+    - cuenca
+    - cusco
+    - encarnacion
+    - falklands
+    - georgetown
+    - granada
+    - guayaquil
+    - la ceiba
+    - la paz
+    - lelydorp
+    - leon
+    - les cayes
+    - liberia
+    - lima
+    - linden
+    - managua
+    - maracaibo
+    - mendoza
+    - montevideo
+    - new amsterdam
+    - nieuw nickerie
+    - panama city
+    - paramaribo
+    - port-au-prince
+    - quetzaltenango
+    - quito
+    - salvador
+    - san ignacio
+    - san jose
+    - san miguel
+    - san pedro
+    - san pedro sula
+    - san salvador
+    - santa ana
+    - santa cruz
+    - santiago
+    - tegucigalpa
+    - valparaiso
+    - hispanic
+    - hispanics
+    - hispano
+    - hispana
+    - hispanos
+    - hispanas
+  latam_countries:
+    ad_group_name: LATAM countries
+    archetype: catch_all
+    target_country: null
+    target_region_label: Latin America and Caribbean (non-hero countries)
+    own_anchors:
+    - hispanas
+    - hispanos
+    - hispana
+    - hispano
+    - hispanics
+    - hispanic
+    - argentina
+    - argentinian
+    - argentine
+    - belize
+    - belizean
+    - bolivia
+    - bolivian
+    - chile
+    - chilean
+    - costa rica
+    - costa rican
+    - ecuador
+    - ecuadorian
+    - guatemala
+    - guatemalan
+    - guyana
+    - guyanese
+    - haiti
+    - haitian
+    - honduras
+    - honduran
+    - nicaragua
+    - nicaraguan
+    - panama
+    - panamanian
+    - paraguay
+    - paraguayan
+    - peru
+    - peruvian
+    - suriname
+    - surinamese
+    - uruguay
+    - uruguayan
+    - venezuela
+    - venezuelan
+    - salvadoran
+    - salvadorean
+    - salvadorian
+    - caribbean
+    - alajuela
+    - antigua
+    - arequipa
+    - asuncion
+    - belize city
+    - buenos aires
+    - cap-haitien
+    - caracas
+    - ciudad del este
+    - cochabamba
+    - colon
+    - colonia
+    - concepcion
+    - cordoba
+    - cuenca
+    - cusco
+    - encarnacion
+    - falklands
+    - georgetown
+    - granada
+    - guayaquil
+    - la ceiba
+    - la paz
+    - lelydorp
+    - leon
+    - les cayes
+    - liberia
+    - lima
+    - linden
+    - managua
+    - maracaibo
+    - mendoza
+    - montevideo
+    - new amsterdam
+    - nieuw nickerie
+    - panama city
+    - paramaribo
+    - port-au-prince
+    - quetzaltenango
+    - quito
+    - salvador
+    - san ignacio
+    - san jose
+    - san miguel
+    - san pedro
+    - san pedro sula
+    - san salvador
+    - santa ana
+    - santa cruz
+    - santiago
+    - tegucigalpa
+    - valparaiso
+    - jamaica
+    - jamaican
+    - barbados
+    - barbadian
+    - aruba
+    - aruban
+    - cayman islands
+    - cayman
+    - grenada
+    - grenadian
+    - bahamas
+    - bahamian
+    - curacao
+    - tobago
+    - trinidadian
+    - bermuda
+    - bermudan
+    - st lucia
+    - saint lucia
+    - martinique
+    - guadeloupe
+    - turks and caicos
+    - virgin islands
+    - anguilla
+    - anguillan
+    - montserrat
+    - st kitts
+    - saint kitts
+    parent_anchors: []
+    sibling_anchors:
+    - mexico
+    - mexican
+    - mexicana
+    - mexico city
+    - guadalajara
+    - monterrey
+    - tijuana
+    - cancun
+    - puebla
+    - merida
+    - oaxaca
+    - puerto rico
+    - puerto rican
+    - boricua
+    - san juan
+    - ponce
+    - bayamon
+    - caguas
+    - mayaguez
+    - arecibo
+    - dominican republic
+    - dominican
+    - dominicana
+    - santo domingo
+    - punta cana
+    - puerto plata
+    - la romana
+    - samana
+    - cuba
+    - cuban
+    - cubana
+    - cubano
+    - havana
+    - santiago de cuba
+    - camaguey
+    - holguin
+    - varadero
+    - trinidad cuba
+    - matanzas
+    - colombia
+    - colombian
+    - colombiana
+    - bogota
+    - medellin
+    - cali
+    - cartagena
+    - barranquilla
+    - bucaramanga
+    - santa marta
+    - brazil
+    - brasil
+    - brazilian
+    - brasileira
+    - brasileiro
+    - rio de janeiro
+    - sao paulo
+    - brasilia
+    - fortaleza
+    - recife
+    - manaus
+    - curitiba
+    - belo horizonte
+    - porto alegre
+    - latina
+    - latinas
+    - latin
+    - latino
+  mexico:
+    ad_group_name: Mexico
+    archetype: hero_country
+    target_country: Mexico
+    target_region_label: Mexico / Mexican
+    own_anchors:
+    - mexico
+    - mexican
+    - mexicana
+    - mexico city
+    - guadalajara
+    - monterrey
+    - tijuana
+    - cancun
+    - puebla
+    - merida
+    - oaxaca
+    - mejico
+    - mexcio
+    - mexio
+    - mexiko
+    - mehico
+    - mexcian
+    - mexikan
+    - mexikana
+    - meksiko
+    parent_anchors:
+    - latina
+    - latinas
+    - latin
+    - latino
+    - hispanic
+    sibling_anchors:
+    - puerto rico
+    - puerto rican
+    - boricua
+    - san juan
+    - ponce
+    - bayamon
+    - caguas
+    - mayaguez
+    - arecibo
+    - dominican republic
+    - dominican
+    - dominicana
+    - santo domingo
+    - punta cana
+    - puerto plata
+    - la romana
+    - samana
+    - cuba
+    - cuban
+    - cubana
+    - cubano
+    - havana
+    - santiago de cuba
+    - camaguey
+    - holguin
+    - varadero
+    - trinidad cuba
+    - matanzas
+    - colombia
+    - colombian
+    - colombiana
+    - bogota
+    - medellin
+    - cali
+    - cartagena
+    - barranquilla
+    - bucaramanga
+    - santa marta
+    - brazil
+    - brasil
+    - brazilian
+    - brasileira
+    - brasileiro
+    - rio de janeiro
+    - sao paulo
+    - brasilia
+    - fortaleza
+    - recife
+    - manaus
+    - curitiba
+    - belo horizonte
+    - porto alegre
+    - argentina
+    - argentinian
+    - argentine
+    - belize
+    - belizean
+    - bolivia
+    - bolivian
+    - chile
+    - chilean
+    - costa rica
+    - costa rican
+    - ecuador
+    - ecuadorian
+    - guatemala
+    - guatemalan
+    - guyana
+    - guyanese
+    - haiti
+    - haitian
+    - honduras
+    - honduran
+    - nicaragua
+    - nicaraguan
+    - panama
+    - panamanian
+    - paraguay
+    - paraguayan
+    - peru
+    - peruvian
+    - suriname
+    - surinamese
+    - uruguay
+    - uruguayan
+    - venezuela
+    - venezuelan
+    - salvadoran
+    - salvadorean
+    - salvadorian
+    - caribbean
+    - alajuela
+    - antigua
+    - arequipa
+    - asuncion
+    - belize city
+    - buenos aires
+    - cap-haitien
+    - caracas
+    - ciudad del este
+    - cochabamba
+    - colon
+    - colonia
+    - concepcion
+    - cordoba
+    - cuenca
+    - cusco
+    - encarnacion
+    - falklands
+    - georgetown
+    - granada
+    - guayaquil
+    - la ceiba
+    - la paz
+    - lelydorp
+    - leon
+    - les cayes
+    - liberia
+    - lima
+    - linden
+    - managua
+    - maracaibo
+    - mendoza
+    - montevideo
+    - new amsterdam
+    - nieuw nickerie
+    - panama city
+    - paramaribo
+    - port-au-prince
+    - quetzaltenango
+    - quito
+    - salvador
+    - san ignacio
+    - san jose
+    - san miguel
+    - san pedro
+    - san pedro sula
+    - san salvador
+    - santa ana
+    - santa cruz
+    - santiago
+    - tegucigalpa
+    - valparaiso
+  puerto_rico:
+    ad_group_name: Puerto Rico
+    archetype: hero_country
+    target_country: Puerto Rico
+    target_region_label: Puerto Rico / Puerto Rican
+    own_anchors:
+    - puerto rico
+    - puerto rican
+    - boricua
+    - san juan
+    - ponce
+    - bayamon
+    - caguas
+    - mayaguez
+    - arecibo
+    - puertorico
+    - puerto riko
+    - puertorican
+    - puerto ricon
+    - porto rico
+    - pueto rico
+    - perto rico
+    - puerta rico
+    parent_anchors:
+    - latina
+    - latinas
+    - latin
+    - latino
+    - hispanic
+    sibling_anchors:
+    - mexico
+    - mexican
+    - mexicana
+    - mexico city
+    - guadalajara
+    - monterrey
+    - tijuana
+    - cancun
+    - puebla
+    - merida
+    - oaxaca
+    - dominican republic
+    - dominican
+    - dominicana
+    - santo domingo
+    - punta cana
+    - puerto plata
+    - la romana
+    - samana
+    - cuba
+    - cuban
+    - cubana
+    - cubano
+    - havana
+    - santiago de cuba
+    - camaguey
+    - holguin
+    - varadero
+    - trinidad cuba
+    - matanzas
+    - colombia
+    - colombian
+    - colombiana
+    - bogota
+    - medellin
+    - cali
+    - cartagena
+    - barranquilla
+    - bucaramanga
+    - santa marta
+    - brazil
+    - brasil
+    - brazilian
+    - brasileira
+    - brasileiro
+    - rio de janeiro
+    - sao paulo
+    - brasilia
+    - fortaleza
+    - recife
+    - manaus
+    - curitiba
+    - belo horizonte
+    - porto alegre
+    - argentina
+    - argentinian
+    - argentine
+    - belize
+    - belizean
+    - bolivia
+    - bolivian
+    - chile
+    - chilean
+    - costa rica
+    - costa rican
+    - ecuador
+    - ecuadorian
+    - guatemala
+    - guatemalan
+    - guyana
+    - guyanese
+    - haiti
+    - haitian
+    - honduras
+    - honduran
+    - nicaragua
+    - nicaraguan
+    - panama
+    - panamanian
+    - paraguay
+    - paraguayan
+    - peru
+    - peruvian
+    - suriname
+    - surinamese
+    - uruguay
+    - uruguayan
+    - venezuela
+    - venezuelan
+    - salvadoran
+    - salvadorean
+    - salvadorian
+    - caribbean
+    - alajuela
+    - antigua
+    - arequipa
+    - asuncion
+    - belize city
+    - buenos aires
+    - cap-haitien
+    - caracas
+    - ciudad del este
+    - cochabamba
+    - colon
+    - colonia
+    - concepcion
+    - cordoba
+    - cuenca
+    - cusco
+    - encarnacion
+    - falklands
+    - georgetown
+    - granada
+    - guayaquil
+    - la ceiba
+    - la paz
+    - lelydorp
+    - leon
+    - les cayes
+    - liberia
+    - lima
+    - linden
+    - managua
+    - maracaibo
+    - mendoza
+    - montevideo
+    - new amsterdam
+    - nieuw nickerie
+    - panama city
+    - paramaribo
+    - port-au-prince
+    - quetzaltenango
+    - quito
+    - salvador
+    - san ignacio
+    - san jose
+    - san miguel
+    - san pedro
+    - san pedro sula
+    - san salvador
+    - santa ana
+    - santa cruz
+    - santiago
+    - tegucigalpa
+    - valparaiso
+  dominican_republic:
+    ad_group_name: Dominican Republic
+    archetype: hero_country
+    target_country: Dominican Republic
+    target_region_label: Dominican Republic / Dominican
+    own_anchors:
+    - dominican republic
+    - dominican
+    - dominicana
+    - santo domingo
+    - punta cana
+    - puerto plata
+    - la romana
+    - samana
+    - dominacan
+    - domincan
+    - dominikan
+    - dominican rep
+    - dominicon
+    - dominican republik
+    - domican
+    parent_anchors:
+    - latina
+    - latinas
+    - latin
+    - latino
+    - hispanic
+    sibling_anchors:
+    - mexico
+    - mexican
+    - mexicana
+    - mexico city
+    - guadalajara
+    - monterrey
+    - tijuana
+    - cancun
+    - puebla
+    - merida
+    - oaxaca
+    - puerto rico
+    - puerto rican
+    - boricua
+    - san juan
+    - ponce
+    - bayamon
+    - caguas
+    - mayaguez
+    - arecibo
+    - cuba
+    - cuban
+    - cubana
+    - cubano
+    - havana
+    - santiago de cuba
+    - camaguey
+    - holguin
+    - varadero
+    - trinidad cuba
+    - matanzas
+    - colombia
+    - colombian
+    - colombiana
+    - bogota
+    - medellin
+    - cali
+    - cartagena
+    - barranquilla
+    - bucaramanga
+    - santa marta
+    - brazil
+    - brasil
+    - brazilian
+    - brasileira
+    - brasileiro
+    - rio de janeiro
+    - sao paulo
+    - brasilia
+    - fortaleza
+    - recife
+    - manaus
+    - curitiba
+    - belo horizonte
+    - porto alegre
+    - argentina
+    - argentinian
+    - argentine
+    - belize
+    - belizean
+    - bolivia
+    - bolivian
+    - chile
+    - chilean
+    - costa rica
+    - costa rican
+    - ecuador
+    - ecuadorian
+    - guatemala
+    - guatemalan
+    - guyana
+    - guyanese
+    - haiti
+    - haitian
+    - honduras
+    - honduran
+    - nicaragua
+    - nicaraguan
+    - panama
+    - panamanian
+    - paraguay
+    - paraguayan
+    - peru
+    - peruvian
+    - suriname
+    - surinamese
+    - uruguay
+    - uruguayan
+    - venezuela
+    - venezuelan
+    - salvadoran
+    - salvadorean
+    - salvadorian
+    - caribbean
+    - alajuela
+    - antigua
+    - arequipa
+    - asuncion
+    - belize city
+    - buenos aires
+    - cap-haitien
+    - caracas
+    - ciudad del este
+    - cochabamba
+    - colon
+    - colonia
+    - concepcion
+    - cordoba
+    - cuenca
+    - cusco
+    - encarnacion
+    - falklands
+    - georgetown
+    - granada
+    - guayaquil
+    - la ceiba
+    - la paz
+    - lelydorp
+    - leon
+    - les cayes
+    - liberia
+    - lima
+    - linden
+    - managua
+    - maracaibo
+    - mendoza
+    - montevideo
+    - new amsterdam
+    - nieuw nickerie
+    - panama city
+    - paramaribo
+    - port-au-prince
+    - quetzaltenango
+    - quito
+    - salvador
+    - san ignacio
+    - san jose
+    - san miguel
+    - san pedro
+    - san pedro sula
+    - san salvador
+    - santa ana
+    - santa cruz
+    - santiago
+    - tegucigalpa
+    - valparaiso
+  cuba:
+    ad_group_name: Cuba
+    archetype: hero_country
+    target_country: Cuba
+    target_region_label: Cuba / Cuban
+    own_anchors:
+    - cuba
+    - cuban
+    - cubana
+    - cubano
+    - havana
+    - santiago de cuba
+    - camaguey
+    - holguin
+    - varadero
+    - trinidad cuba
+    - trinidad
+    - matanzas
+    - kuba
+    - cubaa
+    - ciba
+    - cubba
+    - kuban
+    - cubian
+    - havanna
+    - hanava
+    parent_anchors:
+    - latina
+    - latinas
+    - latin
+    - latino
+    - hispanic
+    sibling_anchors:
+    - mexico
+    - mexican
+    - mexicana
+    - mexico city
+    - guadalajara
+    - monterrey
+    - tijuana
+    - cancun
+    - puebla
+    - merida
+    - oaxaca
+    - puerto rico
+    - puerto rican
+    - boricua
+    - san juan
+    - ponce
+    - bayamon
+    - caguas
+    - mayaguez
+    - arecibo
+    - dominican republic
+    - dominican
+    - dominicana
+    - santo domingo
+    - punta cana
+    - puerto plata
+    - la romana
+    - samana
+    - colombia
+    - colombian
+    - colombiana
+    - bogota
+    - medellin
+    - cali
+    - cartagena
+    - barranquilla
+    - bucaramanga
+    - santa marta
+    - brazil
+    - brasil
+    - brazilian
+    - brasileira
+    - brasileiro
+    - rio de janeiro
+    - sao paulo
+    - brasilia
+    - fortaleza
+    - recife
+    - manaus
+    - curitiba
+    - belo horizonte
+    - porto alegre
+    - argentina
+    - argentinian
+    - argentine
+    - belize
+    - belizean
+    - bolivia
+    - bolivian
+    - chile
+    - chilean
+    - costa rica
+    - costa rican
+    - ecuador
+    - ecuadorian
+    - guatemala
+    - guatemalan
+    - guyana
+    - guyanese
+    - haiti
+    - haitian
+    - honduras
+    - honduran
+    - nicaragua
+    - nicaraguan
+    - panama
+    - panamanian
+    - paraguay
+    - paraguayan
+    - peru
+    - peruvian
+    - suriname
+    - surinamese
+    - uruguay
+    - uruguayan
+    - venezuela
+    - venezuelan
+    - salvadoran
+    - salvadorean
+    - salvadorian
+    - caribbean
+    - alajuela
+    - antigua
+    - arequipa
+    - asuncion
+    - belize city
+    - buenos aires
+    - cap-haitien
+    - caracas
+    - ciudad del este
+    - cochabamba
+    - colon
+    - colonia
+    - concepcion
+    - cordoba
+    - cuenca
+    - cusco
+    - encarnacion
+    - falklands
+    - georgetown
+    - granada
+    - guayaquil
+    - la ceiba
+    - la paz
+    - lelydorp
+    - leon
+    - les cayes
+    - liberia
+    - lima
+    - linden
+    - managua
+    - maracaibo
+    - mendoza
+    - montevideo
+    - new amsterdam
+    - nieuw nickerie
+    - panama city
+    - paramaribo
+    - port-au-prince
+    - quetzaltenango
+    - quito
+    - salvador
+    - san ignacio
+    - san jose
+    - san miguel
+    - san pedro
+    - san pedro sula
+    - san salvador
+    - santa ana
+    - santa cruz
+    - santiago
+    - tegucigalpa
+    - valparaiso
+    - tobago
+    - trinidad and tobago
+  colombia:
+    ad_group_name: Colombia
+    archetype: hero_country
+    target_country: Colombia
+    target_region_label: Colombia / Colombian
+    own_anchors:
+    - colombia
+    - colombian
+    - colombiana
+    - bogota
+    - medellin
+    - cali
+    - cartagena
+    - barranquilla
+    - bucaramanga
+    - santa marta
+    - columbia
+    - columbian
+    - colombiaa
+    - colmbia
+    - colomia
+    - colomban
+    - colobia
+    - colombua
+    parent_anchors:
+    - latina
+    - latinas
+    - latin
+    - latino
+    - hispanic
+    sibling_anchors:
+    - mexico
+    - mexican
+    - mexicana
+    - mexico city
+    - guadalajara
+    - monterrey
+    - tijuana
+    - cancun
+    - puebla
+    - merida
+    - oaxaca
+    - puerto rico
+    - puerto rican
+    - boricua
+    - san juan
+    - ponce
+    - bayamon
+    - caguas
+    - mayaguez
+    - arecibo
+    - dominican republic
+    - dominican
+    - dominicana
+    - santo domingo
+    - punta cana
+    - puerto plata
+    - la romana
+    - samana
+    - cuba
+    - cuban
+    - cubana
+    - cubano
+    - havana
+    - santiago de cuba
+    - camaguey
+    - holguin
+    - varadero
+    - trinidad cuba
+    - matanzas
+    - brazil
+    - brasil
+    - brazilian
+    - brasileira
+    - brasileiro
+    - rio de janeiro
+    - sao paulo
+    - brasilia
+    - fortaleza
+    - recife
+    - manaus
+    - curitiba
+    - belo horizonte
+    - porto alegre
+    - argentina
+    - argentinian
+    - argentine
+    - belize
+    - belizean
+    - bolivia
+    - bolivian
+    - chile
+    - chilean
+    - costa rica
+    - costa rican
+    - ecuador
+    - ecuadorian
+    - guatemala
+    - guatemalan
+    - guyana
+    - guyanese
+    - haiti
+    - haitian
+    - honduras
+    - honduran
+    - nicaragua
+    - nicaraguan
+    - panama
+    - panamanian
+    - paraguay
+    - paraguayan
+    - peru
+    - peruvian
+    - suriname
+    - surinamese
+    - uruguay
+    - uruguayan
+    - venezuela
+    - venezuelan
+    - salvadoran
+    - salvadorean
+    - salvadorian
+    - caribbean
+    - alajuela
+    - antigua
+    - arequipa
+    - asuncion
+    - belize city
+    - buenos aires
+    - cap-haitien
+    - caracas
+    - ciudad del este
+    - cochabamba
+    - colon
+    - colonia
+    - concepcion
+    - cordoba
+    - cuenca
+    - cusco
+    - encarnacion
+    - falklands
+    - georgetown
+    - granada
+    - guayaquil
+    - la ceiba
+    - la paz
+    - lelydorp
+    - leon
+    - les cayes
+    - liberia
+    - lima
+    - linden
+    - managua
+    - maracaibo
+    - mendoza
+    - montevideo
+    - new amsterdam
+    - nieuw nickerie
+    - panama city
+    - paramaribo
+    - port-au-prince
+    - quetzaltenango
+    - quito
+    - salvador
+    - san ignacio
+    - san jose
+    - san miguel
+    - san pedro
+    - san pedro sula
+    - san salvador
+    - santa ana
+    - santa cruz
+    - santiago
+    - tegucigalpa
+    - valparaiso
+  brazil:
+    ad_group_name: Brazil
+    archetype: hero_country
+    target_country: Brazil
+    target_region_label: Brazil / Brazilian
+    own_anchors:
+    - brazil
+    - brasil
+    - brazilian
+    - brasileira
+    - brasileiro
+    - rio de janeiro
+    - sao paulo
+    - brasilia
+    - fortaleza
+    - recife
+    - manaus
+    - curitiba
+    - belo horizonte
+    - porto alegre
+    - brazzil
+    - brasilian
+    - brazillian
+    - brezil
+    - brzil
+    - brazzl
+    - brazilien
+    parent_anchors:
+    - latina
+    - latinas
+    - latin
+    - latino
+    - hispanic
+    sibling_anchors:
+    - mexico
+    - mexican
+    - mexicana
+    - mexico city
+    - guadalajara
+    - monterrey
+    - tijuana
+    - cancun
+    - puebla
+    - merida
+    - oaxaca
+    - puerto rico
+    - puerto rican
+    - boricua
+    - san juan
+    - ponce
+    - bayamon
+    - caguas
+    - mayaguez
+    - arecibo
+    - dominican republic
+    - dominican
+    - dominicana
+    - santo domingo
+    - punta cana
+    - puerto plata
+    - la romana
+    - samana
+    - cuba
+    - cuban
+    - cubana
+    - cubano
+    - havana
+    - santiago de cuba
+    - camaguey
+    - holguin
+    - varadero
+    - trinidad cuba
+    - matanzas
+    - colombia
+    - colombian
+    - colombiana
+    - bogota
+    - medellin
+    - cali
+    - cartagena
+    - barranquilla
+    - bucaramanga
+    - santa marta
+    - argentina
+    - argentinian
+    - argentine
+    - belize
+    - belizean
+    - bolivia
+    - bolivian
+    - chile
+    - chilean
+    - costa rica
+    - costa rican
+    - ecuador
+    - ecuadorian
+    - guatemala
+    - guatemalan
+    - guyana
+    - guyanese
+    - haiti
+    - haitian
+    - honduras
+    - honduran
+    - nicaragua
+    - nicaraguan
+    - panama
+    - panamanian
+    - paraguay
+    - paraguayan
+    - peru
+    - peruvian
+    - suriname
+    - surinamese
+    - uruguay
+    - uruguayan
+    - venezuela
+    - venezuelan
+    - salvadoran
+    - salvadorean
+    - salvadorian
+    - caribbean
+    - alajuela
+    - antigua
+    - arequipa
+    - asuncion
+    - belize city
+    - buenos aires
+    - cap-haitien
+    - caracas
+    - ciudad del este
+    - cochabamba
+    - colon
+    - colonia
+    - concepcion
+    - cordoba
+    - cuenca
+    - cusco
+    - encarnacion
+    - falklands
+    - georgetown
+    - granada
+    - guayaquil
+    - la ceiba
+    - la paz
+    - lelydorp
+    - leon
+    - les cayes
+    - liberia
+    - lima
+    - linden
+    - managua
+    - maracaibo
+    - mendoza
+    - montevideo
+    - new amsterdam
+    - nieuw nickerie
+    - panama city
+    - paramaribo
+    - port-au-prince
+    - quetzaltenango
+    - quito
+    - salvador
+    - san ignacio
+    - san jose
+    - san miguel
+    - san pedro
+    - san pedro sula
+    - san salvador
+    - santa ana
+    - santa cruz
+    - santiago
+    - tegucigalpa
+    - valparaiso
+  euro_countries:
+    ad_group_name: Euro Countries
+    archetype: hybrid
+    target_country: null
+    target_region_label: 'Europe (hybrid: non-hero + pan-regional)'
+    own_anchors:
+    - andorra
+    - andorran
+    - austria
+    - austrian
+    - belgium
+    - belgian
+    - cyprus
+    - cypriot
+    - denmark
+    - danish
+    - dane
+    - finland
+    - finnish
+    - finn
+    - greece
+    - greek
+    - iceland
+    - icelandic
+    - liechtenstein
+    - luxembourg
+    - luxembourger
+    - malta
+    - maltese
+    - monaco
+    - monegasque
+    - norway
+    - norwegian
+    - portugal
+    - portuguese
+    - san marino
+    - sammarinese
+    - scandinavia
+    - scandinavian
+    - switzerland
+    - swiss
+    - turkey
+    - turkish
+    - northern cyprus
+    - north cyprus
+    - trnc
+    - iberia
+    - mediterranean
+    - aarhus
+    - akureyri
+    - antwerp
+    - athens
+    - basel
+    - bergen
+    - bruges
+    - brussels
+    - copenhagen
+    - geneva
+    - helsinki
+    - innsbruck
+    - larnaca
+    - lisbon
+    - nicosia
+    - odense
+    - oslo
+    - porto
+    - reykjavik
+    - salzburg
+    - tampere
+    - thessaloniki
+    - turku
+    - vaduz
+    - valletta
+    - vienna
+    - zurich
+    - istanbul
+    - ankara
+    - izmir
+    - bursa
+    - antalya
+    - gaziantep
+    - konya
+    - adana
+    - kyrenia
+    - famagusta
+    - european
+    - europe
+    parent_anchors: []
+    sibling_anchors:
+    - sweden
+    - swedish
+    - swede
+    - sverige
+    - stockholm
+    - gothenburg
+    - malmo
+    - uppsala
+    - vasteras
+    - orebro
+    - linkoping
+    - france
+    - french
+    - francaise
+    - paris
+    - lyon
+    - marseille
+    - bordeaux
+    - nice
+    - toulouse
+    - nantes
+    - strasbourg
+    - montpellier
+    - italy
+    - italia
+    - italian
+    - italiana
+    - rome
+    - milan
+    - naples
+    - florence
+    - turin
+    - venice
+    - bologna
+    - palermo
+    - genoa
+    - germany
+    - german
+    - deutsch
+    - deutschland
+    - berlin
+    - munich
+    - hamburg
+    - frankfurt
+    - cologne
+    - stuttgart
+    - dusseldorf
+    - dortmund
+    - leipzig
+    - spain
+    - spanish
+    - espanol
+    - espanola
+    - espana
+    - madrid
+    - barcelona
+    - valencia
+    - seville
+    - malaga
+    - bilbao
+    - zaragoza
+    - ireland
+    - irish
+    - eire
+    - dublin
+    - cork
+    - galway
+    - limerick
+    - waterford
+    - netherlands
+    - dutch
+    - holland
+    - nederland
+    - amsterdam
+    - rotterdam
+    - the hague
+    - utrecht
+    - eindhoven
+    - groningen
+    - tilburg
+  sweden:
+    ad_group_name: Sweden
+    archetype: hero_country
+    target_country: Sweden
+    target_region_label: Sweden / Swedish
+    own_anchors:
+    - sweden
+    - swedish
+    - swede
+    - sverige
+    - stockholm
+    - gothenburg
+    - malmo
+    - uppsala
+    - vasteras
+    - orebro
+    - linkoping
+    - nordic
+    - nordic countries
+    - norden
+    - viking
+    - vikings
+    - norse
+    - fjord
+    - fjords
+    - sweeden
+    - sveden
+    - swedn
+    - swidish
+    - svedish
+    - swedin
+    - sveeden
+    parent_anchors:
+    - european
+    - europe
+    sibling_anchors:
+    - france
+    - french
+    - francaise
+    - paris
+    - lyon
+    - marseille
+    - bordeaux
+    - nice
+    - toulouse
+    - nantes
+    - strasbourg
+    - montpellier
+    - italy
+    - italia
+    - italian
+    - italiana
+    - rome
+    - milan
+    - naples
+    - florence
+    - turin
+    - venice
+    - bologna
+    - palermo
+    - genoa
+    - germany
+    - german
+    - deutsch
+    - deutschland
+    - berlin
+    - munich
+    - hamburg
+    - frankfurt
+    - cologne
+    - stuttgart
+    - dusseldorf
+    - dortmund
+    - leipzig
+    - spain
+    - spanish
+    - espanol
+    - espanola
+    - espana
+    - madrid
+    - barcelona
+    - valencia
+    - seville
+    - malaga
+    - bilbao
+    - zaragoza
+    - ireland
+    - irish
+    - eire
+    - dublin
+    - cork
+    - galway
+    - limerick
+    - waterford
+    - netherlands
+    - dutch
+    - holland
+    - nederland
+    - amsterdam
+    - rotterdam
+    - the hague
+    - utrecht
+    - eindhoven
+    - groningen
+    - tilburg
+    - andorra
+    - andorran
+    - austria
+    - austrian
+    - belgium
+    - belgian
+    - cyprus
+    - cypriot
+    - denmark
+    - danish
+    - dane
+    - finland
+    - finnish
+    - finn
+    - greece
+    - greek
+    - iceland
+    - icelandic
+    - liechtenstein
+    - luxembourg
+    - luxembourger
+    - malta
+    - maltese
+    - monaco
+    - monegasque
+    - norway
+    - norwegian
+    - portugal
+    - portuguese
+    - san marino
+    - sammarinese
+    - scandinavia
+    - scandinavian
+    - switzerland
+    - swiss
+    - turkey
+    - turkish
+    - northern cyprus
+    - north cyprus
+    - trnc
+    - iberia
+    - mediterranean
+    - aarhus
+    - akureyri
+    - antwerp
+    - athens
+    - basel
+    - bergen
+    - bruges
+    - brussels
+    - copenhagen
+    - geneva
+    - helsinki
+    - innsbruck
+    - larnaca
+    - lisbon
+    - nicosia
+    - odense
+    - oslo
+    - porto
+    - reykjavik
+    - salzburg
+    - tampere
+    - thessaloniki
+    - turku
+    - vaduz
+    - valletta
+    - vienna
+    - zurich
+    - istanbul
+    - ankara
+    - izmir
+    - bursa
+    - antalya
+    - gaziantep
+    - konya
+    - adana
+    - kyrenia
+    - famagusta
+  france:
+    ad_group_name: France
+    archetype: hero_country
+    target_country: France
+    target_region_label: France / French
+    own_anchors:
+    - france
+    - french
+    - francaise
+    - paris
+    - lyon
+    - marseille
+    - bordeaux
+    - nice
+    - toulouse
+    - nantes
+    - strasbourg
+    - montpellier
+    - frence
+    - frans
+    - frnace
+    - franse
+    - frenche
+    - frensh
+    - franche
+    - francia
+    - frencch
+    parent_anchors:
+    - european
+    - europe
+    sibling_anchors:
+    - sweden
+    - swedish
+    - swede
+    - sverige
+    - stockholm
+    - gothenburg
+    - malmo
+    - uppsala
+    - vasteras
+    - orebro
+    - linkoping
+    - italy
+    - italia
+    - italian
+    - italiana
+    - rome
+    - milan
+    - naples
+    - florence
+    - turin
+    - venice
+    - bologna
+    - palermo
+    - genoa
+    - germany
+    - german
+    - deutsch
+    - deutschland
+    - berlin
+    - munich
+    - hamburg
+    - frankfurt
+    - cologne
+    - stuttgart
+    - dusseldorf
+    - dortmund
+    - leipzig
+    - spain
+    - spanish
+    - espanol
+    - espanola
+    - espana
+    - madrid
+    - barcelona
+    - valencia
+    - seville
+    - malaga
+    - bilbao
+    - zaragoza
+    - ireland
+    - irish
+    - eire
+    - dublin
+    - cork
+    - galway
+    - limerick
+    - waterford
+    - netherlands
+    - dutch
+    - holland
+    - nederland
+    - amsterdam
+    - rotterdam
+    - the hague
+    - utrecht
+    - eindhoven
+    - groningen
+    - tilburg
+    - andorra
+    - andorran
+    - austria
+    - austrian
+    - belgium
+    - belgian
+    - cyprus
+    - cypriot
+    - denmark
+    - danish
+    - dane
+    - finland
+    - finnish
+    - finn
+    - greece
+    - greek
+    - iceland
+    - icelandic
+    - liechtenstein
+    - luxembourg
+    - luxembourger
+    - malta
+    - maltese
+    - monaco
+    - monegasque
+    - norway
+    - norwegian
+    - portugal
+    - portuguese
+    - san marino
+    - sammarinese
+    - scandinavia
+    - scandinavian
+    - switzerland
+    - swiss
+    - turkey
+    - turkish
+    - northern cyprus
+    - north cyprus
+    - trnc
+    - iberia
+    - mediterranean
+    - aarhus
+    - akureyri
+    - antwerp
+    - athens
+    - basel
+    - bergen
+    - bruges
+    - brussels
+    - copenhagen
+    - geneva
+    - helsinki
+    - innsbruck
+    - larnaca
+    - lisbon
+    - nicosia
+    - odense
+    - oslo
+    - porto
+    - reykjavik
+    - salzburg
+    - tampere
+    - thessaloniki
+    - turku
+    - vaduz
+    - valletta
+    - vienna
+    - zurich
+    - istanbul
+    - ankara
+    - izmir
+    - bursa
+    - antalya
+    - gaziantep
+    - konya
+    - adana
+    - kyrenia
+    - famagusta
+  italy:
+    ad_group_name: Italy
+    archetype: hero_country
+    target_country: Italy
+    target_region_label: Italy / Italian
+    own_anchors:
+    - italy
+    - italia
+    - italian
+    - italiana
+    - rome
+    - milan
+    - naples
+    - florence
+    - turin
+    - venice
+    - bologna
+    - palermo
+    - genoa
+    - sicily
+    - sicilian
+    - sicilia
+    - siciliana
+    - siciliano
+    - sardinia
+    - sardinian
+    - sardegna
+    - calabria
+    - calabrian
+    - puglia
+    - apulia
+    - apulian
+    - neapolitan
+    - amalfi
+    - catania
+    - messina
+    - trapani
+    - siracusa
+    - agrigento
+    - verona
+    - bari
+    - trieste
+    - itally
+    - itlay
+    - itay
+    - italain
+    - itallian
+    - itialian
+    - italean
+    - italya
+    parent_anchors:
+    - european
+    - europe
+    sibling_anchors:
+    - sweden
+    - swedish
+    - swede
+    - sverige
+    - stockholm
+    - gothenburg
+    - malmo
+    - uppsala
+    - vasteras
+    - orebro
+    - linkoping
+    - france
+    - french
+    - francaise
+    - paris
+    - lyon
+    - marseille
+    - bordeaux
+    - nice
+    - toulouse
+    - nantes
+    - strasbourg
+    - montpellier
+    - germany
+    - german
+    - deutsch
+    - deutschland
+    - berlin
+    - munich
+    - hamburg
+    - frankfurt
+    - cologne
+    - stuttgart
+    - dusseldorf
+    - dortmund
+    - leipzig
+    - spain
+    - spanish
+    - espanol
+    - espanola
+    - espana
+    - madrid
+    - barcelona
+    - valencia
+    - seville
+    - malaga
+    - bilbao
+    - zaragoza
+    - ireland
+    - irish
+    - eire
+    - dublin
+    - cork
+    - galway
+    - limerick
+    - waterford
+    - netherlands
+    - dutch
+    - holland
+    - nederland
+    - amsterdam
+    - rotterdam
+    - the hague
+    - utrecht
+    - eindhoven
+    - groningen
+    - tilburg
+    - andorra
+    - andorran
+    - austria
+    - austrian
+    - belgium
+    - belgian
+    - cyprus
+    - cypriot
+    - denmark
+    - danish
+    - dane
+    - finland
+    - finnish
+    - finn
+    - greece
+    - greek
+    - iceland
+    - icelandic
+    - liechtenstein
+    - luxembourg
+    - luxembourger
+    - malta
+    - maltese
+    - monaco
+    - monegasque
+    - norway
+    - norwegian
+    - portugal
+    - portuguese
+    - san marino
+    - sammarinese
+    - scandinavia
+    - scandinavian
+    - switzerland
+    - swiss
+    - turkey
+    - turkish
+    - northern cyprus
+    - north cyprus
+    - trnc
+    - iberia
+    - mediterranean
+    - aarhus
+    - akureyri
+    - antwerp
+    - athens
+    - basel
+    - bergen
+    - bruges
+    - brussels
+    - copenhagen
+    - geneva
+    - helsinki
+    - innsbruck
+    - larnaca
+    - lisbon
+    - nicosia
+    - odense
+    - oslo
+    - porto
+    - reykjavik
+    - salzburg
+    - tampere
+    - thessaloniki
+    - turku
+    - vaduz
+    - valletta
+    - vienna
+    - zurich
+    - istanbul
+    - ankara
+    - izmir
+    - bursa
+    - antalya
+    - gaziantep
+    - konya
+    - adana
+    - kyrenia
+    - famagusta
+  germany:
+    ad_group_name: Germany
+    archetype: hero_country
+    target_country: Germany
+    target_region_label: Germany / German
+    own_anchors:
+    - germany
+    - german
+    - deutsch
+    - deutschland
+    - berlin
+    - munich
+    - hamburg
+    - frankfurt
+    - cologne
+    - stuttgart
+    - dusseldorf
+    - dortmund
+    - leipzig
+    - neu de
+    - neu.de
+    - germny
+    - germeny
+    - germanie
+    - jerman
+    - gernany
+    - gerany
+    - germen
+    - deutchland
+    parent_anchors:
+    - european
+    - europe
+    sibling_anchors:
+    - sweden
+    - swedish
+    - swede
+    - sverige
+    - stockholm
+    - gothenburg
+    - malmo
+    - uppsala
+    - vasteras
+    - orebro
+    - linkoping
+    - france
+    - french
+    - francaise
+    - paris
+    - lyon
+    - marseille
+    - bordeaux
+    - nice
+    - toulouse
+    - nantes
+    - strasbourg
+    - montpellier
+    - italy
+    - italia
+    - italian
+    - italiana
+    - rome
+    - milan
+    - naples
+    - florence
+    - turin
+    - venice
+    - bologna
+    - palermo
+    - genoa
+    - spain
+    - spanish
+    - espanol
+    - espanola
+    - espana
+    - madrid
+    - barcelona
+    - valencia
+    - seville
+    - malaga
+    - bilbao
+    - zaragoza
+    - ireland
+    - irish
+    - eire
+    - dublin
+    - cork
+    - galway
+    - limerick
+    - waterford
+    - netherlands
+    - dutch
+    - holland
+    - nederland
+    - amsterdam
+    - rotterdam
+    - the hague
+    - utrecht
+    - eindhoven
+    - groningen
+    - tilburg
+    - andorra
+    - andorran
+    - austria
+    - austrian
+    - belgium
+    - belgian
+    - cyprus
+    - cypriot
+    - denmark
+    - danish
+    - dane
+    - finland
+    - finnish
+    - finn
+    - greece
+    - greek
+    - iceland
+    - icelandic
+    - liechtenstein
+    - luxembourg
+    - luxembourger
+    - malta
+    - maltese
+    - monaco
+    - monegasque
+    - norway
+    - norwegian
+    - portugal
+    - portuguese
+    - san marino
+    - sammarinese
+    - scandinavia
+    - scandinavian
+    - switzerland
+    - swiss
+    - turkey
+    - turkish
+    - northern cyprus
+    - north cyprus
+    - trnc
+    - iberia
+    - mediterranean
+    - aarhus
+    - akureyri
+    - antwerp
+    - athens
+    - basel
+    - bergen
+    - bruges
+    - brussels
+    - copenhagen
+    - geneva
+    - helsinki
+    - innsbruck
+    - larnaca
+    - lisbon
+    - nicosia
+    - odense
+    - oslo
+    - porto
+    - reykjavik
+    - salzburg
+    - tampere
+    - thessaloniki
+    - turku
+    - vaduz
+    - valletta
+    - vienna
+    - zurich
+    - istanbul
+    - ankara
+    - izmir
+    - bursa
+    - antalya
+    - gaziantep
+    - konya
+    - adana
+    - kyrenia
+    - famagusta
+  spain:
+    ad_group_name: Spain
+    archetype: hero_country
+    target_country: Spain
+    target_region_label: Spain / Spanish
+    own_anchors:
+    - spain
+    - spanish
+    - espanol
+    - espanola
+    - espana
+    - español
+    - española
+    - españa
+    - madrid
+    - barcelona
+    - valencia
+    - seville
+    - sevilla
+    - malaga
+    - málaga
+    - bilbao
+    - zaragoza
+    - marbella
+    - ibiza
+    - mallorca
+    - majorca
+    - menorca
+    - minorca
+    - tenerife
+    - gran canaria
+    - lanzarote
+    - fuerteventura
+    - andalusia
+    - andalusian
+    - andalucia
+    - andalucía
+    - catalonia
+    - catalan
+    - cataluña
+    - alicante
+    - murcia
+    - almeria
+    - cadiz
+    - cádiz
+    - huelva
+    - jaen
+    - jaén
+    - spian
+    - spane
+    - spaan
+    - spaain
+    - spein
+    - spanis
+    - spannish
+    - spainish
+    parent_anchors:
+    - european
+    - europe
+    sibling_anchors:
+    - sweden
+    - swedish
+    - swede
+    - sverige
+    - stockholm
+    - gothenburg
+    - malmo
+    - uppsala
+    - vasteras
+    - orebro
+    - linkoping
+    - france
+    - french
+    - francaise
+    - paris
+    - lyon
+    - marseille
+    - bordeaux
+    - nice
+    - toulouse
+    - nantes
+    - strasbourg
+    - montpellier
+    - italy
+    - italia
+    - italian
+    - italiana
+    - rome
+    - milan
+    - naples
+    - florence
+    - turin
+    - venice
+    - bologna
+    - palermo
+    - genoa
+    - germany
+    - german
+    - deutsch
+    - deutschland
+    - berlin
+    - munich
+    - hamburg
+    - frankfurt
+    - cologne
+    - stuttgart
+    - dusseldorf
+    - dortmund
+    - leipzig
+    - ireland
+    - irish
+    - eire
+    - dublin
+    - cork
+    - galway
+    - limerick
+    - waterford
+    - netherlands
+    - dutch
+    - holland
+    - nederland
+    - amsterdam
+    - rotterdam
+    - the hague
+    - utrecht
+    - eindhoven
+    - groningen
+    - tilburg
+    - andorra
+    - andorran
+    - austria
+    - austrian
+    - belgium
+    - belgian
+    - cyprus
+    - cypriot
+    - denmark
+    - danish
+    - dane
+    - finland
+    - finnish
+    - finn
+    - greece
+    - greek
+    - iceland
+    - icelandic
+    - liechtenstein
+    - luxembourg
+    - luxembourger
+    - malta
+    - maltese
+    - monaco
+    - monegasque
+    - norway
+    - norwegian
+    - portugal
+    - portuguese
+    - san marino
+    - sammarinese
+    - scandinavia
+    - scandinavian
+    - switzerland
+    - swiss
+    - turkey
+    - turkish
+    - northern cyprus
+    - north cyprus
+    - trnc
+    - iberia
+    - mediterranean
+    - aarhus
+    - akureyri
+    - antwerp
+    - athens
+    - basel
+    - bergen
+    - bruges
+    - brussels
+    - copenhagen
+    - geneva
+    - helsinki
+    - innsbruck
+    - larnaca
+    - lisbon
+    - nicosia
+    - odense
+    - oslo
+    - porto
+    - reykjavik
+    - salzburg
+    - tampere
+    - thessaloniki
+    - turku
+    - vaduz
+    - valletta
+    - vienna
+    - zurich
+    - istanbul
+    - ankara
+    - izmir
+    - bursa
+    - antalya
+    - gaziantep
+    - konya
+    - adana
+    - kyrenia
+    - famagusta
+  ireland:
+    ad_group_name: Ireland
+    archetype: hero_country
+    target_country: Ireland
+    target_region_label: Ireland / Irish
+    own_anchors:
+    - ireland
+    - irish
+    - eire
+    - dublin
+    - cork
+    - galway
+    - limerick
+    - waterford
+    - iralend
+    - ireand
+    - irelnd
+    - ierland
+    - irelend
+    - irleand
+    - irealnd
+    - irland
+    parent_anchors:
+    - european
+    - europe
+    sibling_anchors:
+    - sweden
+    - swedish
+    - swede
+    - sverige
+    - stockholm
+    - gothenburg
+    - malmo
+    - uppsala
+    - vasteras
+    - orebro
+    - linkoping
+    - france
+    - french
+    - francaise
+    - paris
+    - lyon
+    - marseille
+    - bordeaux
+    - nice
+    - toulouse
+    - nantes
+    - strasbourg
+    - montpellier
+    - italy
+    - italia
+    - italian
+    - italiana
+    - rome
+    - milan
+    - naples
+    - florence
+    - turin
+    - venice
+    - bologna
+    - palermo
+    - genoa
+    - germany
+    - german
+    - deutsch
+    - deutschland
+    - berlin
+    - munich
+    - hamburg
+    - frankfurt
+    - cologne
+    - stuttgart
+    - dusseldorf
+    - dortmund
+    - leipzig
+    - spain
+    - spanish
+    - espanol
+    - espanola
+    - espana
+    - madrid
+    - barcelona
+    - valencia
+    - seville
+    - malaga
+    - bilbao
+    - zaragoza
+    - netherlands
+    - dutch
+    - holland
+    - nederland
+    - amsterdam
+    - rotterdam
+    - the hague
+    - utrecht
+    - eindhoven
+    - groningen
+    - tilburg
+    - andorra
+    - andorran
+    - austria
+    - austrian
+    - belgium
+    - belgian
+    - cyprus
+    - cypriot
+    - denmark
+    - danish
+    - dane
+    - finland
+    - finnish
+    - finn
+    - greece
+    - greek
+    - iceland
+    - icelandic
+    - liechtenstein
+    - luxembourg
+    - luxembourger
+    - malta
+    - maltese
+    - monaco
+    - monegasque
+    - norway
+    - norwegian
+    - portugal
+    - portuguese
+    - san marino
+    - sammarinese
+    - scandinavia
+    - scandinavian
+    - switzerland
+    - swiss
+    - turkey
+    - turkish
+    - northern cyprus
+    - north cyprus
+    - trnc
+    - iberia
+    - mediterranean
+    - aarhus
+    - akureyri
+    - antwerp
+    - athens
+    - basel
+    - bergen
+    - bruges
+    - brussels
+    - copenhagen
+    - geneva
+    - helsinki
+    - innsbruck
+    - larnaca
+    - lisbon
+    - nicosia
+    - odense
+    - oslo
+    - porto
+    - reykjavik
+    - salzburg
+    - tampere
+    - thessaloniki
+    - turku
+    - vaduz
+    - valletta
+    - vienna
+    - zurich
+    - istanbul
+    - ankara
+    - izmir
+    - bursa
+    - antalya
+    - gaziantep
+    - konya
+    - adana
+    - kyrenia
+    - famagusta
+  netherlands:
+    ad_group_name: Netherlands
+    archetype: hero_country
+    target_country: Netherlands
+    target_region_label: Netherlands / Dutch
+    own_anchors:
+    - netherlands
+    - dutch
+    - holland
+    - nederland
+    - amsterdam
+    - rotterdam
+    - the hague
+    - utrecht
+    - eindhoven
+    - groningen
+    - tilburg
+    - netherland
+    - neitherlands
+    - neatherlands
+    - netherlends
+    - netherlamds
+    - netherlanda
+    - netherans
+    parent_anchors:
+    - european
+    - europe
+    sibling_anchors:
+    - sweden
+    - swedish
+    - swede
+    - sverige
+    - stockholm
+    - gothenburg
+    - malmo
+    - uppsala
+    - vasteras
+    - orebro
+    - linkoping
+    - france
+    - french
+    - francaise
+    - paris
+    - lyon
+    - marseille
+    - bordeaux
+    - nice
+    - toulouse
+    - nantes
+    - strasbourg
+    - montpellier
+    - italy
+    - italia
+    - italian
+    - italiana
+    - rome
+    - milan
+    - naples
+    - florence
+    - turin
+    - venice
+    - bologna
+    - palermo
+    - genoa
+    - germany
+    - german
+    - deutsch
+    - deutschland
+    - berlin
+    - munich
+    - hamburg
+    - frankfurt
+    - cologne
+    - stuttgart
+    - dusseldorf
+    - dortmund
+    - leipzig
+    - spain
+    - spanish
+    - espanol
+    - espanola
+    - espana
+    - madrid
+    - barcelona
+    - valencia
+    - seville
+    - malaga
+    - bilbao
+    - zaragoza
+    - ireland
+    - irish
+    - eire
+    - dublin
+    - cork
+    - galway
+    - limerick
+    - waterford
+    - andorra
+    - andorran
+    - austria
+    - austrian
+    - belgium
+    - belgian
+    - cyprus
+    - cypriot
+    - denmark
+    - danish
+    - dane
+    - finland
+    - finnish
+    - finn
+    - greece
+    - greek
+    - iceland
+    - icelandic
+    - liechtenstein
+    - luxembourg
+    - luxembourger
+    - malta
+    - maltese
+    - monaco
+    - monegasque
+    - norway
+    - norwegian
+    - portugal
+    - portuguese
+    - san marino
+    - sammarinese
+    - scandinavia
+    - scandinavian
+    - switzerland
+    - swiss
+    - turkey
+    - turkish
+    - northern cyprus
+    - north cyprus
+    - trnc
+    - iberia
+    - mediterranean
+    - aarhus
+    - akureyri
+    - antwerp
+    - athens
+    - basel
+    - bergen
+    - bruges
+    - brussels
+    - copenhagen
+    - geneva
+    - helsinki
+    - innsbruck
+    - larnaca
+    - lisbon
+    - nicosia
+    - odense
+    - oslo
+    - porto
+    - reykjavik
+    - salzburg
+    - tampere
+    - thessaloniki
+    - turku
+    - vaduz
+    - valletta
+    - vienna
+    - zurich
+    - istanbul
+    - ankara
+    - izmir
+    - bursa
+    - antalya
+    - gaziantep
+    - konya
+    - adana
+    - kyrenia
+    - famagusta
+  cee_countries:
+    ad_group_name: CEE Countries
+    archetype: hybrid
+    target_country: null
+    target_region_label: 'CEE / Slavic (hybrid: non-hero + pan-regional)'
+    own_anchors:
+    - albania
+    - albanian
+    - armenia
+    - armenian
+    - azerbaijan
+    - azerbaijani
+    - azeri
+    - belarus
+    - belarusian
+    - belorussian
+    - bosnia
+    - bosnian
+    - bulgaria
+    - bulgarian
+    - croatia
+    - croatian
+    - czech
+    - czechia
+    - estonia
+    - estonian
+    - georgia
+    - georgian
+    - hungary
+    - hungarian
+    - kosovo
+    - kosovar
+    - macedonia
+    - macedonian
+    - moldova
+    - moldovan
+    - montenegro
+    - montenegrin
+    - romania
+    - romanian
+    - serbia
+    - serbian
+    - slovakia
+    - slovak
+    - slovenia
+    - slovenian
+    - balkans
+    - baltic
+    - baku
+    - banja luka
+    - batumi
+    - belgrade
+    - bratislava
+    - brno
+    - bucharest
+    - budapest
+    - cluj-napoca
+    - dubrovnik
+    - gomel
+    - kutaisi
+    - ljubljana
+    - minsk
+    - novi sad
+    - ostrava
+    - plovdiv
+    - podgorica
+    - prague
+    - pristina
+    - sarajevo
+    - skopje
+    - sofia
+    - split
+    - tallinn
+    - tartu
+    - tbilisi
+    - timisoara
+    - tirana
+    - varna
+    - yerevan
+    - zagreb
+    - slavic
+    - eastern european
+    - cee
+    - victoria hearts
+    - victoriahearts
+    parent_anchors: []
+    sibling_anchors:
+    - poland
+    - polish
+    - polska
+    - polen
+    - warsaw
+    - krakow
+    - wroclaw
+    - poznan
+    - gdansk
+    - lodz
+    - szczecin
+    - lublin
+    - katowice
+    - lithuania
+    - lithuanian
+    - vilnius
+    - kaunas
+    - klaipeda
+    - siauliai
+    - panevezys
+    - latvia
+    - latvian
+    - riga
+    - daugavpils
+    - liepaja
+    - jelgava
+    - jurmala
+    - ventspils
+    - ukraine
+    - ukrainian
+    - kyiv
+    - kiev
+    - kharkiv
+    - odesa
+    - odessa
+    - lviv
+    - dnipro
+    - donetsk
+    - zaporizhzhia
+    - russia
+    - russian
+    - moscow
+    - st petersburg
+    - saint petersburg
+    - novosibirsk
+    - ekaterinburg
+    - yekaterinburg
+    - kazan
+    - nizhny novgorod
+    - samara
+    - rostov
+  poland:
+    ad_group_name: Poland
+    archetype: hero_country
+    target_country: Poland
+    target_region_label: Poland / Polish
+    own_anchors:
+    - poland
+    - polish
+    - polska
+    - polen
+    - warsaw
+    - krakow
+    - wroclaw
+    - poznan
+    - gdansk
+    - lodz
+    - szczecin
+    - lublin
+    - katowice
+    - polland
+    - polnad
+    - polan
+    - polond
+    - polamd
+    - poalnd
+    - polsih
+    - polisch
+    - buziak
+    - randki
+    parent_anchors:
+    - slavic
+    - eastern european
+    - cee
+    sibling_anchors:
+    - lithuania
+    - lithuanian
+    - vilnius
+    - kaunas
+    - klaipeda
+    - siauliai
+    - panevezys
+    - latvia
+    - latvian
+    - riga
+    - daugavpils
+    - liepaja
+    - jelgava
+    - jurmala
+    - ventspils
+    - ukraine
+    - ukrainian
+    - kyiv
+    - kiev
+    - kharkiv
+    - odesa
+    - odessa
+    - lviv
+    - dnipro
+    - donetsk
+    - zaporizhzhia
+    - russia
+    - russian
+    - moscow
+    - st petersburg
+    - saint petersburg
+    - novosibirsk
+    - ekaterinburg
+    - yekaterinburg
+    - kazan
+    - nizhny novgorod
+    - samara
+    - rostov
+    - albania
+    - albanian
+    - armenia
+    - armenian
+    - azerbaijan
+    - azerbaijani
+    - azeri
+    - belarus
+    - belarusian
+    - belorussian
+    - bosnia
+    - bosnian
+    - bulgaria
+    - bulgarian
+    - croatia
+    - croatian
+    - czech
+    - czechia
+    - estonia
+    - estonian
+    - georgia
+    - georgian
+    - hungary
+    - hungarian
+    - kosovo
+    - kosovar
+    - macedonia
+    - macedonian
+    - moldova
+    - moldovan
+    - montenegro
+    - montenegrin
+    - romania
+    - romanian
+    - serbia
+    - serbian
+    - slovakia
+    - slovak
+    - slovenia
+    - slovenian
+    - balkans
+    - baltic
+    - baku
+    - banja luka
+    - batumi
+    - belgrade
+    - bratislava
+    - brno
+    - bucharest
+    - budapest
+    - cluj-napoca
+    - dubrovnik
+    - gomel
+    - kutaisi
+    - ljubljana
+    - minsk
+    - novi sad
+    - ostrava
+    - plovdiv
+    - podgorica
+    - prague
+    - pristina
+    - sarajevo
+    - skopje
+    - sofia
+    - split
+    - tallinn
+    - tartu
+    - tbilisi
+    - timisoara
+    - tirana
+    - varna
+    - yerevan
+    - zagreb
+  lithuania:
+    ad_group_name: Lithuania
+    archetype: hero_country
+    target_country: Lithuania
+    target_region_label: Lithuania / Lithuanian
+    own_anchors:
+    - lithuania
+    - lithuanian
+    - vilnius
+    - kaunas
+    - klaipeda
+    - siauliai
+    - panevezys
+    - lituania
+    - lituanian
+    - lithuiana
+    - lithunia
+    - lithuana
+    - luthuania
+    - lituhania
+    - lithunian
+    parent_anchors:
+    - slavic
+    - eastern european
+    - cee
+    sibling_anchors:
+    - poland
+    - polish
+    - polska
+    - polen
+    - warsaw
+    - krakow
+    - wroclaw
+    - poznan
+    - gdansk
+    - lodz
+    - szczecin
+    - lublin
+    - katowice
+    - latvia
+    - latvian
+    - riga
+    - daugavpils
+    - liepaja
+    - jelgava
+    - jurmala
+    - ventspils
+    - ukraine
+    - ukrainian
+    - kyiv
+    - kiev
+    - kharkiv
+    - odesa
+    - odessa
+    - lviv
+    - dnipro
+    - donetsk
+    - zaporizhzhia
+    - russia
+    - russian
+    - moscow
+    - st petersburg
+    - saint petersburg
+    - novosibirsk
+    - ekaterinburg
+    - yekaterinburg
+    - kazan
+    - nizhny novgorod
+    - samara
+    - rostov
+    - albania
+    - albanian
+    - armenia
+    - armenian
+    - azerbaijan
+    - azerbaijani
+    - azeri
+    - belarus
+    - belarusian
+    - belorussian
+    - bosnia
+    - bosnian
+    - bulgaria
+    - bulgarian
+    - croatia
+    - croatian
+    - czech
+    - czechia
+    - estonia
+    - estonian
+    - georgia
+    - georgian
+    - hungary
+    - hungarian
+    - kosovo
+    - kosovar
+    - macedonia
+    - macedonian
+    - moldova
+    - moldovan
+    - montenegro
+    - montenegrin
+    - romania
+    - romanian
+    - serbia
+    - serbian
+    - slovakia
+    - slovak
+    - slovenia
+    - slovenian
+    - balkans
+    - baltic
+    - baku
+    - banja luka
+    - batumi
+    - belgrade
+    - bratislava
+    - brno
+    - bucharest
+    - budapest
+    - cluj-napoca
+    - dubrovnik
+    - gomel
+    - kutaisi
+    - ljubljana
+    - minsk
+    - novi sad
+    - ostrava
+    - plovdiv
+    - podgorica
+    - prague
+    - pristina
+    - sarajevo
+    - skopje
+    - sofia
+    - split
+    - tallinn
+    - tartu
+    - tbilisi
+    - timisoara
+    - tirana
+    - varna
+    - yerevan
+    - zagreb
+  latvia:
+    ad_group_name: Latvia
+    archetype: hero_country
+    target_country: Latvia
+    target_region_label: Latvia / Latvian
+    own_anchors:
+    - latvia
+    - latvian
+    - riga
+    - daugavpils
+    - liepaja
+    - jelgava
+    - jurmala
+    - ventspils
+    - latwia
+    - lativia
+    - letvia
+    - lativian
+    - letvian
+    - latvin
+    - latia
+    - lathvia
+    - latviya
+    parent_anchors:
+    - slavic
+    - eastern european
+    - cee
+    sibling_anchors:
+    - poland
+    - polish
+    - polska
+    - polen
+    - warsaw
+    - krakow
+    - wroclaw
+    - poznan
+    - gdansk
+    - lodz
+    - szczecin
+    - lublin
+    - katowice
+    - lithuania
+    - lithuanian
+    - vilnius
+    - kaunas
+    - klaipeda
+    - siauliai
+    - panevezys
+    - ukraine
+    - ukrainian
+    - kyiv
+    - kiev
+    - kharkiv
+    - odesa
+    - odessa
+    - lviv
+    - dnipro
+    - donetsk
+    - zaporizhzhia
+    - russia
+    - russian
+    - moscow
+    - st petersburg
+    - saint petersburg
+    - novosibirsk
+    - ekaterinburg
+    - yekaterinburg
+    - kazan
+    - nizhny novgorod
+    - samara
+    - rostov
+    - albania
+    - albanian
+    - armenia
+    - armenian
+    - azerbaijan
+    - azerbaijani
+    - azeri
+    - belarus
+    - belarusian
+    - belorussian
+    - bosnia
+    - bosnian
+    - bulgaria
+    - bulgarian
+    - croatia
+    - croatian
+    - czech
+    - czechia
+    - estonia
+    - estonian
+    - georgia
+    - georgian
+    - hungary
+    - hungarian
+    - kosovo
+    - kosovar
+    - macedonia
+    - macedonian
+    - moldova
+    - moldovan
+    - montenegro
+    - montenegrin
+    - romania
+    - romanian
+    - serbia
+    - serbian
+    - slovakia
+    - slovak
+    - slovenia
+    - slovenian
+    - balkans
+    - baltic
+    - baku
+    - banja luka
+    - batumi
+    - belgrade
+    - bratislava
+    - brno
+    - bucharest
+    - budapest
+    - cluj-napoca
+    - dubrovnik
+    - gomel
+    - kutaisi
+    - ljubljana
+    - minsk
+    - novi sad
+    - ostrava
+    - plovdiv
+    - podgorica
+    - prague
+    - pristina
+    - sarajevo
+    - skopje
+    - sofia
+    - split
+    - tallinn
+    - tartu
+    - tbilisi
+    - timisoara
+    - tirana
+    - varna
+    - yerevan
+    - zagreb
+  ukraine:
+    ad_group_name: Ukraine
+    archetype: hero_country
+    target_country: Ukraine
+    target_region_label: Ukraine / Ukrainian
+    own_anchors:
+    - ukraine
+    - ukrainian
+    - kyiv
+    - kiev
+    - kharkiv
+    - odesa
+    - odessa
+    - lviv
+    - dnipro
+    - donetsk
+    - zaporizhzhia
+    - ukrain
+    - ucraine
+    - ukrayina
+    - ukranian
+    - ukranie
+    - ucraina
+    - ucrania
+    - ukraina
+    - ukrian
+    parent_anchors:
+    - slavic
+    - eastern european
+    - cee
+    sibling_anchors:
+    - poland
+    - polish
+    - polska
+    - polen
+    - warsaw
+    - krakow
+    - wroclaw
+    - poznan
+    - gdansk
+    - lodz
+    - szczecin
+    - lublin
+    - katowice
+    - lithuania
+    - lithuanian
+    - vilnius
+    - kaunas
+    - klaipeda
+    - siauliai
+    - panevezys
+    - latvia
+    - latvian
+    - riga
+    - daugavpils
+    - liepaja
+    - jelgava
+    - jurmala
+    - ventspils
+    - russia
+    - russian
+    - moscow
+    - st petersburg
+    - saint petersburg
+    - novosibirsk
+    - ekaterinburg
+    - yekaterinburg
+    - kazan
+    - nizhny novgorod
+    - samara
+    - rostov
+    - albania
+    - albanian
+    - armenia
+    - armenian
+    - azerbaijan
+    - azerbaijani
+    - azeri
+    - belarus
+    - belarusian
+    - belorussian
+    - bosnia
+    - bosnian
+    - bulgaria
+    - bulgarian
+    - croatia
+    - croatian
+    - czech
+    - czechia
+    - estonia
+    - estonian
+    - georgia
+    - georgian
+    - hungary
+    - hungarian
+    - kosovo
+    - kosovar
+    - macedonia
+    - macedonian
+    - moldova
+    - moldovan
+    - montenegro
+    - montenegrin
+    - romania
+    - romanian
+    - serbia
+    - serbian
+    - slovakia
+    - slovak
+    - slovenia
+    - slovenian
+    - balkans
+    - baltic
+    - baku
+    - banja luka
+    - batumi
+    - belgrade
+    - bratislava
+    - brno
+    - bucharest
+    - budapest
+    - cluj-napoca
+    - dubrovnik
+    - gomel
+    - kutaisi
+    - ljubljana
+    - minsk
+    - novi sad
+    - ostrava
+    - plovdiv
+    - podgorica
+    - prague
+    - pristina
+    - sarajevo
+    - skopje
+    - sofia
+    - split
+    - tallinn
+    - tartu
+    - tbilisi
+    - timisoara
+    - tirana
+    - varna
+    - yerevan
+    - zagreb
+  russia:
+    ad_group_name: Russia
+    archetype: hero_country
+    target_country: Russia
+    target_region_label: Russia / Russian
+    own_anchors:
+    - russia
+    - russian
+    - moscow
+    - st petersburg
+    - saint petersburg
+    - novosibirsk
+    - ekaterinburg
+    - yekaterinburg
+    - kazan
+    - nizhny novgorod
+    - samara
+    - rostov
+    - rusia
+    - russan
+    - russain
+    - rusian
+    - rusain
+    - russion
+    - rushian
+    - russie
+    - russland
+    parent_anchors:
+    - slavic
+    - eastern european
+    - cee
+    sibling_anchors:
+    - poland
+    - polish
+    - polska
+    - polen
+    - warsaw
+    - krakow
+    - wroclaw
+    - poznan
+    - gdansk
+    - lodz
+    - szczecin
+    - lublin
+    - katowice
+    - lithuania
+    - lithuanian
+    - vilnius
+    - kaunas
+    - klaipeda
+    - siauliai
+    - panevezys
+    - latvia
+    - latvian
+    - riga
+    - daugavpils
+    - liepaja
+    - jelgava
+    - jurmala
+    - ventspils
+    - ukraine
+    - ukrainian
+    - kyiv
+    - kiev
+    - kharkiv
+    - odesa
+    - odessa
+    - lviv
+    - dnipro
+    - donetsk
+    - zaporizhzhia
+    - albania
+    - albanian
+    - armenia
+    - armenian
+    - azerbaijan
+    - azerbaijani
+    - azeri
+    - belarus
+    - belarusian
+    - belorussian
+    - bosnia
+    - bosnian
+    - bulgaria
+    - bulgarian
+    - croatia
+    - croatian
+    - czech
+    - czechia
+    - estonia
+    - estonian
+    - georgia
+    - georgian
+    - hungary
+    - hungarian
+    - kosovo
+    - kosovar
+    - macedonia
+    - macedonian
+    - moldova
+    - moldovan
+    - montenegro
+    - montenegrin
+    - romania
+    - romanian
+    - serbia
+    - serbian
+    - slovakia
+    - slovak
+    - slovenia
+    - slovenian
+    - balkans
+    - baltic
+    - baku
+    - banja luka
+    - batumi
+    - belgrade
+    - bratislava
+    - brno
+    - bucharest
+    - budapest
+    - cluj-napoca
+    - dubrovnik
+    - gomel
+    - kutaisi
+    - ljubljana
+    - minsk
+    - novi sad
+    - ostrava
+    - plovdiv
+    - podgorica
+    - prague
+    - pristina
+    - sarajevo
+    - skopje
+    - sofia
+    - split
+    - tallinn
+    - tartu
+    - tbilisi
+    - timisoara
+    - tirana
+    - varna
+    - yerevan
+    - zagreb
