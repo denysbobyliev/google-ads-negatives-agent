@@ -1,0 +1,4 @@
+anthropic==0.86.0
+google-ads==29.2.0
+python-dotenv==1.2.1
+PyYAML==6.0.3

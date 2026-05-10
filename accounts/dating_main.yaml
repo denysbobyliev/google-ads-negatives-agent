@@ -1,0 +1,22 @@
+account_key: dating_main
+vertical_key: dating_geo
+policy_version: legacy
+prompt_version: legacy
+customer_id: "<GOOGLE_ADS_CUSTOMER_ID>"
+google_ads_yaml: google-ads.yaml
+policy_yaml: verticals/dating_geo/policy.yaml
+targets_yaml: verticals/dating_geo/targets.yaml
+judgment_rules: verticals/dating_geo/prompts/judgment_rules.md
+prompt_template: verticals/dating_geo/prompts/classifier.md
+region_context_template: verticals/dating_geo/prompts/region_context.md
+archetypes_yaml: verticals/dating_geo/prompts/archetypes.yaml
+
+labels:
+  master: <MASTER_AD_GROUP_LABEL>
+  region_prefix: <REGION_LABEL_PREFIX>
+
+paths:
+  data_dir: data
+  logs_dir: logs
+  reports_dir: reports
+  classified_terms: data/classified_terms.json

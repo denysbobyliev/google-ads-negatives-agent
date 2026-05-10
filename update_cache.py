@@ -33,6 +33,10 @@ def run(all_classified: list[dict]) -> None:
         if t.get("decision") == "DEFER":
             continue
         cache.append({
+            "account_key": config.ACCOUNT_KEY,
+            "vertical_key": config.VERTICAL_KEY,
+            "policy_version": config.POLICY_VERSION,
+            "prompt_version": config.PROMPT_VERSION,
             "region_key": t.get("region_key"),
             "term": t.get("term"),
             "decision": t.get("decision"),

@@ -8,7 +8,7 @@ For each term in ad group of region R:
   - Sibling anchors (R.sibling_anchors) → whole-word match → NEGATE_AG (wrong ad group)
   - No match                          → PASS (send to LLM)
 
-sibling_anchors are pre-computed in regions.yaml — no runtime cross-region join needed.
+sibling_anchors currently come from the active vertical targets file.
 
 "Whole-word" = anchor surrounded by \b after lowercasing.
 Multi-word anchors (e.g. "chiang mai") are matched with \b on the outer edges only.
@@ -19,10 +19,9 @@ import re
 import sys
 import time
 import unicodedata
-import yaml
 
 sys.path.insert(0, os.path.dirname(__file__))
-import config
+import target_loader
 
 
 def _normalize(text: str) -> str:
@@ -43,8 +42,7 @@ def load_anchor_universe() -> dict:
     Returns {region_key: {"own": compiled_patterns, "own_raw": set,
                           "sibling": compiled_patterns}}
     """
-    with open(config.REGIONS_YAML) as f:
-        regions = yaml.safe_load(f)["regions"]
+    regions = target_loader.load_targets()
 
     universe = {}
     for rk, region in regions.items():
@@ -84,11 +82,18 @@ def run(terms: list[dict]) -> tuple[list[dict], list[dict]]:
         term = t["term"]
         region_data = universe[rk]
 
-        # Sibling checked before own: a term that explicitly references another
-        # region (e.g. "tobago") should be negated even if it also contains an
-        # own anchor (e.g. "trinidad" for Cuba, which is both a Cuban city and
-        # part of "Trinidad and Tobago").
         sibling_match = _find_match(term, region_data["sibling"])
+        own_match = _find_match(term, region_data["own"])
+
+        if own_match and sibling_match:
+            # Both anchors fire — ambiguous (e.g. "colombian women in panama").
+            # Own anchor wins intent, but sibling anchor adds noise. Send to LLM.
+            t["regex_result"] = "PASS"
+            t["regex_anchor"] = None
+            llm_candidates.append(t)
+            pass_count += 1
+            continue
+
         if sibling_match:
             t["regex_result"] = "NEGATE_AG"
             t["regex_anchor"] = sibling_match
@@ -102,7 +107,6 @@ def run(terms: list[dict]) -> tuple[list[dict], list[dict]]:
             negate_ag_count += 1
             continue
 
-        own_match = _find_match(term, region_data["own"])
         if own_match:
             t["regex_result"] = "KEEP"
             t["regex_anchor"] = own_match
@@ -131,11 +135,5 @@ def run(terms: list[dict]) -> tuple[list[dict], list[dict]]:
 
 
 def get_all_own_anchors() -> set[str]:
-    """Flat set of all own_anchors across every region (normalized lowercase)."""
-    with open(config.REGIONS_YAML) as f:
-        regions = yaml.safe_load(f)["regions"]
-    anchors = set()
-    for rk, region in regions.items():
-        for a in region["own_anchors"]:
-            anchors.add(a.lower().strip())
-    return anchors
+    """Flat set of all own_anchors across every target."""
+    return target_loader.get_all_own_anchors()

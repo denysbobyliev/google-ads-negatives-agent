@@ -8,19 +8,15 @@ then resolve each to a region_key via its companion '<REGION_LABEL_PREFIX>*' lab
 import os
 import sys
 import time
-import yaml
 from google.ads.googleads.client import GoogleAdsClient
 
 sys.path.insert(0, os.path.dirname(__file__))
 import config
-
-MASTER_LABEL = "<MASTER_AD_GROUP_LABEL>"
-REGION_LABEL_PREFIX = "<REGION_LABEL_PREFIX>"
+import target_loader
 
 
 def _load_region_keys() -> set[str]:
-    with open(config.REGIONS_YAML) as f:
-        return set(yaml.safe_load(f)["regions"].keys())
+    return target_loader.get_target_keys()
 
 
 def run(customer_id: str, region_filter: str | None = None) -> list[dict]:
@@ -39,7 +35,7 @@ def run(customer_id: str, region_filter: str | None = None) -> list[dict]:
             campaign.name,
             campaign.resource_name
         FROM ad_group_label
-        WHERE label.name = '{MASTER_LABEL}'
+        WHERE label.name = '{config.MASTER_LABEL}'
             AND ad_group.status != 'REMOVED'
             AND campaign.status != 'REMOVED'
     """
@@ -56,7 +52,7 @@ def run(customer_id: str, region_filter: str | None = None) -> list[dict]:
         }
 
     if not ag_meta:
-        print(f"Stage 1 — pull_scope: no ad groups found with label '{MASTER_LABEL}'")
+        print(f"Stage 1 — pull_scope: no ad groups found with label '{config.MASTER_LABEL}'")
         return []
 
     # ── Step 2: region labels for those ad groups ────────────────────────
@@ -71,8 +67,8 @@ def run(customer_id: str, region_filter: str | None = None) -> list[dict]:
     for row in ga_service.search(customer_id=customer_id, query=q2):
         ag_id = str(row.ad_group.id)
         label = row.label.name
-        if label.startswith(REGION_LABEL_PREFIX):
-            rk = label[len(REGION_LABEL_PREFIX):]
+        if label.startswith(config.REGION_LABEL_PREFIX):
+            rk = label[len(config.REGION_LABEL_PREFIX):]
             if rk in known_regions:
                 ag_region[ag_id] = rk
 
@@ -89,7 +85,10 @@ def run(customer_id: str, region_filter: str | None = None) -> list[dict]:
         scope.append({**meta, "region_key": rk})
 
     if unmapped:
-        print(f"  WARNING: {len(unmapped)} ad group(s) have no <REGION_LABEL_PREFIX>* label: {unmapped}")
+        print(
+            f"  WARNING: {len(unmapped)} ad group(s) have no "
+            f"{config.REGION_LABEL_PREFIX}* label: {unmapped}"
+        )
 
     elapsed = time.time() - t0
     print(f"Stage 1 — pull_scope: {len(scope)} ad groups in {elapsed:.1f}s")

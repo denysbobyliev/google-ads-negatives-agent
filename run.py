@@ -5,7 +5,7 @@ Chains all 11 stages. Structured logging to logs/negatives_YYYY-MM-DD.log.
 Per-stage summary printed to stdout. Final cost/action summary at end.
 
 Usage:
-  python run.py --customer-id <GOOGLE_ADS_CUSTOMER_ID> [--dry-run] [--days 30] [--region korea]
+  python run.py [--account-profile accounts/dating_main.yaml] [--dry-run] [--days 30] [--region korea]
 """
 
 import argparse
@@ -57,7 +57,16 @@ def _setup_logging() -> None:
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Google Ads negative keyword pipeline")
-    parser.add_argument("--customer-id", required=True)
+    parser.add_argument(
+        "--account-profile",
+        default=config.DEFAULT_ACCOUNT_PROFILE,
+        help="YAML profile with customer ID, credential path, labels, and output paths",
+    )
+    parser.add_argument(
+        "--customer-id",
+        default=None,
+        help="Override the customer ID from --account-profile",
+    )
     parser.add_argument(
         "--dry-run",
         action=argparse.BooleanOptionalAction,
@@ -76,6 +85,12 @@ def _parse_args() -> argparse.Namespace:
         default=False,
         help="Skip dedupe stage — re-evaluate all terms regardless of cache (dry-run only)",
     )
+    parser.add_argument(
+        "--write-cache",
+        action="store_true",
+        default=False,
+        help="Write local cache in dry-run. Live runs always update cache after upload.",
+    )
     return parser.parse_args()
 
 
@@ -84,15 +99,21 @@ def _parse_args() -> argparse.Namespace:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    _setup_logging()
     args = _parse_args()
+    profile = config.apply_account_profile(args.account_profile)
+    _setup_logging()
 
     # Override config from CLI
     config.DRY_RUN = args.dry_run
     config.DAYS = args.days
-    customer_id = args.customer_id
+    customer_id = (args.customer_id or config.CUSTOMER_ID).replace("-", "")
     region_filter = args.region
     ignore_cache = args.ignore_cache
+    write_cache = args.write_cache
+
+    if not customer_id:
+        print("ERROR: customer_id is missing. Set it in --account-profile or pass --customer-id.")
+        return
 
     if ignore_cache and not config.DRY_RUN:
         print("ERROR: --ignore-cache is only allowed with --dry-run.")
@@ -102,8 +123,10 @@ def main() -> None:
     print(
         f"\n{'='*60}\n"
         f"Negatives pipeline — customer {customer_id}\n"
+        f"account={config.ACCOUNT_KEY}  vertical={config.VERTICAL_KEY}\n"
         f"dry_run={config.DRY_RUN}  days={config.DAYS}  "
-        f"region={region_filter or 'all'}  ignore_cache={ignore_cache}\n"
+        f"region={region_filter or 'all'}  ignore_cache={ignore_cache}  "
+        f"write_cache={write_cache}\n"
         f"{'='*60}"
     )
 
@@ -166,6 +189,10 @@ def main() -> None:
 
     if config.DRY_RUN:
         print("\nDRY RUN — no mutations sent.")
+        if write_cache:
+            update_cache.run(all_scored + protected_terms)
+        else:
+            print("DRY RUN — local cache not updated. Pass --write-cache to persist classifications.")
         _print_summary(
             terms, active_terms, protected_terms, fresh_terms,
             ag_level, keep_terms, llm_calls, estimated_llm_cost,

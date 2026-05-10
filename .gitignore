@@ -1,0 +1,8 @@
+.env
+google-ads.yaml
+__pycache__/
+.pycache_check/
+*.pyc
+data/
+logs/
+reports/
