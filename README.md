@@ -500,29 +500,3 @@ Short version:
   - `prompts/archetypes.yaml`
 
 Then validate and dry-run before going live.
-
-## Known Scaling Notes
-
-This repo is now modular enough for more accounts/verticals, but there are
-expected future improvements:
-
-- Move `data/classified_terms.json` to SQLite before large multi-account scale.
-- Add stronger prompt/policy versioning when classification behavior changes.
-- Consider separate review workflows before live upload.
-- Consider rate-limit handling if full cache-cleared runs become frequent.
-
-## Git-Ignored Runtime Files
-
-These are intentionally ignored:
-
-```text
-.env
-google-ads.yaml
-data/
-logs/
-reports/
-__pycache__/
-.pycache_check/
-```
-
-Do not commit credentials, OAuth tokens, local cache, logs, or generated reports.
