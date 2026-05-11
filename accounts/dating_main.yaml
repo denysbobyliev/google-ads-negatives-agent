@@ -1,5 +1,5 @@
-account_key: dating_main
-vertical_key: dating_geo
+account_key: example_account
+vertical_key: example_vertical
 policy_version: legacy
 prompt_version: legacy
 customer_id: "<GOOGLE_ADS_CUSTOMER_ID>"

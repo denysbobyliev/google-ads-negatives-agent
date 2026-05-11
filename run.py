@@ -111,8 +111,19 @@ def main() -> None:
     ignore_cache = args.ignore_cache
     write_cache = args.write_cache
 
-    if not customer_id:
-        print("ERROR: customer_id is missing. Set it in --account-profile or pass --customer-id.")
+    if not customer_id or not customer_id.isdigit():
+        print(
+            "ERROR: customer_id is missing or is still a placeholder. "
+            "Set it in an ignored local --account-profile or pass --customer-id."
+        )
+        return
+
+    if not config.MASTER_LABEL or "<" in config.MASTER_LABEL:
+        print("ERROR: labels.master is missing or is still a placeholder in the account profile.")
+        return
+
+    if not config.REGION_LABEL_PREFIX or "<" in config.REGION_LABEL_PREFIX:
+        print("ERROR: labels.region_prefix is missing or is still a placeholder in the account profile.")
         return
 
     if ignore_cache and not config.DRY_RUN:

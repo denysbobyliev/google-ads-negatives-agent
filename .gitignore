@@ -1,5 +1,6 @@
 .env
 google-ads.yaml
+accounts/*.local.yaml
 __pycache__/
 .pycache_check/
 *.pyc

@@ -8,7 +8,7 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 ACCOUNTS_DIR = os.path.join(BASE_DIR, "accounts")
 DEFAULT_ACCOUNT_PROFILE = os.path.join(ACCOUNTS_DIR, "dating_main.yaml")
-ACCOUNT_KEY = "dating_main"
+ACCOUNT_KEY = "example_account"
 VERTICAL_KEY = "dating_geo"
 POLICY_VERSION = "legacy"
 PROMPT_VERSION = "legacy"
@@ -29,8 +29,8 @@ CLASSIFIED_TERMS_PATH = os.path.join(DATA_DIR, "classified_terms.json")
 GOOGLE_ADS_YAML = os.path.join(BASE_DIR, "google-ads.yaml")
 
 CUSTOMER_ID = ""
-MASTER_LABEL = "<MASTER_AD_GROUP_LABEL>"
-REGION_LABEL_PREFIX = "<REGION_LABEL_PREFIX>"
+MASTER_LABEL = ""
+REGION_LABEL_PREFIX = ""
 
 DRY_RUN = True
 DAYS = 30

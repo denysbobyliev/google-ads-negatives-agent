@@ -1,8 +1,8 @@
 from __future__ import annotations
 """
 Stage 1: Pull Scope
-Find all ad groups carrying the master label '<MASTER_AD_GROUP_LABEL>',
-then resolve each to a region_key via its companion '<REGION_LABEL_PREFIX>*' label.
+Find all ad groups carrying the configured master label, then resolve each to a
+region_key via its configured region-label prefix.
 """
 
 import os

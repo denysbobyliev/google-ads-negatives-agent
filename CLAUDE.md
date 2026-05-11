@@ -8,8 +8,9 @@ Profile-driven Google Ads negative-keyword pipeline. It pulls search terms from
 labeled ad groups, classifies each term with regex anchors and LLM scoring, writes
 a review report, and can upload EXACT-match negative keywords at ad-group level.
 
-The default profile is `accounts/dating_main.yaml`, which currently points to
-customer ID `<GOOGLE_ADS_CUSTOMER_ID>` and vertical `dating_geo`.
+The committed profile `accounts/dating_main.yaml` is a placeholder template.
+Real customer IDs, account labels, and credential paths belong in ignored local
+profiles such as `accounts/<account_key>.local.yaml`.
 
 Dry-run is the default. Dry-run never sends Google Ads mutations and does not
 update the local cache unless `--write-cache` is passed.
@@ -78,7 +79,7 @@ Stage 11 update_cache.py        — live runs update cache after upload
 - Accent normalization is applied at anchor compile time and match time; accented and unaccented duplicate anchors collide.
 
 ## Gotchas
-- `.env` and `google-ads.yaml` are intentionally ignored by Git. Do not commit credentials, IDs, OAuth tokens, or API keys.
+- `.env`, `google-ads.yaml`, and `accounts/*.local.yaml` are intentionally ignored by Git. Do not commit credentials, IDs, OAuth tokens, account labels, or API keys.
 - `--ignore-cache` is only allowed with `--dry-run`.
 - Score-3 terms are deferred when policy says so; deferred terms are excluded from cache updates so they resurface next run.
 - Always run target validation after editing target anchors:

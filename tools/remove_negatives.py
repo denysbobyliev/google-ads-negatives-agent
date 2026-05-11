@@ -3,9 +3,9 @@ from __future__ import annotations
 One-off utility: remove specific negative keywords from ad groups.
 
 Usage (dry-run by default):
-  python remove_negatives.py --customer-id <GOOGLE_ADS_CUSTOMER_ID> --dry-run
+  python remove_negatives.py --customer-id <CUSTOMER_ID> --dry-run
 
-  python remove_negatives.py --customer-id <GOOGLE_ADS_CUSTOMER_ID> --no-dry-run
+  python remove_negatives.py --customer-id <CUSTOMER_ID> --no-dry-run
 
 Finds every ad group in scope (same label filter as the main pipeline) and
 removes EXACT-match negatives whose text matches any entry in TERMS_TO_REMOVE.
@@ -30,16 +30,15 @@ TERMS_TO_REMOVE: set[str] = {
 
 
 def _fetch_scope(ga_service, customer_id: str) -> list[dict]:
-    """Return ad groups labelled '<MASTER_AD_GROUP_LABEL>', same as pull_scope."""
-    import yaml
-    with open(config.REGIONS_YAML) as f:
-        known_regions = set(yaml.safe_load(f)["regions"].keys())
+    """Return ad groups using configured labels, same as pull_scope."""
+    import target_loader
+    known_regions = target_loader.get_target_keys()
 
-    q1 = """
+    q1 = f"""
         SELECT ad_group.id, ad_group.name, ad_group.resource_name,
                campaign.name
         FROM ad_group_label
-        WHERE label.name = '<MASTER_AD_GROUP_LABEL>'
+        WHERE label.name = '{config.MASTER_LABEL}'
           AND ad_group.status != 'REMOVED'
           AND campaign.status != 'REMOVED'
     """
@@ -66,8 +65,8 @@ def _fetch_scope(ga_service, customer_id: str) -> list[dict]:
     for row in ga_service.search(customer_id=customer_id, query=q2):
         ag_id = str(row.ad_group.id)
         label = row.label.name
-        if label.startswith("<REGION_LABEL_PREFIX>"):
-            rk = label[len("<REGION_LABEL_PREFIX>"):]
+        if label.startswith(config.REGION_LABEL_PREFIX):
+            rk = label[len(config.REGION_LABEL_PREFIX):]
             if rk in known_regions:
                 ag_meta[ag_id]["region_key"] = rk
 
