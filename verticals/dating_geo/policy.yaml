@@ -10,6 +10,16 @@ caps:
 defer:
   negate_score: 3
 
+concatenation:
+  enabled: true
+  min_anchor_length: 4
+  # Anchors with known same-domain collisions inside dating-niche traffic.
+  # Populate reactively from run audits. Keys are anchor strings;
+  # values are full tokens where substring match should be suppressed.
+  exclude_within:
+    asia: [caucasian, caucasians]
+    asian: [caucasian, caucasians]
+
 llm:
   model: claude-haiku-4-5-20251001
   batch_size: 50

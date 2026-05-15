@@ -66,8 +66,28 @@ def _find_sibling_drift(targets: dict[str, dict]) -> tuple[list[str], list[str]]
     return missing, extra
 
 
+def _find_stale_concatenation_excludes(targets: dict[str, dict], policy: dict) -> list[str]:
+    active_anchors = set()
+    for target in targets.values():
+        for anchor in target.get("own_anchors", []):
+            active_anchors.add(_normalize(anchor))
+        for anchor in target.get("sibling_anchors", []):
+            active_anchors.add(_normalize(anchor))
+
+    exclude_within = policy.get("concatenation", {}).get("exclude_within", {}) or {}
+    warnings = []
+    for anchor in sorted(exclude_within):
+        normalized = _normalize(anchor)
+        if normalized not in active_anchors:
+            warnings.append(
+                f"concatenation.exclude_within key '{anchor}' is not an active anchor"
+            )
+    return warnings
+
+
 def validate(strict_siblings: bool = False) -> int:
     targets = target_loader.load_targets()
+    policy = config.load_policy(config.POLICY_YAML)
     errors = []
     warnings = []
 
@@ -85,6 +105,8 @@ def validate(strict_siblings: bool = False) -> int:
         sibling_missing, sibling_extra = _find_sibling_drift(targets)
         errors.extend(sibling_missing)
         errors.extend(sibling_extra)
+
+    warnings.extend(_find_stale_concatenation_excludes(targets, policy))
 
     print(f"Validated {len(targets)} targets from {config.TARGETS_YAML}")
     for warning in warnings[:20]:

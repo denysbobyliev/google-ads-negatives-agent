@@ -21,7 +21,7 @@ Stage 1  pull_scope.py          — find labeled ad groups, resolve region_key
 Stage 2  pull_search_terms.py   — pull search_term_view for scoped ad groups
 Stage 3  filter_by_cost.py      — active / protected / below-threshold split
 Stage 4  dedupe_cache.py        — skip cached account+vertical+region+term pairs
-Stage 5  regex_anchor_check.py  — own_anchor → KEEP; sibling_anchor → NEGATE_AG
+Stage 5  regex_anchor_check.py  — standalone/concatenated own_anchor → KEEP; sibling_anchor → NEGATE_AG
 Stage 6  llm_classify_batch.py  — render vertical prompt, call Claude, parse JSON
 Stage 7  confidence_gate.py     — score threshold from vertical policy
 Stage 8  scope_router.py        — all NEGATE/DEFER routed to ad_group level
@@ -45,6 +45,7 @@ Stage 11 update_cache.py        — live runs update cache after upload
 │           └── archetypes.yaml       # archetype-specific prompt blocks
 ├── tools/
 │   ├── remove_negatives.py
+│   ├── inspect_anchor_patterns.py
 │   └── validate_targets.py
 ├── tests/
 ├── run.py
@@ -65,6 +66,7 @@ Stage 11 update_cache.py        — live runs update cache after upload
 - `verticals/dating_geo/prompts/region_context.md` — per-target context rendered for each batch.
 - `target_loader.py` — single loader for active target definitions.
 - `data/classified_terms.json` — local dedupe cache; new writes include account/vertical/policy/prompt metadata.
+- `tools/inspect_anchor_patterns.py` — debugging CLI for Stage 5 standalone and concatenation anchor matching.
 - `tools/validate_targets.py` — validates target definitions before running.
 
 ## Conventions
@@ -77,6 +79,30 @@ Stage 11 update_cache.py        — live runs update cache after upload
 - Dry-run is locally read-only by default. Use `--write-cache` only when you intentionally want to persist classifications from a dry run.
 - All automatic negations currently go to ad-group level only; `campaign_level` exists for future policy work but is not populated automatically.
 - Accent normalization is applied at anchor compile time and match time; accented and unaccented duplicate anchors collide.
+
+## Stage 5 — Concatenation Matching
+Stage 5 first checks standalone word-boundary anchors. If no standalone anchor
+matches, it checks eligible anchors as plain substrings inside whitespace tokens
+to catch dating forms like `koreandating`, `japandates`, `ukrainecharm`, and
+`amorlatina`.
+
+Concatenation matching uses the same shortcut routing as standalone matching:
+own-anchor substring matches are `KEEP`; sibling-anchor substring matches are
+`NEGATE_AG`. Match audit fields include `match_type`, `matched_anchor`,
+`match_origin`, and, for substring matches, `containing_token`.
+
+Controls live in `verticals/<vertical_key>/policy.yaml` under `concatenation`:
+- `enabled` disables the substring layer when set to `false`.
+- `min_anchor_length` keeps short anchors such as `uk` word-boundary only.
+- `exclude_within` suppresses known full-token collisions for a specific anchor,
+  for example `asian: [caucasian, caucasians]`.
+
+Populate `exclude_within` reactively from run audits when a substring match is
+valid as text containment but wrong for routing. After editing it, run:
+```bash
+python3 tools/validate_targets.py
+python3 tools/inspect_anchor_patterns.py --region asia_pan --test-term "caucasian women"
+```
 
 ## Gotchas
 - `.env`, `google-ads.yaml`, and `accounts/*.local.yaml` are intentionally ignored by Git. Do not commit credentials, IDs, OAuth tokens, account labels, or API keys.

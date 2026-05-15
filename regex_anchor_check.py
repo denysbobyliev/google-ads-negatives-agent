@@ -4,14 +4,15 @@ Stage 5: Regex Anchor Check
 Fast first pass before touching the LLM.
 
 For each term in ad group of region R:
-  - Own anchors  (R.own_anchors)     → whole-word match → KEEP  (correctly targeted)
-  - Sibling anchors (R.sibling_anchors) → whole-word match → NEGATE_AG (wrong ad group)
+  - Own anchors  (R.own_anchors)     → standalone/substring match → KEEP
+  - Sibling anchors (R.sibling_anchors) → standalone/substring match → NEGATE_AG
   - No match                          → PASS (send to LLM)
 
 sibling_anchors currently come from the active vertical targets file.
 
 "Whole-word" = anchor surrounded by \b after lowercasing.
 Multi-word anchors (e.g. "chiang mai") are matched with \b on the outer edges only.
+Substring matching is a fallback for concatenated single-token dating forms.
 """
 
 import os
@@ -29,29 +30,11 @@ def _normalize(text: str) -> str:
     return unicodedata.normalize("NFKD", text.lower()).encode("ascii", "ignore").decode("ascii")
 
 
-def _compile_anchors(anchors: list[str]) -> list[tuple[str, re.Pattern]]:
-    patterns = []
-    for anchor in anchors:
-        pattern = re.compile(r"\b" + re.escape(_normalize(anchor)) + r"\b")
-        patterns.append((anchor, pattern))
-    return patterns
-
-
 def load_anchor_universe() -> dict:
     """
-    Returns {region_key: {"own": compiled_patterns, "own_raw": set,
-                          "sibling": compiled_patterns}}
+    Returns compiled standalone and substring anchor structures by region.
     """
-    regions = target_loader.load_targets()
-
-    universe = {}
-    for rk, region in regions.items():
-        universe[rk] = {
-            "own": _compile_anchors(region["own_anchors"]),
-            "own_raw": {a.lower() for a in region["own_anchors"]},
-            "sibling": _compile_anchors(region.get("sibling_anchors", [])),
-        }
-    return universe
+    return target_loader.load_anchor_patterns()
 
 
 def _find_match(term: str, compiled: list[tuple[str, re.Pattern]]) -> str | None:
@@ -60,6 +43,68 @@ def _find_match(term: str, compiled: list[tuple[str, re.Pattern]]) -> str | None
         if pattern.search(term_norm):
             return anchor
     return None
+
+
+def _find_substring_match(term: str, anchors: list[dict]) -> tuple[str, str] | None:
+    tokens = _normalize(term).split()
+    for token in tokens:
+        for anchor in anchors:
+            anchor_text = anchor["anchor"]
+            if token == anchor_text:
+                continue
+            if token in anchor["excluded_tokens"]:
+                continue
+            if anchor_text in token:
+                return anchor_text, token
+    return None
+
+
+def _mark_keep(
+    t: dict,
+    anchor: str,
+    match_type: str,
+    containing_token: str | None = None,
+) -> None:
+    t["regex_result"] = "KEEP"
+    t["regex_anchor"] = anchor
+    t["regex_match_type"] = match_type
+    t["regex_match_origin"] = "own"
+    t["match_type"] = match_type
+    t["matched_anchor"] = anchor
+    t["match_origin"] = "own"
+    if containing_token is not None:
+        t["regex_containing_token"] = containing_token
+        t["containing_token"] = containing_token
+    t["decision"] = "KEEP"
+    t["confidence"] = "high"
+    t["source"] = "regex"
+    t["target_scope"] = "none"
+    t["anchor_found"] = anchor
+    t["reason"] = f"own anchor '{anchor}' found — correctly targeted"
+
+
+def _mark_negate_ag(
+    t: dict,
+    anchor: str,
+    match_type: str,
+    containing_token: str | None = None,
+) -> None:
+    t["regex_result"] = "NEGATE_AG"
+    t["regex_anchor"] = anchor
+    t["regex_match_type"] = match_type
+    t["regex_match_origin"] = "sibling"
+    t["match_type"] = match_type
+    t["matched_anchor"] = anchor
+    t["match_origin"] = "sibling"
+    if containing_token is not None:
+        t["regex_containing_token"] = containing_token
+        t["containing_token"] = containing_token
+    t["decision"] = "NEGATE"
+    t["confidence"] = "high"
+    t["source"] = "regex"
+    t["target_scope"] = "ad_group"
+    t["anchor_found"] = anchor
+    t["reason"] = f"sibling anchor '{anchor}' found — wrong ad group"
 
 
 def run(terms: list[dict]) -> tuple[list[dict], list[dict]]:
@@ -82,43 +127,36 @@ def run(terms: list[dict]) -> tuple[list[dict], list[dict]]:
         term = t["term"]
         region_data = universe[rk]
 
-        sibling_match = _find_match(term, region_data["sibling"])
         own_match = _find_match(term, region_data["own"])
-
-        if own_match and sibling_match:
-            # Both anchors fire — ambiguous (e.g. "colombian women in panama").
-            # Own anchor wins intent, but sibling anchor adds noise. Send to LLM.
-            t["regex_result"] = "PASS"
-            t["regex_anchor"] = None
-            llm_candidates.append(t)
-            pass_count += 1
+        if own_match:
+            _mark_keep(t, own_match, "standalone")
+            regex_decided.append(t)
+            keep_count += 1
             continue
 
+        sibling_match = _find_match(term, region_data["sibling"])
         if sibling_match:
-            t["regex_result"] = "NEGATE_AG"
-            t["regex_anchor"] = sibling_match
-            t["decision"] = "NEGATE"
-            t["confidence"] = "high"
-            t["source"] = "regex"
-            t["target_scope"] = "ad_group"
-            t["anchor_found"] = sibling_match
-            t["reason"] = f"sibling anchor '{sibling_match}' found — wrong ad group"
+            _mark_negate_ag(t, sibling_match, "standalone")
             regex_decided.append(t)
             negate_ag_count += 1
             continue
 
-        if own_match:
-            t["regex_result"] = "KEEP"
-            t["regex_anchor"] = own_match
-            t["decision"] = "KEEP"
-            t["confidence"] = "high"
-            t["source"] = "regex"
-            t["target_scope"] = "none"
-            t["anchor_found"] = own_match
-            t["reason"] = f"own anchor '{own_match}' found — correctly targeted"
-            regex_decided.append(t)
-            keep_count += 1
-            continue
+        if region_data.get("concatenation_enabled", True):
+            own_substring_match = _find_substring_match(term, region_data["own_substring"])
+            if own_substring_match:
+                anchor, containing_token = own_substring_match
+                _mark_keep(t, anchor, "substring", containing_token)
+                regex_decided.append(t)
+                keep_count += 1
+                continue
+
+            sibling_substring_match = _find_substring_match(term, region_data["sibling_substring"])
+            if sibling_substring_match:
+                anchor, containing_token = sibling_substring_match
+                _mark_negate_ag(t, anchor, "substring", containing_token)
+                regex_decided.append(t)
+                negate_ag_count += 1
+                continue
 
         t["regex_result"] = "PASS"
         t["regex_anchor"] = None
