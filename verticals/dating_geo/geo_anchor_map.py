@@ -28,48 +28,71 @@ Token kinds the index distinguishes:
 # --------------------------------------------------------------------------------------
 COUNTRY_KNOWLEDGE = {
     # --- Asia-Search ---
-    "China":       (["chinese"], ["beijing","shanghai","guangzhou","shenzhen","chengdu","hangzhou"]),
-    "Japan":       (["japanese","gaijin"], ["tokyo","osaka","kyoto","yokohama","nagoya","sapporo"]),
-    "Korea":       (["korean"], ["seoul","busan","incheon"]),
-    "Thailand":    (["thai"], ["bangkok","phuket","pattaya","krabi","isaan","isan"]),
-    "Vietnam":     (["vietnamese","viet"], ["hanoi","saigon"]),
-    "India":       (["indian","desi"], ["mumbai","delhi","bangalore","bengaluru","kolkata","chennai","hyderabad","pune"]),
-    "Indonesia":   (["indonesian","balinese","bali"], ["jakarta","surabaya","bandung"]),
-    "Filipina":    (["filipina","filipino","philippine","philippines","pinay","pinoy"], ["manila","cebu","davao","makati","quezon"]),
-    "Malaysia":    (["malaysian","malay"], ["penang","johor"]),  # 'kuala lumpur' multiword added below
-    "Singapore":   (["singaporean"], []),
-    "Cambodia":    (["cambodian","khmer"], []),
-    "Laos":        (["laotian","laos"], ["vientiane"]),
-    "Kazakhstan":  (["kazakh","kazakhstan"], ["almaty","astana"]),
-    "Kyrgyzstan":  (["kyrgyz","kyrgyzstan"], ["bishkek"]),
+    "China":       (["chinese"], ["beijing","shanghai","guangzhou","shenzhen","chengdu","hangzhou","wuhan","nanjing","xian","suzhou","tianjin","chongqing"]),
+    "Japan":       (["japanese","gaijin"], ["tokyo","osaka","kyoto","yokohama","nagoya","sapporo","fukuoka","kobe","hiroshima","sendai","nara","okinawa"]),
+    "Korea":       (["korean"], ["seoul","busan","incheon","daegu","daejeon","gwangju","jeju"]),
+    "Thailand":    (["thai"], ["bangkok","phuket","pattaya","krabi","isaan","isan","chiang mai","chiangmai","koh samui","samui","hua hin"]),
+    "Vietnam":     (["vietnamese","viet"], ["hanoi","saigon","danang","da nang","hoi an","nha trang"]),
+    "India":       (["indian","desi"], ["mumbai","delhi","bangalore","bengaluru","kolkata","chennai","hyderabad","pune","jaipur","goa","ahmedabad"]),
+    "Indonesia":   (["indonesian","balinese","bali"], ["jakarta","surabaya","bandung","yogyakarta","jogja","denpasar","ubud"]),
+    "Filipina":    (["filipina","filipino","philippine","philippines","pinay","pinoy"], ["manila","cebu","davao","makati","quezon","taguig","pasig","iloilo"]),
+    "Malaysia":    (["malaysian","malay"], ["penang","johor","melaka","malacca","langkawi","ipoh"]),  # 'kuala lumpur' multiword added below
+    "Singapore":   (["singaporean"], ["singapore"]),
+    "Cambodia":    (["cambodian","khmer"], ["phnom penh","siem reap"]),
+    "Laos":        (["laotian","laos"], ["vientiane","luang prabang"]),
+    "Kazakhstan":  (["kazakh","kazakhstan"], ["almaty","astana","nur sultan","nursultan","shymkent"]),
+    "Kyrgyzstan":  (["kyrgyz","kyrgyzstan"], ["bishkek","osh"]),
     # --- Euro-Search ---
-    "Germany":     (["german"], ["berlin","munich","hamburg","frankfurt","cologne"]),
-    "France":      (["french"], ["paris","lyon","marseille","toulouse"]),  # 'nice' too risky (adjective)
-    "Italy":       (["italian"], ["rome","milan","naples","turin","florence","venice"]),
-    "Spain":       (["spanish","spaniard"], ["madrid","barcelona","seville","malaga","bilbao"]),
-    "Ireland":     (["irish"], ["dublin","cork","galway"]),
-    "Denmark":     (["danish","dane"], ["copenhagen","aarhus"]),
-    "Sweden":      (["swedish","swede"], ["stockholm","gothenburg","malmo"]),
-    "Norway":      (["norwegian"], ["oslo","bergen"]),
-    "Finland":     (["finnish","finn"], ["helsinki"]),
-    "Switzerland": (["swiss"], ["zurich","geneva"]),
+    "Germany":     (["german"], ["berlin","munich","hamburg","frankfurt","cologne","dusseldorf","düsseldorf","stuttgart","dortmund","leipzig"]),
+    "France":      (["french"], ["paris","lyon","marseille","toulouse","bordeaux","lille","nantes","strasbourg","montpellier"]),  # 'nice' too risky (adjective)
+    "Italy":       (["italian","italia"], ["rome","roma","milan","milano","naples","napoli","turin","torino","florence","firenze","venice","venezia","bologna","verona","palermo"]),
+    "Spain":       (["spanish","spaniard","espana","españa"], ["madrid","barcelona","seville","sevilla","malaga","málaga","bilbao","valencia","alicante","granada","zaragoza"]),
+    "Ireland":     (["irish"], ["dublin","cork","galway","limerick","waterford"]),
+    "Denmark":     (["danish","dane"], ["copenhagen","kobenhavn","aarhus","odense","aalborg"]),
+    "Sweden":      (["swedish","swede"], ["stockholm","gothenburg","goteborg","göteborg","malmo","malmö","uppsala"]),
+    "Norway":      (["norwegian"], ["oslo","bergen","trondheim","stavanger","tromso","tromsø"]),
+    "Finland":     (["finnish","finn"], ["helsinki","espoo","tampere","turku","oulu"]),
+    "Switzerland": (["swiss"], ["zurich","zürich","geneva","geneve","genève","basel","bern","lausanne","lucerne"]),
     "Liechtenstein":(["liechtenstein"], ["vaduz"]),
+    "Austria":     (["austrian"], ["vienna","wien","salzburg","graz","innsbruck","linz"]),
+    "Belgium":     (["belgian"], ["brussels","bruxelles","brussel","antwerp","antwerpen","bruges","brugge","ghent","gent","liege","liège"]),
+    "Greece":      (["greek","hellenic"], ["athens","athina","thessaloniki","salonika","patras","heraklion","crete","rhodes"]),
+    "Iceland":     (["icelandic"], ["reykjavik","akureyri","keflavik"]),
     "Malta":       (["maltese","malta"], ["valletta"]),
     "Cyprus":      (["cypriot","cyprus"], ["nicosia"]),
+    "Monaco":      (["monegasque","monaco"], ["monte carlo"]),
+    "Portugal":    (["portuguese","portugal"], ["lisbon","lisboa","porto","oporto","algarve","braga","coimbra","faro","madeira"]),
+    "Turkey":      (["turkish","turkey","turkiye","türkiye"], ["istanbul","ankara","izmir","antalya","bursa","bodrum","marmaris"]),
     # --- Slavic-Search ---
-    "Russia":      (["russian"], ["moscow"]),  # 'st petersburg' multiword below
-    "Ukraine":     (["ukrainian","ukraine"], ["kyiv","kiev","odesa","lviv","kharkiv","dnipro"]),
-    "Poland":      (["polish","pole"], ["warsaw","krakow","wroclaw"]),
+    "Russia":      (["russian"], ["moscow","moskva","novosibirsk","yekaterinburg","kazan"]),  # 'st petersburg' multiword below
+    "Ukraine":     (["ukrainian","ukraine"], ["kyiv","kiev","odesa","lviv","kharkiv","dnipro","zaporizhzhia","vinnytsia"]),
+    "Poland":      (["polish","pole"], ["warsaw","warszawa","krakow","kraków","wroclaw","wrocław","gdansk","gdańsk","poznan","poznán","lodz","łódź"]),
     "Bulgaria":    (["bulgarian"], ["plovdiv"]),       # 'sofia' withheld: collides w/ name-brand
+    "Albania":     (["albanian"], ["tirana"]),
+    "Armenia":     (["armenian","armenia"], ["yerevan"]),
+    "Azerbaijan":  (["azerbaijani","azeri","azerbaijan"], ["baku"]),
+    "Bosnia":      (["bosnian","bosnia","bosnia and herzegovina","herzegovina"], ["sarajevo","mostar","banja luka"]),
+    "Croatia":     (["croatian","croatia"], ["zagreb","split","dubrovnik"]),
+    "Czech":       (["czech","czechia","czech republic"], ["prague","praha","brno","ostrava"]),
     "Latvia":      (["latvian"], ["riga"]),
     "Lithuania":   (["lithuanian"], ["vilnius","kaunas"]),
+    "Estonia":     (["estonian"], ["tallinn","tartu"]),
     "Georgia":     (["georgian"], ["tbilisi"]),        # NOTE: 'georgia' itself is a homonym (below)
+    "Hungary":     (["hungarian"], ["budapest","debrecen","szeged"]),
     # --- Latin-Search ---
-    "Brazil":      (["brazilian","brasil"], ["rio","salvador"]),  # 'sao paulo' multiword below
-    "Mexico":      (["mexican","mexico"], ["guadalajara","cancun","tijuana"]),
+    "Brazil":      (["brazilian","brasil"], ["rio","salvador","brasilia","curitiba","fortaleza","recife","belo horizonte"]),  # 'sao paulo' multiword below
+    "Mexico":      (["mexican","mexico"], ["guadalajara","cancun","tijuana","monterrey","puebla","merida","queretaro"]),
     "Colombia":    (["colombian"], ["bogota","medellin","cali","cartagena","barranquilla"]),
     "Cuba":        (["cuban"], ["havana"]),
     "Jamaica":     (["jamaican","jamaica"], ["kingston","montego bay"]),
+    "Costa Rica":  (["costa rican","costarican","costa rica"], ["san jose"]),
+    "Dominican Republic": (["dominican","dominicana","dominicano","dominican republic"], ["santo domingo","punta cana","santiago de los caballeros"]),
+    "El Salvador": (["salvadoran","salvadorian","el salvador"], ["san salvador"]),
+    "Guatemala":   (["guatemalan","guatemala"], ["guatemala city","antigua"]),
+    "Honduras":    (["honduran","honduras"], ["tegucigalpa","san pedro sula"]),
+    "Nicaragua":   (["nicaraguan","nicaragua"], ["managua","granada"]),
+    "Peru":        (["peruvian","peru"], ["lima","cusco","cuzco","arequipa","trujillo"]),
+    "Venezuela":   (["venezuelan","venezuela"], ["caracas","maracaibo","valencia","barquisimeto"]),
     "Bolivia":     (["bolivian"], []),
     "Belize":      (["belizean","belize"], []),
     "Haiti":       (["haitian","haiti"], []),
@@ -81,7 +104,7 @@ COUNTRY_KNOWLEDGE = {
 MULTIWORD_CITIES = {
     "Malaysia": ["kuala lumpur"], "Russia": ["st petersburg","saint petersburg"],
     "Brazil": ["sao paulo"], "Mexico": ["mexico city"], "Filipina": ["quezon city"],
-    "Vietnam": ["ho chi minh"],
+    "Vietnam": ["ho chi minh"], "Thailand": ["chiang mai","koh samui"],
 }
 
 # Region demonyms with NO own ad group -> ride to a sub-region / general (still target geo).
@@ -125,9 +148,10 @@ CCTLD = {
     "br": "Brazil", "mx": "Mexico", "jp": "Japan", "kr": "Korea", "cn": "China",
     "th": "Thailand", "vn": "Vietnam", "ph": "Filipina", "sg": "Singapore",
     "kz": "Kazakhstan", "kg": "Kyrgyzstan",
+    "pt": "Portugal", "at": "Austria", "gr": "Greece", "tr": "Turkey", "cz": "Czech",
+    "hu": "Hungary", "hr": "Croatia",
     # orphan ccTLDs (no own group -> doctrine routes to sub-region/general)
-    "pt": "_ORPHAN_", "at": "_ORPHAN_", "gr": "_ORPHAN_", "tr": "_ORPHAN_", "cz": "_ORPHAN_",
-    "hu": "_ORPHAN_", "ro": "_ORPHAN_", "rs": "_ORPHAN_", "hr": "_ORPHAN_",
+    "ro": "_ORPHAN_", "rs": "_ORPHAN_",
 }
 
 # Well-known target-country regions/coasts that carry no demonym of their own. Seed set;
@@ -237,6 +261,9 @@ def build_anchor_index(inventory):
 
     # countries present as own ad groups
     for name in names:
+        if name not in GENERAL_STEMS and name not in SUBREGION_STEMS:
+            target_stems.setdefault(name.lower(), name)
+            demonym_to_country.setdefault(name.lower(), name)
         if name in COUNTRY_KNOWLEDGE:
             for tok in _expand_country_tokens(name):
                 target_stems[tok] = name

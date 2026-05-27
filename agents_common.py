@@ -10,13 +10,15 @@ separate entries off the identical text — expected.
 import json, re, os
 import anthropic
 
+import config
+
 client = anthropic.Anthropic()
 
-DOCTRINE_PATH = os.environ.get("CLASSIFIER_MD", "verticals/dating_geo/prompts/classifier.md")
+DOCTRINE_PATH = os.environ.get("CLASSIFIER_MD")
 
 
 def load_doctrine(path=None):
-    with open(path or DOCTRINE_PATH, encoding="utf-8") as f:
+    with open(path or DOCTRINE_PATH or config.PROMPT_TEMPLATE_PATH, encoding="utf-8") as f:
         return f.read()
 
 

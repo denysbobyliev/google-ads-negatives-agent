@@ -42,7 +42,7 @@ python3 run.py --account-profile accounts/<account_key>.local.yaml --shadow --da
 | 3 | `filter_by_cost.py` | Drop low-spend terms and protect conversion-value terms |
 | 4 | `dedupe_cache.py` | Skip served ad-group/term pairs already cached |
 | 5 | `classify_batch.py` | Agent 1: Haiku route classifier |
-| 5b | `guards.py` | Deterministic corrections, fused-anchor keeps, source-brand normalization, and dual-anchor keep guards |
+| 5b | `guards.py` / `vertical_loader.py` | Deterministic corrections wired through the active vertical's geo modules |
 | 6 | `confidence_gate.py` / `escalate.py` | Escalate low-confidence/REVIEW/guarded rows to Sonnet |
 | 7 | `scope_router.py` | Convert route to KEEP/NEGATE/NOOP per served ad group |
 | 8 | `dry_run_report.py` | Write review CSV report |
@@ -65,6 +65,8 @@ verticals/dating_geo/prompts/classifier.md
 
 Its first fenced YAML block under `ACCOUNT BLOCK` is parsed by `config.load_account_config()`.
 Editing that block updates both the prompt and router behavior.
+Account-specific campaign brands, such as a brand that should stay inside one campaign,
+belong in the same block under `campaign_brands`; they are not hardcoded in Python.
 
 The live inventory is appended to the system prompt as:
 
@@ -98,7 +100,7 @@ A new account needs:
 
 - Google Ads auth/profile.
 - A new `ACCOUNT BLOCK` in a copy of `classifier.md` with campaign generals, sub-regions,
-  language map, tiebreakers, and special cases.
+  language map, tiebreakers, special cases, and any `campaign_brands`.
 - A relabeled golden set produced by:
 
 ```bash
@@ -115,6 +117,12 @@ geo-dependent rows under the new inventory, and marks changed answers with
 terms for its brands/languages and run `eval_golden.py`.
 
 Do not rebuild the old `targets.yaml` anchor layer. It is intentionally gone.
+
+## Porting To A New Vertical
+
+Root pipeline code loads vertical behavior through `vertical_loader.py`. A new vertical
+therefore needs its own `verticals/<vertical_key>/geo_anchor_map.py` and `geo_gate.py`
+with the same public functions as `dating_geo`, plus prompt, policy, and eval files.
 
 ## Validation
 

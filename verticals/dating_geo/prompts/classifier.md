@@ -133,6 +133,11 @@ language_map:
 asian_floral_motifs: [sakura, lotus, orchid, magnolia, jasmine, peony, plum, blossom, cherry]
 slavic_euro_names:   [sofia, victoria, anna, natasha, elena, olga, katya, anastasia]
 mainstream_brands:   [tinder, bumble, hinge, match, okcupid, badoo, pof, zoosk, eharmony, grindr, mutual, instabang, doulike]
+
+# Account-specific brands that belong in one campaign even when the model would
+# otherwise treat them as generic mainstream/no-geo brand terms.
+campaign_brands:
+  Latin-Search: [chispa]
 ```
 
 The live ad-group inventory is injected as `{ad_group_inventory}` **before the cache

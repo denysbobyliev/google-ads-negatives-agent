@@ -16,7 +16,7 @@ import pull_scope
 GOLDEN_PATH = os.path.join(
     config.BASE_DIR,
     "verticals",
-    "dating_geo",
+    config.VERTICAL_KEY,
     "eval",
     "golden_set.csv",
 )

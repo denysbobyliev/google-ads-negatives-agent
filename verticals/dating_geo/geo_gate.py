@@ -144,6 +144,9 @@ def served_anchor_in_term(served_ag, term, idx):
         stems.discard("eastern")
     if any(_present(s, t) for s in stems):
         return True
+    for stem, dest in idx.get("target", {}).items():
+        if dest == served_ag and _present(stem, t):
+            return True
     for code, dest in idx.get("tld", {}).items():
         if dest == served_ag and _standalone(code, t):
             return True

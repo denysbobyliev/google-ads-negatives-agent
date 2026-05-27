@@ -26,6 +26,7 @@ class PromptRenderingTests(unittest.TestCase):
         self.assertEqual(cfg["generals"]["Asia-Search"], "Asia")
         self.assertIn("es", cfg["language_map"])
         self.assertEqual(cfg["special_cases"]["eastern_european"], "Slavic")
+        self.assertEqual(cfg["campaign_brands"]["Latin-Search"], ["chispa"])
 
     def test_parse_json_array_strips_markdown_fences(self) -> None:
         parsed = classify_batch.parse_json_array(

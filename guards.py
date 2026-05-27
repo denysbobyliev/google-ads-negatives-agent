@@ -44,8 +44,7 @@ import time
 
 import config
 import scope_router
-from verticals.dating_geo.geo_anchor_map import build_anchor_index
-from verticals.dating_geo.geo_gate import detect_geo, served_anchor_in_term
+import vertical_loader
 
 
 # ---- accessors (dict or object) --------------------------------------------------------
@@ -70,13 +69,12 @@ def _served(r):
 
 # ---- shared geo helpers ----------------------------------------------------------------
 _NON_DEST = {"_ORPHAN_", "_ESCALATE_", "_ORIGIN_", "_GEN_", "_LANG_", None}
-LATIN_CAMPAIGN_BRANDS = {"chispa"}
 
 def distinct_partner_geos(term, idx):
     """Set of concrete partner-geo destinations named in the term (country/general/
     sub-region/ccTLD groups). Excludes origin, language, orphan, and ambiguous placeholders."""
     dests = set()
-    for tok, kind, dest in detect_geo(term, idx).hits:
+    for tok, kind, dest in vertical_loader.detect_geo(term, idx).hits:
         if kind in ("target", "general", "subregion", "tld") and dest not in _NON_DEST:
             dests.add(dest)
     return dests
@@ -99,7 +97,7 @@ def guard_served_country_wins(rec, inventory, idx):
     term names its own served group so shadow logs keep the signal, but we do NOT rewrite the
     route — enforcement is the gate's escalate path, which lets Sonnet adjudicate edges
     (bumble<country>, asian<lifestyle>) instead of a guard hard-overriding them."""
-    if served_anchor_in_term(_served(rec), _g(rec, "term"), idx):
+    if vertical_loader.served_anchor_in_term(_served(rec), _g(rec, "term"), idx):
         prev = _g(rec, "flag", default="") or ""
         note = "GUARD1/telemetry: term names served group (enforced by gate)"
         _set(rec, "flag", (prev + " | " + note).strip(" |") if prev else note)
@@ -116,7 +114,7 @@ def guard_dual_anchor_keep(rec, inventory, idx, resolve_action):
     ag, term = _served(rec), _g(rec, "term")
     if resolve_action(_g(rec, "route"), ag) != "NEGATE":
         return rec
-    if not served_anchor_in_term(ag, term, idx):
+    if not vertical_loader.served_anchor_in_term(ag, term, idx):
         return rec
     others = distinct_partner_geos(term, idx) - {ag}
     if others:                                           # dual-anchor confirmed
@@ -166,25 +164,30 @@ def guard_brand_protect(rec, inventory, idx):
     return rec
 
 
-def guard_latin_campaign_brand(rec, inventory, idx):
-    """Chispa is a Latin/Latino dating brand; keep it inside Latin-Search."""
+def guard_campaign_brand_protect(rec, cfg):
+    """Protect account-declared brands inside their declared campaign."""
     term = (_g(rec, "term") or "").lower()
-    if any(brand in term for brand in LATIN_CAMPAIGN_BRANDS):
-        if _g(rec, "route") != "CAMPAIGN_PROTECT:Latin-Search":
+    for campaign, brands in (cfg.get("campaign_brands") or {}).items():
+        if any(str(brand).lower() in term for brand in brands or []):
+            route = f"CAMPAIGN_PROTECT:{campaign}"
+            if _g(rec, "route") == route:
+                return rec
             prev = _g(rec, "flag", default="") or ""
-            note = f"GUARD4 {_g(rec, 'route')}->CAMPAIGN_PROTECT:Latin-Search (Latin campaign brand)"
-            _set(rec, "route", "CAMPAIGN_PROTECT:Latin-Search")
+            note = f"GUARD4 {_g(rec, 'route')}->{route} (account campaign brand)"
+            _set(rec, "route", route)
             _set(rec, "level", "brand_compound")
             _set(rec, "flag", (prev + " | " + note).strip(" |") if prev else note)
+            return rec
     return rec
 
 
 # ---- runner ----------------------------------------------------------------------------
-def run_guards(rec, inventory, idx, resolve_action):
+def run_guards(rec, inventory, idx, resolve_action, account_config=None):
     """Apply guards in order: GUARD4 (brand normalize) -> GUARD1 (telemetry) ->
     GUARD2 (dual-anchor keep) -> GUARD3 (gender-policy backstop)."""
+    cfg = account_config or config.load_account_config()
     rec = guard_brand_protect(rec, inventory, idx)                   # coined brand -> protect
-    rec = guard_latin_campaign_brand(rec, inventory, idx)            # Latin brand -> Latin campaign
+    rec = guard_campaign_brand_protect(rec, cfg)                    # configured brand -> configured campaign
     rec = guard_served_country_wins(rec, inventory, idx)             # telemetry
     rec = guard_dual_anchor_keep(rec, inventory, idx, resolve_action)  # dual-anchor keep
     rec = guard_quarantine_invented_policy(rec, inventory, idx)      # gender-policy backstop
@@ -194,14 +197,15 @@ def run_guards(rec, inventory, idx, resolve_action):
 def run(rows: list[dict], inventory: dict[str, str]) -> list[dict]:
     """Repo pipeline adapter: apply package guards to a list of classified rows."""
     t0 = time.time()
-    idx = build_anchor_index(inventory)
-    resolve_action = scope_router.make_resolver(inventory, config.load_account_config())
+    idx = vertical_loader.build_anchor_index(inventory)
+    account_config = config.load_account_config()
+    resolve_action = scope_router.make_resolver(inventory, account_config)
     guarded = []
     fired = 0
     for row in rows:
         updated = dict(row)
         before = updated.get("flag")
-        updated = run_guards(updated, inventory, idx, resolve_action)
+        updated = run_guards(updated, inventory, idx, resolve_action, account_config)
         if updated.get("flag") and updated.get("flag") != before:
             fired += 1
         guarded.append(updated)

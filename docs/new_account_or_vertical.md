@@ -7,7 +7,8 @@
 2. Copy `verticals/dating_geo/prompts/classifier.md` if the account needs its own
    doctrine/config.
 3. Edit only the `ACCOUNT BLOCK`: `generals`, `sub_regions`, `language_map`,
-   `tiebreakers`, and `special_cases`.
+   `tiebreakers`, `special_cases`, and account-specific brand routing such as
+   `campaign_brands`.
 4. Validate the prompt config:
 
    ```bash
@@ -36,5 +37,8 @@ No `targets.yaml` rebuild is needed. The old anchor layer is intentionally gone.
 2. Add `verticals/<vertical_key>/prompts/classifier.md` with a vertical doctrine and
    an `ACCOUNT BLOCK`.
 3. Add `verticals/<vertical_key>/eval/golden_set.csv`.
-4. Point an account profile at the new vertical and prompt template.
-5. Build/adjust eval categories until action accuracy and false-negates are acceptable.
+4. Add the vertical implementation modules expected by `vertical_loader.py`:
+   `geo_anchor_map.py` with `build_anchor_index(...)`, and `geo_gate.py` with
+   `detect_geo(...)`, `served_anchor_in_term(...)`, and `route_decision(...)`.
+5. Point an account profile at the new vertical and prompt template.
+6. Build/adjust eval categories until action accuracy and false-negates are acceptable.

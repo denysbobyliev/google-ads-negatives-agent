@@ -7,8 +7,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 import guards
 import scope_router
-from verticals.dating_geo.geo_anchor_map import build_anchor_index
-from verticals.dating_geo.geo_gate import served_anchor_in_term
+import vertical_loader
 
 
 class GuardTests(unittest.TestCase):
@@ -25,12 +24,13 @@ class GuardTests(unittest.TestCase):
             "Japan": "Asia-Search",
             "Jamaica": "Latin-Search",
             "Korea": "Asia-Search",
+            "Portugal": "Euro-Search",
             "Russia": "Slavic-Search",
             "Spain": "Euro-Search",
             "Thailand": "Asia-Search",
             "Ukraine": "Slavic-Search",
         }
-        self.idx = build_anchor_index(self.inventory)
+        self.idx = vertical_loader.build_anchor_index(self.inventory)
         self.resolve_action = scope_router.make_resolver(self.inventory)
 
     def apply_one(self, row: dict) -> dict:
@@ -50,23 +50,34 @@ class GuardTests(unittest.TestCase):
         self.assertIn("GUARD1/telemetry", result["flag"])
 
     def test_served_anchor_detector_catches_inventory_country_and_city(self) -> None:
-        self.assertTrue(served_anchor_in_term("China", "best chinese dating app uk", self.idx))
-        self.assertTrue(served_anchor_in_term("Ireland", "dublin dating", self.idx))
-        self.assertTrue(served_anchor_in_term("Spain", "barcelona dating", self.idx))
-        self.assertTrue(served_anchor_in_term("India", "desi dating", self.idx))
+        self.assertTrue(
+            vertical_loader.served_anchor_in_term("China", "best chinese dating app uk", self.idx)
+        )
+        self.assertTrue(vertical_loader.served_anchor_in_term("Ireland", "dublin dating", self.idx))
+        self.assertTrue(vertical_loader.served_anchor_in_term("Spain", "barcelona dating", self.idx))
+        self.assertTrue(vertical_loader.served_anchor_in_term("India", "desi dating", self.idx))
+        self.assertTrue(vertical_loader.served_anchor_in_term("Portugal", "girls in portugal", self.idx))
         # This is an accepted over-flag in the integration package: it costs a
         # Sonnet escalation, then the doctrine still negates it as no target India.
-        self.assertTrue(served_anchor_in_term("India", "native american indian dating sites", self.idx))
+        self.assertTrue(
+            vertical_loader.served_anchor_in_term(
+                "India",
+                "native american indian dating sites",
+                self.idx,
+            )
+        )
 
     def test_fused_country_anchor_detector_uses_inventory(self) -> None:
-        self.assertTrue(served_anchor_in_term("Ukraine", "ukrainecharm review", self.idx))
-        self.assertTrue(served_anchor_in_term("Korea", "koreadates review", self.idx))
-        self.assertFalse(served_anchor_in_term("Korea", "koreanwar documentary", self.idx))
+        self.assertTrue(vertical_loader.served_anchor_in_term("Ukraine", "ukrainecharm review", self.idx))
+        self.assertTrue(vertical_loader.served_anchor_in_term("Korea", "koreadates review", self.idx))
+        self.assertFalse(vertical_loader.served_anchor_in_term("Korea", "koreanwar documentary", self.idx))
 
     def test_new_business_reversals_are_geo_anchors(self) -> None:
-        self.assertTrue(served_anchor_in_term("Scandinavia", "viking dating sites", self.idx))
-        self.assertTrue(served_anchor_in_term("Italy", "bumble italia", self.idx))
-        self.assertTrue(served_anchor_in_term("Jamaica", "jamaica dating site", self.idx))
+        self.assertTrue(
+            vertical_loader.served_anchor_in_term("Scandinavia", "viking dating sites", self.idx)
+        )
+        self.assertTrue(vertical_loader.served_anchor_in_term("Italy", "bumble italia", self.idx))
+        self.assertTrue(vertical_loader.served_anchor_in_term("Jamaica", "jamaica dating site", self.idx))
 
     def test_chispa_protects_latin_campaign(self) -> None:
         result = self.apply_one(

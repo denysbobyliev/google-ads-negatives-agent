@@ -15,8 +15,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import config
 import escalate
 import scope_router
-from verticals.dating_geo.geo_anchor_map import build_anchor_index
-from verticals.dating_geo.geo_gate import route_decision
+import vertical_loader
 
 
 def _g(row: dict, *names: str, default=None):
@@ -46,7 +45,7 @@ def gate(records, idx, resolve_action, escalate_fn, log=None):
         flag = str(row.get("flag") or "")
         guard_flagged = any(marker in flag for marker in ("GUARD2", "GUARD3", "GUARD4"))
         protected_brand = row.get("level") == "brand_compound"
-        decision = route_decision(
+        decision = vertical_loader.route_decision(
             row,
             idx,
             served_ag,
@@ -94,7 +93,7 @@ def run(
     inventory: dict[str, str],
 ) -> tuple[list[dict], int, float, dict[str, int]]:
     t0 = time.time()
-    idx = build_anchor_index(inventory)
+    idx = vertical_loader.build_anchor_index(inventory)
     resolve_action = scope_router.make_resolver(inventory, config.load_account_config())
 
     queue_terms: list[str] = []

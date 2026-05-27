@@ -1,5 +1,5 @@
 account_key: example_account
-vertical_key: example_vertical
+vertical_key: dating_geo
 policy_version: route_v2
 prompt_version: route_v2_target_cities
 customer_id: "<GOOGLE_ADS_CUSTOMER_ID>"
