@@ -70,6 +70,7 @@ def _served(r):
 
 # ---- shared geo helpers ----------------------------------------------------------------
 _NON_DEST = {"_ORPHAN_", "_ESCALATE_", "_ORIGIN_", "_GEN_", "_LANG_", None}
+LATIN_CAMPAIGN_BRANDS = {"chispa"}
 
 def distinct_partner_geos(term, idx):
     """Set of concrete partner-geo destinations named in the term (country/general/
@@ -165,11 +166,25 @@ def guard_brand_protect(rec, inventory, idx):
     return rec
 
 
+def guard_latin_campaign_brand(rec, inventory, idx):
+    """Chispa is a Latin/Latino dating brand; keep it inside Latin-Search."""
+    term = (_g(rec, "term") or "").lower()
+    if any(brand in term for brand in LATIN_CAMPAIGN_BRANDS):
+        if _g(rec, "route") != "CAMPAIGN_PROTECT:Latin-Search":
+            prev = _g(rec, "flag", default="") or ""
+            note = f"GUARD4 {_g(rec, 'route')}->CAMPAIGN_PROTECT:Latin-Search (Latin campaign brand)"
+            _set(rec, "route", "CAMPAIGN_PROTECT:Latin-Search")
+            _set(rec, "level", "brand_compound")
+            _set(rec, "flag", (prev + " | " + note).strip(" |") if prev else note)
+    return rec
+
+
 # ---- runner ----------------------------------------------------------------------------
 def run_guards(rec, inventory, idx, resolve_action):
     """Apply guards in order: GUARD4 (brand normalize) -> GUARD1 (telemetry) ->
     GUARD2 (dual-anchor keep) -> GUARD3 (gender-policy backstop)."""
     rec = guard_brand_protect(rec, inventory, idx)                   # coined brand -> protect
+    rec = guard_latin_campaign_brand(rec, inventory, idx)            # Latin brand -> Latin campaign
     rec = guard_served_country_wins(rec, inventory, idx)             # telemetry
     rec = guard_dual_anchor_keep(rec, inventory, idx, resolve_action)  # dual-anchor keep
     rec = guard_quarantine_invented_policy(rec, inventory, idx)      # gender-policy backstop

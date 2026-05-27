@@ -23,6 +23,7 @@ class GuardTests(unittest.TestCase):
             "Indonesia": "Asia-Search",
             "Ireland": "Euro-Search",
             "Japan": "Asia-Search",
+            "Jamaica": "Latin-Search",
             "Korea": "Asia-Search",
             "Russia": "Slavic-Search",
             "Spain": "Euro-Search",
@@ -65,6 +66,21 @@ class GuardTests(unittest.TestCase):
     def test_new_business_reversals_are_geo_anchors(self) -> None:
         self.assertTrue(served_anchor_in_term("Scandinavia", "viking dating sites", self.idx))
         self.assertTrue(served_anchor_in_term("Italy", "bumble italia", self.idx))
+        self.assertTrue(served_anchor_in_term("Jamaica", "jamaica dating site", self.idx))
+
+    def test_chispa_protects_latin_campaign(self) -> None:
+        result = self.apply_one(
+            {
+                "term": "chispa app",
+                "ad_group_name": "Latina",
+                "route": "NEGATE_ALL",
+                "level": "none",
+                "confidence": 0.75,
+            }
+        )
+
+        self.assertEqual(result["route"], "CAMPAIGN_PROTECT:Latin-Search")
+        self.assertIn("GUARD4", result["flag"])
 
     def test_dual_anchor_sets_force_keep_only_when_action_would_negate(self) -> None:
         result = self.apply_one(

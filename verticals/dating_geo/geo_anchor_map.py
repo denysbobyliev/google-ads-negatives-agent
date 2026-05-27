@@ -69,6 +69,7 @@ COUNTRY_KNOWLEDGE = {
     "Mexico":      (["mexican","mexico"], ["guadalajara","cancun","tijuana"]),
     "Colombia":    (["colombian"], ["bogota","medellin","cali","cartagena","barranquilla"]),
     "Cuba":        (["cuban"], ["havana"]),
+    "Jamaica":     (["jamaican","jamaica"], ["kingston","montego bay"]),
     "Bolivia":     (["bolivian"], []),
     "Belize":      (["belizean","belize"], []),
     "Haiti":       (["haitian","haiti"], []),

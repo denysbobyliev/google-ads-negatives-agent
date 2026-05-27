@@ -474,6 +474,8 @@ Strict JSON array, one object per input term. No preamble, no markdown fences, n
 {"term":"badoo login","route":"NEGATE_ALL","level":"none","confidence":0.93,"lang":null,"reason":"Mainstream brand plus user-action word, no geo."}
 {"term":"bumble italia","route":"Italy","level":"country","confidence":0.82,"lang":null,"reason":"Bumble is mainstream, but Italia is a target-country anchor; route to Italy."}
 {"term":"viking dating sites","route":"Scandinavia","level":"sub_region","confidence":0.8,"lang":null,"reason":"Viking is a Scandinavian dating/heritage signal; route to Scandinavia."}
+{"term":"chispa app","route":"CAMPAIGN_PROTECT:Latin-Search","level":"brand_compound","confidence":0.78,"lang":null,"reason":"Chispa is a Latin/Latino dating brand; protect the Latin campaign."}
+{"term":"jamaica dating site","route":"Jamaica","level":"country","confidence":0.9,"lang":null,"reason":"Jamaica has its own ad group; route directly to Jamaica."}
 {"term":"sakuradate","route":"CAMPAIGN_PROTECT:source","level":"brand_compound","confidence":0.78,"lang":null,"reason":"Coined floral dating brand; protect the campaign it served in."}
 {"term":"lotuslove app","route":"CAMPAIGN_PROTECT:source","level":"brand_compound","confidence":0.74,"lang":null,"reason":"Coined floral dating brand; protect served campaign."}
 {"term":"sofiadate review","route":"CAMPAIGN_PROTECT:source","level":"brand_compound","confidence":0.75,"lang":null,"reason":"Name-brand; protect the campaign it served in."}
