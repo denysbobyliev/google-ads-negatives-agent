@@ -26,14 +26,9 @@ class ConfigProfileTests(unittest.TestCase):
                     customer_id: "123-456"
                     google_ads_yaml: creds/google-ads.yaml
                     policy_yaml: policy.yaml
-                    targets_yaml: targets.yaml
-                    judgment_rules: judgment.md
                     prompt_template: prompt.md
-                    region_context_template: region.md
-                    archetypes_yaml: archetypes.yaml
                     labels:
                       master: negatives_master
-                      region_prefix: neg_region_
                     paths:
                       data_dir: tmp-data
                       logs_dir: tmp-logs
@@ -49,15 +44,10 @@ class ConfigProfileTests(unittest.TestCase):
             self.assertEqual(config.PROMPT_VERSION, "prompt3")
             self.assertEqual(config.CUSTOMER_ID, "123456")
             self.assertEqual(config.MASTER_LABEL, "negatives_master")
-            self.assertEqual(config.REGION_LABEL_PREFIX, "neg_region_")
             self.assertTrue(config.GOOGLE_ADS_YAML.endswith("creds/google-ads.yaml"))
             self.assertTrue(config.CLASSIFIED_TERMS_PATH.endswith("tmp-data/cache.json"))
             self.assertTrue(config.POLICY_YAML.endswith("policy.yaml"))
-            self.assertTrue(config.TARGETS_YAML.endswith("targets.yaml"))
-            self.assertTrue(config.JUDGMENT_RULES_PATH.endswith("judgment.md"))
             self.assertTrue(config.PROMPT_TEMPLATE_PATH.endswith("prompt.md"))
-            self.assertTrue(config.REGION_CONTEXT_TEMPLATE_PATH.endswith("region.md"))
-            self.assertTrue(config.ARCHETYPES_YAML.endswith("archetypes.yaml"))
 
     def test_default_policy_is_loaded_from_vertical_file(self) -> None:
         config.apply_account_profile(config.DEFAULT_ACCOUNT_PROFILE)
@@ -66,7 +56,8 @@ class ConfigProfileTests(unittest.TestCase):
         self.assertEqual(config.CV_PROTECTION_THRESHOLD, 100.0)
         self.assertEqual(config.SCORE_THRESHOLD, 6)
         self.assertEqual(config.MAX_AG_NEGATIVES_PER_RUN, 20)
-        self.assertEqual(config.MODEL, "claude-haiku-4-5-20251001")
+        self.assertEqual(config.HAIKU_MODEL, "claude-haiku-4-5")
+        self.assertEqual(config.SONNET_MODEL, "claude-sonnet-4-6")
 
 
 if __name__ == "__main__":

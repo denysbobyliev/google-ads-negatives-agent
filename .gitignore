@@ -4,6 +4,7 @@ accounts/*.local.yaml
 __pycache__/
 .pycache_check/
 *.pyc
+.DS_Store
 data/
 logs/
 reports/

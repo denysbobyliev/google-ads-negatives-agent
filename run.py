@@ -1,11 +1,11 @@
 from __future__ import annotations
 """
 Negatives Pipeline Orchestrator
-Chains all 11 stages. Structured logging to logs/negatives_YYYY-MM-DD.log.
+Chains the route-classifier stages. Structured logging to logs/negatives_YYYY-MM-DD.log.
 Per-stage summary printed to stdout. Final cost/action summary at end.
 
 Usage:
-  python run.py [--account-profile accounts/dating_main.yaml] [--dry-run] [--days 30] [--region korea]
+  python run.py [--account-profile accounts/dating_main.yaml] [--dry-run] [--days 30] [--region Japan]
 """
 
 import argparse
@@ -22,13 +22,14 @@ import pull_scope
 import pull_search_terms
 import filter_by_cost
 import dedupe_cache
-import regex_anchor_check
-import llm_classify_batch
+import classify_batch
+import guards
 import confidence_gate
 import scope_router
 import dry_run_report
 import upload_negatives
 import update_cache
+from classify_batch import _empty_usage, add_usage, format_usage
 
 
 # ---------------------------------------------------------------------------
@@ -75,9 +76,15 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--days", type=int, default=config.DAYS)
     parser.add_argument(
+        "--shadow",
+        action="store_true",
+        default=False,
+        help="Run the full classifier/router and write logs/shadow_*.csv; upload nothing.",
+    )
+    parser.add_argument(
         "--region",
         default=None,
-        help="Run for a single region only (e.g. 'korea')",
+        help="Run for a single ad group only (e.g. 'Japan')",
     )
     parser.add_argument(
         "--ignore-cache",
@@ -106,6 +113,7 @@ def main() -> None:
     # Override config from CLI
     config.DRY_RUN = args.dry_run
     config.DAYS = args.days
+    shadow = args.shadow
     customer_id = (args.customer_id or config.CUSTOMER_ID).replace("-", "")
     region_filter = args.region
     ignore_cache = args.ignore_cache
@@ -122,12 +130,8 @@ def main() -> None:
         print("ERROR: labels.master is missing or is still a placeholder in the account profile.")
         return
 
-    if not config.REGION_LABEL_PREFIX or "<" in config.REGION_LABEL_PREFIX:
-        print("ERROR: labels.region_prefix is missing or is still a placeholder in the account profile.")
-        return
-
-    if ignore_cache and not config.DRY_RUN:
-        print("ERROR: --ignore-cache is only allowed with --dry-run.")
+    if ignore_cache and not config.DRY_RUN and not shadow:
+        print("ERROR: --ignore-cache is only allowed with --dry-run or --shadow.")
         return
 
     run_start = time.time()
@@ -135,7 +139,7 @@ def main() -> None:
         f"\n{'='*60}\n"
         f"Negatives pipeline — customer {customer_id}\n"
         f"account={config.ACCOUNT_KEY}  vertical={config.VERTICAL_KEY}\n"
-        f"dry_run={config.DRY_RUN}  days={config.DAYS}  "
+        f"dry_run={config.DRY_RUN}  shadow={shadow}  days={config.DAYS}  "
         f"region={region_filter or 'all'}  ignore_cache={ignore_cache}  "
         f"write_cache={write_cache}\n"
         f"{'='*60}"
@@ -144,9 +148,9 @@ def main() -> None:
     # ------------------------------------------------------------------
     # Stage 1: Pull Scope
     # ------------------------------------------------------------------
-    scope = pull_scope.run(customer_id, region_filter=region_filter)
+    scope, inventory_text, inventory = pull_scope.run(customer_id, region_filter=region_filter)
     if not scope:
-        print("No ad groups in scope. Check regions.yaml labels.")
+        print("No ad groups in scope. Check the master label and optional --region filter.")
         return
 
     # ------------------------------------------------------------------
@@ -168,35 +172,55 @@ def main() -> None:
     fresh_terms = dedupe_cache.run(active_terms, ignore_cache=ignore_cache)
 
     # ------------------------------------------------------------------
-    # Stage 5: Regex Anchor Check
+    # Stage 5: Haiku Classification
     # ------------------------------------------------------------------
-    llm_candidates, regex_decided = regex_anchor_check.run(fresh_terms)
-    below_regex_negates: list[dict] = []  # below-threshold terms are dropped entirely
-
-    # ------------------------------------------------------------------
-    # Stage 6: LLM Classification
-    # ------------------------------------------------------------------
-    all_anchors = regex_anchor_check.get_all_own_anchors()
-    llm_classified, llm_calls, estimated_llm_cost = llm_classify_batch.run(
-        llm_candidates, all_anchors
+    haiku_classified, haiku_calls, haiku_cost, haiku_usage = classify_batch.run(
+        fresh_terms, inventory_text
     )
 
     # ------------------------------------------------------------------
-    # Stage 7: Confidence Gate (score threshold)
+    # Stage 5b: Deterministic Guards
     # ------------------------------------------------------------------
-    all_scored = confidence_gate.run(regex_decided, llm_classified)
+    guarded_classified = guards.run(haiku_classified, inventory)
 
     # ------------------------------------------------------------------
-    # Stage 8: Scope Router
+    # Stage 6: Confidence Gate + Sonnet Escalation
     # ------------------------------------------------------------------
-    ag_level, campaign_level, keep_terms = scope_router.run(all_scored)
+    all_scored, sonnet_calls, sonnet_cost, sonnet_usage = confidence_gate.run(
+        guarded_classified, inventory_text, inventory
+    )
+    llm_calls = haiku_calls + sonnet_calls
+    estimated_llm_cost = haiku_cost + sonnet_cost
+    effective_llm_cost = (
+        (haiku_cost * 0.5 if config.LLM_USE_BATCH_API else haiku_cost)
+        + sonnet_cost
+    )
+    llm_usage = _empty_usage()
+    add_usage(llm_usage, haiku_usage)
+    add_usage(llm_usage, sonnet_usage)
 
     # ------------------------------------------------------------------
-    # Stage 9: Dry-Run Report (always)
+    # Stage 7: Scope Router
+    # ------------------------------------------------------------------
+    ag_level, campaign_level, keep_terms = scope_router.run(all_scored, inventory)
+
+    # ------------------------------------------------------------------
+    # Stage 8: Dry-Run Report (always)
     # ------------------------------------------------------------------
     report_terms = ag_level + campaign_level + keep_terms + protected_terms
     report_path = dry_run_report.run(report_terms)
     print(f"\nReport: {report_path}")
+
+    if shadow:
+        shadow_path = _write_shadow_log(report_terms)
+        print(f"\nSHADOW — no mutations sent. Shadow log: {shadow_path}")
+        _print_summary(
+            terms, active_terms, protected_terms, fresh_terms,
+            ag_level, campaign_level, keep_terms, llm_calls, estimated_llm_cost,
+            effective_llm_cost, llm_usage,
+            ag_uploaded=0, camp_uploaded=0, run_start=run_start,
+        )
+        return
 
     if config.DRY_RUN:
         print("\nDRY RUN — no mutations sent.")
@@ -206,40 +230,46 @@ def main() -> None:
             print("DRY RUN — local cache not updated. Pass --write-cache to persist classifications.")
         _print_summary(
             terms, active_terms, protected_terms, fresh_terms,
-            ag_level, keep_terms, llm_calls, estimated_llm_cost,
-            ag_uploaded=0, run_start=run_start,
+            ag_level, campaign_level, keep_terms, llm_calls, estimated_llm_cost,
+            effective_llm_cost, llm_usage,
+            ag_uploaded=0, camp_uploaded=0, run_start=run_start,
         )
         return
 
     # ------------------------------------------------------------------
-    # Stage 10: Upload Negatives
+    # Stage 9: Upload Negatives
     # ------------------------------------------------------------------
     ag_uploaded, camp_uploaded, deferred_terms = upload_negatives.run(
         customer_id, ag_level, campaign_level
     )
 
     # ------------------------------------------------------------------
-    # Stage 11: Update Cache
+    # Stage 10: Update Cache
     # ------------------------------------------------------------------
     # Exclude deferred terms so they resurface on the next run.
-    deferred_keys = {(t.get("region_key"), t["term"].lower().strip()) for t in deferred_terms}
+    deferred_keys = {
+        (t.get("ad_group_name"), t["term"].lower().strip())
+        for t in deferred_terms
+    }
     all_classified = [
         t for t in all_scored + protected_terms
-        if (t.get("region_key"), t["term"].lower().strip()) not in deferred_keys
+        if (t.get("ad_group_name"), t["term"].lower().strip()) not in deferred_keys
     ]
     update_cache.run(all_classified)
 
     _print_summary(
         terms, active_terms, protected_terms, fresh_terms,
-        ag_level, keep_terms, llm_calls, estimated_llm_cost,
-        ag_uploaded=ag_uploaded, run_start=run_start,
+        ag_level, campaign_level, keep_terms, llm_calls, estimated_llm_cost,
+        effective_llm_cost, llm_usage,
+        ag_uploaded=ag_uploaded, camp_uploaded=camp_uploaded, run_start=run_start,
     )
 
 
 def _print_summary(
     terms, active_terms, protected_terms, fresh_terms,
-    ag_level, keep_terms, llm_calls, estimated_llm_cost,
-    ag_uploaded, run_start,
+    ag_level, campaign_level, keep_terms, llm_calls, estimated_llm_cost,
+    effective_llm_cost, llm_usage,
+    ag_uploaded, camp_uploaded, run_start,
 ) -> None:
     elapsed = time.time() - run_start
     print(f"\n{'='*60}")
@@ -250,11 +280,43 @@ def _print_summary(
     print(f"  Active (cost >= threshold) : {len(active_terms)}")
     print(f"  Fresh (after dedup)        : {len(fresh_terms)}")
     print(f"  Negated AG-level           : {len(ag_level)}  (uploaded: {ag_uploaded})")
+    print(f"  Negated campaign-level     : {len(campaign_level)}  (uploaded: {camp_uploaded})")
     print(f"  Kept (no action)           : {len(keep_terms)}")
     print(f"  LLM API calls              : {llm_calls}")
-    print(f"  Estimated LLM cost         : ${estimated_llm_cost:.4f}")
+    print(f"  LLM tokens                 : {format_usage(llm_usage)}")
+    print(f"  Estimated LLM cost         : ${estimated_llm_cost:.4f} before batch discount")
+    print(f"  Effective LLM cost         : ${effective_llm_cost:.4f} with batch discount")
     print(f"  Total elapsed              : {elapsed:.1f}s")
     print(f"{'='*60}\n")
+
+
+def _write_shadow_log(rows: list[dict]) -> str:
+    import csv
+
+    os.makedirs(config.LOGS_DIR, exist_ok=True)
+    path = os.path.join(
+        config.LOGS_DIR,
+        f"shadow_{datetime.now().strftime('%Y-%m-%d_%H%M%S')}.csv",
+    )
+    columns = [
+        "term",
+        "ad_group_name",
+        "campaign_name",
+        "route",
+        "action",
+        "confidence",
+        "source",
+        "escalated",
+        "flag",
+        "force_keep_in",
+        "reason",
+    ]
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=columns, extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+    return path
 
 
 if __name__ == "__main__":

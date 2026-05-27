@@ -1,8 +1,8 @@
 from __future__ import annotations
 """
 Stage 1: Pull Scope
-Find all ad groups carrying the configured master label, then resolve each to a
-region_key via its configured region-label prefix.
+Find all ad groups carrying the configured master label and build the live
+ad-group inventory injected into the classifier prompt.
 """
 
 import os
@@ -12,20 +12,29 @@ from google.ads.googleads.client import GoogleAdsClient
 
 sys.path.insert(0, os.path.dirname(__file__))
 import config
-import target_loader
 
 
-def _load_region_keys() -> set[str]:
-    return target_loader.get_target_keys()
+def build_inventory(scope: list[dict]) -> tuple[str, dict[str, str]]:
+    """Return (prompt_inventory_text, {ad_group_name: campaign_name})."""
+    inventory_map = {
+        ag["ad_group_name"]: ag["campaign_name"]
+        for ag in sorted(scope, key=lambda x: (x["campaign_name"], x["ad_group_name"]))
+    }
+    inventory_text = "\n".join(
+        f"{ad_group}\t{campaign}"
+        for ad_group, campaign in inventory_map.items()
+    )
+    return inventory_text, inventory_map
 
 
-def run(customer_id: str, region_filter: str | None = None) -> list[dict]:
+def run(
+    customer_id: str,
+    region_filter: str | None = None,
+) -> tuple[list[dict], str, dict[str, str]]:
     t0 = time.time()
     client = GoogleAdsClient.load_from_storage(config.GOOGLE_ADS_YAML)
     ga_service = client.get_service("GoogleAdsService")
-    known_regions = _load_region_keys()
 
-    # ── Step 1: all ad groups with master label ──────────────────────────
     q1 = f"""
         SELECT
             ad_group.id,
@@ -36,8 +45,8 @@ def run(customer_id: str, region_filter: str | None = None) -> list[dict]:
             campaign.resource_name
         FROM ad_group_label
         WHERE label.name = '{config.MASTER_LABEL}'
-            AND ad_group.status != 'REMOVED'
-            AND campaign.status != 'REMOVED'
+            AND ad_group.status = 'ENABLED'
+            AND campaign.status = 'ENABLED'
     """
     ag_meta: dict[str, dict] = {}
     for row in ga_service.search(customer_id=customer_id, query=q1):
@@ -53,46 +62,25 @@ def run(customer_id: str, region_filter: str | None = None) -> list[dict]:
 
     if not ag_meta:
         print(f"Stage 1 — pull_scope: no ad groups found with label '{config.MASTER_LABEL}'")
-        return []
+        return [], "", {}
 
-    # ── Step 2: region labels for those ad groups ────────────────────────
-    ids_csv = ", ".join(ag_meta.keys())
-    q2 = f"""
-        SELECT ad_group.id, label.name
-        FROM ad_group_label
-        WHERE ad_group.id IN ({ids_csv})
-            AND ad_group.status != 'REMOVED'
-    """
-    ag_region: dict[str, str] = {}
-    for row in ga_service.search(customer_id=customer_id, query=q2):
-        ag_id = str(row.ad_group.id)
-        label = row.label.name
-        if label.startswith(config.REGION_LABEL_PREFIX):
-            rk = label[len(config.REGION_LABEL_PREFIX):]
-            if rk in known_regions:
-                ag_region[ag_id] = rk
+    scope = list(ag_meta.values())
+    if region_filter:
+        needle = region_filter.lower().replace("_", " ")
+        scope = [
+            ag for ag in scope
+            if ag["ad_group_name"].lower() == needle
+            or ag["ad_group_name"].lower().replace(" ", "_") == region_filter.lower()
+        ]
 
-    # ── Step 3: join and (optionally) filter by region ───────────────────
-    scope = []
-    unmapped = []
-    for ag_id, meta in ag_meta.items():
-        rk = ag_region.get(ag_id)
-        if rk is None:
-            unmapped.append(meta["ad_group_name"])
-            continue
-        if region_filter and rk != region_filter:
-            continue
-        scope.append({**meta, "region_key": rk})
-
-    if unmapped:
-        print(
-            f"  WARNING: {len(unmapped)} ad group(s) have no "
-            f"{config.REGION_LABEL_PREFIX}* label: {unmapped}"
-        )
+    inventory_text, inventory_map = build_inventory(scope)
 
     elapsed = time.time() - t0
-    print(f"Stage 1 — pull_scope: {len(scope)} ad groups in {elapsed:.1f}s")
-    return scope
+    print(
+        f"Stage 1 — pull_scope: {len(scope)} ad groups, "
+        f"{len(inventory_map)} inventory entries in {elapsed:.1f}s"
+    )
+    return scope, inventory_text, inventory_map
 
 
 if __name__ == "__main__":
@@ -101,7 +89,8 @@ if __name__ == "__main__":
     p.add_argument("--customer-id", default=config.CUSTOMER_ID)
     p.add_argument("--region", default=None)
     args = p.parse_args()
-    result = run(args.customer_id, region_filter=args.region)
+    result, inventory_text, _ = run(args.customer_id, region_filter=args.region)
     print(f"\nTotal ad groups in scope: {len(result)}")
     for ag in result:
-        print(f"  [{ag['region_key']}] {ag['ad_group_name']} ({ag['campaign_name']})")
+        print(f"  {ag['ad_group_name']} ({ag['campaign_name']})")
+    print("\nInventory:\n" + inventory_text)

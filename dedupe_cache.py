@@ -1,7 +1,7 @@
 from __future__ import annotations
 """
 Stage 4: Deduplicate Against Cache
-Skip any (region_key, term) already in data/classified_terms.json.
+Skip any served ad-group/term pair already in data/classified_terms.json.
 """
 
 import json
@@ -14,14 +14,14 @@ import config
 
 
 def _legacy_key(entry: dict) -> tuple[str, str]:
-    return (entry["region_key"], entry["term"])
+    return (entry.get("region_key") or entry.get("ad_group_name", ""), entry["term"])
 
 
 def _scoped_key(entry: dict) -> tuple[str, str, str, str]:
     return (
         entry.get("account_key", config.ACCOUNT_KEY),
         entry.get("vertical_key", config.VERTICAL_KEY),
-        entry["region_key"],
+        entry.get("ad_group_name") or entry.get("region_key", ""),
         entry["term"],
     )
 
@@ -34,7 +34,9 @@ def load_cache() -> tuple[set[tuple[str, str]], set[tuple[str, str, str, str]]]:
     legacy = set()
     scoped = set()
     for entry in cache:
-        if "region_key" not in entry or "term" not in entry:
+        if "term" not in entry:
+            continue
+        if "region_key" not in entry and "ad_group_name" not in entry:
             continue
         if "account_key" in entry or "vertical_key" in entry:
             scoped.add(_scoped_key(entry))
@@ -60,8 +62,9 @@ def run(terms: list[dict], ignore_cache: bool = False) -> list[dict]:
     fresh = []
     skipped = 0
     for t in terms:
-        legacy_key = (t["region_key"], t["term"])
-        scoped_key = (config.ACCOUNT_KEY, config.VERTICAL_KEY, t["region_key"], t["term"])
+        served_key = t.get("ad_group_name", "")
+        legacy_key = (served_key, t["term"])
+        scoped_key = (config.ACCOUNT_KEY, config.VERTICAL_KEY, served_key, t["term"])
         if legacy_key in legacy_seen or scoped_key in scoped_seen:
             skipped += 1
         else:

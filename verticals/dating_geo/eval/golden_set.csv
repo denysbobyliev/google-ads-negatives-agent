@@ -1,0 +1,274 @@
+test_category,term,served_campaign,served_ad_group,cost,conv,final_route,source,kind,note
+country_wins_multi,ukraine women in ireland,Slavic-Search,Ukraine,9.53,0,Ireland,agree,business_decision,served location wins (corrected)
+country_wins_multi,malaysian chinese dating,Asia-Search,Malaysia,5.42,0,Malaysia,override,business_decision,
+country_wins_multi,russian girls in phuket,Asia-Search,Thailand,5.05,0,Thailand,override,business_decision,"Phuket=Thai market, served location wins (corrected)"
+eastern_euro_RULE,eastern european girls,Slavic-Search,Eastern Europe,14.98,0,Slavic,confirm,agree/confirm,
+eastern_euro_RULE,eastern european cupid,Slavic-Search,Eastern Europe,14.76,0,Slavic,confirm,agree/confirm,
+eastern_euro_RULE,dating eastern european women,Slavic-Search,Eastern Europe,6.96,0,Slavic,confirm,agree/confirm,
+eastern_euro_RULE,eastern european women,Slavic-Search,Eastern Europe,6.14,0,Slavic,confirm,agree/confirm,
+eastern_euro_RULE,eastern european woman,Slavic-Search,Eastern Europe,5.64,0,Slavic,confirm,agree/confirm,
+eastern_euro_RULE,eastern europe dating,Slavic-Search,Eastern Europe,5.39,0,Slavic,confirm,agree/confirm,
+language_to_country,randki uk,Euro-Search,Scandinavia,136.46,0,Poland,override,business_decision,keep only in Polish
+language_to_country,polskie randki w uk za darmo,Slavic-Search,Poland,10.45,0,Poland,confirm,agree/confirm,
+language_to_country,randki uk,Slavic-Search,Poland,10.31,0,Poland,confirm,agree/confirm,
+language_to_country,randki uk,Euro-Search,Denmark,8.5,0,Poland,confirm,agree/confirm,
+language_to_country,randki uk,Slavic-Search,Eastern Europe,4.87,0,Poland,confirm,agree/confirm,
+brand_ethnic,sakuradate review,Asia-Search,Asia,98.04,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,is sakuradate legit,Asia-Search,Asia,68.83,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,sakura dating,Asia-Search,Asia,54.62,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,sakuradate scam,Asia-Search,Asia,41.28,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,naomidate reviews,Asia-Search,Asia,33.44,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,is sakura date legit,Asia-Search,Asia,30.35,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,sakura date scam,Asia-Search,Asia,30.11,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,sakura date reviews,Asia-Search,Asia,29.01,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,sakura date app,Asia-Search,Asia,23.04,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,sakuradate success stories,Asia-Search,Asia,20.13,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,sakuradate login,Asia-Search,Asia,15.66,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Asia-Search ; normalized to source (brand rule merged)
+brand_ethnic,sofia date reviews,Slavic-Search,Bulgaria,13.78,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,was-Slavic-Search ; normalized to source (brand rule merged)
+brand_compound_nogeo,sakuraladies,Asia-Search,Asia,8.63,0,CAMPAIGN_PROTECT:source,agree,agree/confirm,
+brand_compound_nogeo,skoutsex,Asia-Search,Kazakhstan,7.14,0,NEGATE_ALL,override,doctrine_change(coined!=keep; mainstream/fused-generic negate),"negate everywhere, it's mainstream"
+brand_compound_nogeo,singlesnearme,Euro-Search,Ireland,3.77,0,NEGATE_ALL,override,doctrine_change(coined!=keep; mainstream/fused-generic negate),"negate everywhere, it's mainstream"
+brand_compound_nogeo,знакомство,Slavic-Search,Russia,3.75,0,NEGATE_ALL,override,doctrine_change,
+brand_mainstream,ashley madison,Latin-Search,Latina,37.07,0,NEGATE_ALL,confirm,agree/confirm,
+brand_mainstream,lavalife dating,Euro-Search,Scandinavia,26.94,0,NEGATE_ALL,confirm,agree/confirm,
+brand_mainstream,tantan dating app,Asia-Search,Asia,6.44,1,NEGATE_ALL,confirm,agree/confirm,
+language_keep,rencontre arabe montreal,Asia-Search,Eastern,6.98,0,Eastern,override,triage_miss(geo/brand I failed to detect),keep where served
+language_review,paginas de citas reales,Euro-Search,Spain,6.58,0,Spain,override,triage_miss(geo/brand I failed to detect),keep where served
+language_review,paginas reales de citas,Euro-Search,Spain,6.4,0,Spain,override,triage_miss(geo/brand I failed to detect),keep where served
+subregion,scandinavian dating app,Euro-Search,Scandinavia,28.22,0,Scandinavia,agree,agree/confirm,
+subregion,dating scandinavian women,Euro-Search,Scandinavia,16.75,0,Scandinavia,agree,agree/confirm,
+subregion,oriental dating sites,Asia-Search,Eastern,14.46,0,Eastern,agree,agree/confirm,
+subregion,meet hispanic women,Latin-Search,Hispanic,11.33,0,Hispanic,agree,agree/confirm,
+subregion,meet middle eastern women,Asia-Search,Eastern,10.36,0,Eastern,agree,agree/confirm,
+subregion,scandinavian dating sites,Euro-Search,Scandinavia,8.9,0,Scandinavia,agree,agree/confirm,
+subregion,hispanic dating sites,Latin-Search,Hispanic,5.73,0,Hispanic,agree,agree/confirm,
+subregion,date scandinavian women,Euro-Search,Scandinavia,4.79,0,Scandinavia,agree,agree/confirm,
+subregion,middle eastern dating app,Asia-Search,Eastern,4.45,0,Eastern,agree,agree/confirm,
+subregion,caribbean dating sites,Latin-Search,Caribbean,3.81,0,Caribbean,agree,agree/confirm,
+subregion,date middle eastern women,Asia-Search,Eastern,3.78,0,Eastern,agree,agree/confirm,
+subregion,scandinavian dating uk,Euro-Search,Scandinavia,3.26,0,Scandinavia,agree,agree/confirm,
+general,free asian dating sites,Asia-Search,Asia,141.01,0,Asia,agree,agree/confirm,
+general,asian dating sites,Asia-Search,Asia,117.72,0,Asia,agree,agree/confirm,
+general,asian dating app,Asia-Search,Asia,93.73,0,Asia,agree,agree/confirm,
+general,asian dating,Asia-Search,Asia,75.53,0,Asia,agree,agree/confirm,
+general,best asian dating sites,Asia-Search,Asia,68.84,1,Asia,agree,agree/confirm,
+general,best asian dating site,Asia-Search,Asia,52.09,0,Asia,agree,agree/confirm,
+general,meet single asians,Asia-Search,Asia,50.61,0,Asia,agree,agree/confirm,
+general,asian dating sites canada,Asia-Search,Asia,48.06,0,Asia,agree,agree/confirm,
+general,top asian dating sites,Asia-Search,Asia,45.31,0,Asia,agree,agree/confirm,
+general,legit asian dating sites,Asia-Search,Asia,43.29,0,Asia,agree,agree/confirm,
+general,best asian dating app,Asia-Search,Asia,43.21,1,Asia,agree,agree/confirm,
+general,asian date,Asia-Search,Asia,42.62,0,Asia,agree,agree/confirm,
+general,asian dating sites free chat without payment,Asia-Search,Asia,41.3,0,Asia,agree,agree/confirm,
+general,asian dating uk free,Asia-Search,Asia,38.89,0,Asia,agree,agree/confirm,
+general,asian girls dating site,Asia-Search,Asia,37.03,0,Asia,agree,agree/confirm,
+general,top 10 asian dating sites,Asia-Search,Asia,35.11,0,Asia,agree,agree/confirm,
+general,latina women looking for white men,Latin-Search,Latina,34.52,0,Latina,agree,agree/confirm,
+general,asian women dating,Asia-Search,Asia,33.42,0,Asia,agree,agree/confirm,
+general,asian singles,Asia-Search,Asia,32.29,0,Asia,agree,agree/confirm,
+general,europe dating sites without payment,Euro-Search,Denmark,29.97,1,Europe,agree,agree/confirm,
+general,latina dating sites,Latin-Search,Latina,29.94,0,Latina,agree,agree/confirm,
+general,asiacharm app,Asia-Search,Asia,29.2,0,Asia,agree,agree/confirm,
+general,best asian dating site for white men,Asia-Search,Asia,29.04,0,Asia,agree,agree/confirm,
+general,dating asian women in america,Asia-Search,Asia,28.85,0,Asia,agree,agree/confirm,
+general,free asian dating,Asia-Search,Asia,27.03,0,Asia,agree,agree/confirm,
+general,asian women for white men dating app,Asia-Search,Asia,25.52,0,Asia,agree,agree/confirm,
+general,asiadate com,Asia-Search,Asia,23.31,0,Asia,agree,agree/confirm,
+general,asia dating,Asia-Search,Asia,22.89,0,Asia,agree,agree/confirm,
+general,is asiatalks a scam,Asia-Search,Asia,22.57,0,Asia,agree,agree/confirm,
+general,is latinamericancupid legit,Latin-Search,Latina,22.57,0,Latina,agree,agree/confirm,
+country_via_city_or_foreign,philippines dating sites,Asia-Search,Filipina,61.52,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,meet philippines girl online free chat,Asia-Search,Filipina,44.27,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,philippines wives,Asia-Search,Filipina,27.97,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,filipinocupid reviews,Asia-Search,Filipina,26.02,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,costa del sol dating sites,Euro-Search,Spain,24.86,0,Spain,agree,agree/confirm,
+country_via_city_or_foreign,philippines dating sites for foreigners,Asia-Search,Filipina,18.88,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,app de citas en españa,Euro-Search,Spain,15.99,0,Spain,agree,agree/confirm,
+country_via_city_or_foreign,dating app españa,Euro-Search,Spain,14.99,0,Spain,agree,agree/confirm,
+country_via_city_or_foreign,best dating site for philippines,Asia-Search,Filipina,14.36,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,thaicupid free,Asia-Search,Asia,14.07,0,Thailand,agree,agree/confirm,
+country_via_city_or_foreign,ukrainecharm,Slavic-Search,Ukraine,12.65,0,Ukraine,agree,agree/confirm,
+country_via_city_or_foreign,koreadates legit,Asia-Search,Asia,11.0,1,Korea,agree,agree/confirm,
+country_via_city_or_foreign,free philippines dating site,Asia-Search,Filipina,10.32,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,koreandating,Asia-Search,Korea,9.84,0,Korea,agree,agree/confirm,
+country_via_city_or_foreign,koreadates reviews,Asia-Search,Asia,9.84,0,Korea,agree,agree/confirm,
+country_via_city_or_foreign,popular dating apps in philippines,Asia-Search,Filipina,9.64,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,best dating apps for philippines,Asia-Search,Filipina,9.41,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,online dating philippines,Asia-Search,Filipina,9.35,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,dating philippines woman,Asia-Search,Filipina,9.0,1,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,is koreadates legit,Asia-Search,Asia,8.81,0,Korea,agree,agree/confirm,
+country_via_city_or_foreign,best philippines dating site,Asia-Search,Filipina,8.38,0,Filipina,agree,agree/confirm,
+country_via_city_or_foreign,philippines dating site,Asia-Search,Filipina,8.23,0,Filipina,agree,agree/confirm,
+country_clean,swedish dating app,Euro-Search,Sweden,158.97,0,Sweden,agree,agree/confirm,
+country_clean,date ukraine,Slavic-Search,Ukraine,80.67,0,Ukraine,agree,agree/confirm,
+country_clean,chinese dating app,Asia-Search,China,76.11,0,China,agree,agree/confirm,
+country_clean,italian dating sites,Euro-Search,Italy,75.76,0,Italy,agree,agree/confirm,
+country_clean,swedish dating,Euro-Search,Sweden,73.08,0,Sweden,agree,agree/confirm,
+country_clean,indian dating sites,Asia-Search,India,66.01,0,India,agree,agree/confirm,
+country_clean,italian dating app,Euro-Search,Italy,60.56,0,Italy,agree,agree/confirm,
+country_clean,indonesian dating sites,Asia-Search,Indonesia,59.25,0,Indonesia,agree,agree/confirm,
+country_clean,best ukrainian dating site,Slavic-Search,Ukraine,54.87,0,Ukraine,agree,agree/confirm,
+country_clean,japanese dating app,Asia-Search,Japan,54.44,0,Japan,agree,agree/confirm,
+country_clean,filipino cupid reviews,Asia-Search,Filipina,50.2,0,Filipina,agree,agree/confirm,
+country_clean,brazilian dating sites,Latin-Search,Brazil,50.11,0,Brazil,agree,agree/confirm,
+country_clean,bali dating,Asia-Search,Indonesia,48.8,0,Indonesia,agree,agree/confirm,
+country_clean,swedish dating sites,Euro-Search,Sweden,44.94,0,Sweden,agree,agree/confirm,
+country_clean,pattaya dating free,Asia-Search,Thailand,44.58,0,Thailand,agree,agree/confirm,
+country_clean,thai women,Asia-Search,Thailand,44.48,0,Thailand,agree,agree/confirm,
+country_clean,swedish girls dating,Euro-Search,Sweden,43.73,0,Sweden,agree,agree/confirm,
+country_clean,irish dating site,Euro-Search,Ireland,43.72,0,Ireland,agree,agree/confirm,
+country_clean,date ukrainian women,Slavic-Search,Ukraine,43.71,0,Ukraine,agree,agree/confirm,
+country_clean,german dating sites,Euro-Search,Germany,42.66,0,Germany,agree,agree/confirm,
+country_clean,ukrainian dating sites,Slavic-Search,Ukraine,42.32,0,Ukraine,agree,agree/confirm,
+country_clean,indian dating app,Asia-Search,India,42.15,0,India,agree,agree/confirm,
+country_clean,japanese dating sites,Asia-Search,Japan,40.44,0,Japan,agree,agree/confirm,
+country_clean,thai dating sites,Asia-Search,Thailand,39.91,0,Thailand,agree,agree/confirm,
+country_clean,free ukrainian dating sites,Slavic-Search,Ukraine,39.85,1,Ukraine,agree,agree/confirm,
+country_clean,dating irish women,Euro-Search,Ireland,39.12,0,Ireland,agree,agree/confirm,
+country_clean,swedish dating site,Euro-Search,Sweden,38.6,0,Sweden,agree,agree/confirm,
+country_clean,chinese matchmaking service,Asia-Search,China,38.42,0,China,agree,agree/confirm,
+country_clean,irish dating,Euro-Search,Ireland,38.0,0,Ireland,agree,agree/confirm,
+country_clean,swedish singles,Euro-Search,Sweden,36.61,0,Sweden,agree,agree/confirm,
+country_clean,meeting chinese women,Asia-Search,China,36.56,0,China,agree,agree/confirm,
+country_clean,colombian dating sites,Latin-Search,Colombia,35.77,1,Colombia,agree,agree/confirm,
+country_clean,ireland dating sites,Euro-Search,Ireland,35.64,0,Ireland,agree,agree/confirm,
+country_clean,vietnamese dating sites,Asia-Search,Vietnam,35.51,0,Vietnam,agree,agree/confirm,
+country_clean,best filipino dating sites,Asia-Search,Filipina,34.22,0,Filipina,agree,agree/confirm,
+country_clean,filipino dating sites,Asia-Search,Filipina,33.53,0,Filipina,agree,agree/confirm,
+country_clean,lithuanian dating,Slavic-Search,Lithuania,32.87,0,Lithuania,agree,agree/confirm,
+country_clean,spanish dating app,Euro-Search,Spain,32.82,0,Spain,agree,agree/confirm,
+country_clean,german single girls,Euro-Search,Germany,32.82,0,Germany,agree,agree/confirm,
+country_clean,italian women dating sites,Euro-Search,Italy,32.48,1,Italy,agree,agree/confirm,
+country_clean,chinese ladies dating site,Asia-Search,China,32.47,0,China,agree,agree/confirm,
+country_clean,top ukrainian dating sites,Slavic-Search,Ukraine,31.87,0,Ukraine,agree,agree/confirm,
+country_clean,meet german women online,Euro-Search,Germany,31.8,0,Germany,agree,agree/confirm,
+country_clean,best spanish dating sites,Euro-Search,Spain,31.62,0,Spain,agree,agree/confirm,
+country_clean,japanese dating site,Asia-Search,Japan,31.59,0,Japan,agree,agree/confirm,
+country_clean,dating in ireland as an american,Euro-Search,Ireland,31.53,0,Ireland,agree,agree/confirm,
+country_clean,date german women,Euro-Search,Germany,30.4,0,Germany,agree,agree/confirm,
+country_clean,ukraine women dating,Slavic-Search,Ukraine,30.29,0,Ukraine,agree,agree/confirm,
+country_clean,france dating app,Euro-Search,France,29.5,0,France,agree,agree/confirm,
+country_clean,laos dating app,Asia-Search,Laos,29.43,0,Laos,agree,agree/confirm,
+country_clean,brazilian dating app,Latin-Search,Brazil,29.21,0,Brazil,agree,agree/confirm,
+country_clean,russian dating site,Slavic-Search,Russia,29.15,0,Russia,agree,agree/confirm,
+country_clean,filipino dating sites free,Asia-Search,Filipina,29.07,0,Filipina,agree,agree/confirm,
+country_clean,filipina dating sites,Asia-Search,Filipina,28.78,0,Filipina,agree,agree/confirm,
+country_clean,denmark dating site,Euro-Search,Denmark,27.7,0,Denmark,agree,agree/confirm,
+country_clean,latvia single women,Slavic-Search,Latvia,27.36,0,Latvia,agree,agree/confirm,
+country_clean,philippine single women,Asia-Search,Filipina,27.33,0,Filipina,agree,agree/confirm,
+country_clean,dating in cambodia,Asia-Search,Cambodia,26.95,0,Cambodia,agree,agree/confirm,
+country_clean,german girls dating,Euro-Search,Germany,26.42,0,Germany,agree,agree/confirm,
+country_clean,singapore girls dating,Asia-Search,Singapore,26.38,0,Singapore,agree,agree/confirm,
+country_clean,vietnamese dating app,Asia-Search,Vietnam,26.17,0,Vietnam,agree,agree/confirm,
+country_clean,italian dating apps,Euro-Search,Italy,25.86,0,Italy,agree,agree/confirm,
+country_clean,spanish singles,Euro-Search,Spain,25.76,0,Spain,agree,agree/confirm,
+country_clean,japan dating sites,Asia-Search,Japan,25.7,0,Japan,agree,agree/confirm,
+country_clean,danish dating site,Euro-Search,Denmark,25.63,0,Denmark,agree,agree/confirm,
+country_clean,vietnam dating sites,Asia-Search,Vietnam,25.61,0,Vietnam,agree,agree/confirm,
+generic_negate,meet beautiful women,Latin-Search,Latina,71.54,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,japansdates legit,Asia-Search,Japan,20.24,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,successful dating apps,Latin-Search,Latina,16.67,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,one dating app,Slavic-Search,Ukraine,15.2,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,free online dating,Asia-Search,Korea,13.77,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,free adult dating sites,Latin-Search,Bolivia,12.64,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,dating sites australia,Asia-Search,Eastern,12.37,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,free cuckold dating sites,Latin-Search,Belize,12.33,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,fresh singles reviews,Asia-Search,Eastern,12.0,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,free dating site australia,Asia-Search,Eastern,11.92,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,expatica dating,Euro-Search,Switzerland,11.62,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,flirtseeker,Euro-Search,Denmark,11.05,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,bumblebee dating site,Euro-Search,Liechtenstein,10.92,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,single woman for relationship,Asia-Search,Eastern,10.8,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,japansdates review,Asia-Search,Japan,10.78,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,hua hin dating sites,Asia-Search,Thailand,10.66,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,dating sites uk,Euro-Search,Malta,10.62,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,free mature dating sites near me,Slavic-Search,Georgia,10.53,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,golden age souls dating site review,Asia-Search,Eastern,10.32,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,arranged dating site,Euro-Search,Ireland,10.23,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,is japansdates legit,Asia-Search,Japan,10.1,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,de dating sites,Euro-Search,Germany,9.86,0,Germany,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,perth dating,Asia-Search,Asia,9.63,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,kazakhstan dating app,Asia-Search,Kazakhstan,9.54,0,Kazakhstan,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,match dating app,Euro-Search,Cyprus,9.45,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,japansdates com reviews,Asia-Search,Japan,9.32,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,free dating apps without payment in usa,Asia-Search,Asia,9.31,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,international cupid dating app,Slavic-Search,Ukraine,9.14,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,lumy dating app,Asia-Search,Eastern,9.1,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,italianpeoplemeet com,Euro-Search,Italy,9.01,0,Italy,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,top free dating apps,Asia-Search,Asia,8.93,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,sukara dates,Asia-Search,Asia,8.93,0,Asia,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,girls near me for dating,Latin-Search,Haiti,8.77,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,meet italians,Euro-Search,Italy,8.69,0,Italy,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,is japansdates a legit dating site,Asia-Search,Asia,8.63,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,london ontario dating sites,Asia-Search,Eastern,8.42,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,mature flirts reviews trustpilot,Asia-Search,Eastern,8.3,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,kyrgyzstan dating app,Asia-Search,Kyrgyzstan,8.24,1,Kyrgyzstan,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,online free dating app without payment,Asia-Search,Vietnam,8.17,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,mature women dating,Asia-Search,Eastern,8.15,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,equestrian dating site,Euro-Search,Scandinavia,8.12,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,where to meet nice women,Euro-Search,France,7.97,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,dating apps free,Latin-Search,Caribbean,7.82,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,japansdates legit,Asia-Search,Asia,7.65,0,Asia,override,triage_miss(geo/brand I failed to detect),keep where served
+generic_negate,match dating app uk,Euro-Search,Liechtenstein,7.61,0,NEGATE_ALL,agree,agree/confirm,
+review_unknown,amamiora app,Euro-Search,Italy,7.82,0,REVIEW,agree,agree/confirm,
+review_unknown,lovefate login,Asia-Search,Asia,7.82,0,REVIEW,agree,agree/confirm,
+review_unknown,milf site,Euro-Search,Finland,7.54,0,REVIEW,agree,agree/confirm,
+review_unknown,free chat sites,Slavic-Search,Ukraine,7.26,0,REVIEW,agree,agree/confirm,
+review_unknown,знакомство в лондоне,Euro-Search,Benelux,7.17,0,REVIEW,agree,agree/confirm,
+review_unknown,sakuraladies reviews and complaints,Asia-Search,Asia,7.06,0,Asia,override,triage_miss(geo/brand I failed to detect),keep where served
+review_unknown,chicas cerca de mi ubicación,Latin-Search,Latina,7.05,0,Latina,override,triage_miss(geo/brand I failed to detect),keep where served
+review_unknown,free local hookups,Latin-Search,Cuba,5.9,0,REVIEW,agree,agree/confirm,
+review_unknown,pinalove reviews,Asia-Search,Filipina,5.87,0,Filipina,override,triage_miss(geo/brand I failed to detect),keep where served
+review_unknown,mötesplatsen app,Euro-Search,Sweden,5.73,0,Sweden,override,triage_miss(geo/brand I failed to detect),keep where served
+review_unknown,neu de,Euro-Search,Germany,5.56,0,Germany,override,triage_miss(geo/brand I failed to detect),keep where served
+review_unknown,disonsdemain sign up,Euro-Search,France,5.09,0,France,override,triage_miss(geo/brand I failed to detect),keep where served
+review_unknown,parwise de,Euro-Search,Germany,4.81,0,Germany,override,triage_miss(geo/brand I failed to detect),keep where served
+review_unknown,free chat rooms no registration,Asia-Search,Asia,4.61,0,REVIEW,agree,agree/confirm,
+receptivity_framing,german women looking for american men,Euro-Search,Germany,21.56,0,Germany,run1,business_decision,receptivity framing = keep
+receptivity_framing,russian husband finder,Slavic-Search,Russia,7.01,0,Russia,run1,business_decision,receptivity framing = keep
+receptivity_framing,gaijin hunter app,Asia-Search,Japan,3.75,0,Japan,run1,business_decision,gaijin hunter = Japanese woman seeking foreign men
+served_location_vs_partner,filipino women in australia,Asia-Search,Filipina,17.85,0,Filipina,run1,business_decision,partner demonym beats origin hub
+served_location_vs_partner,bali dating,Asia-Search,Indonesia,59.42,0,Indonesia,run1,business_decision,Bali is Indonesian; inventory authority
+inventory_authority,danish dating site,Euro-Search,Denmark,25.63,0,Denmark,run1,business_decision,Denmark has own group; beats Scandinavia
+origin_only,best uk dating app,Euro-Search,Europe,0.0,0,NEGATE_ALL,brainstorm,business_decision,"origin+generic, no partner"
+origin_only,dating sites in australia,Asia-Search,Asia,0.0,0,NEGATE_ALL,brainstorm,business_decision,"Australia origin, no partner"
+origin_only,singles in toronto,Latin-Search,Latina,0.0,0,NEGATE_ALL,brainstorm,business_decision,Toronto = Canada origin
+origin_only,american dating site,Latin-Search,Latina,0.0,0,NEGATE_ALL,brainstorm,business_decision,"origin only, generic"
+origin_stripped_partner,latin women in glasgow,Latin-Search,Latina,0.0,0,Latina,brainstorm,business_decision,Glasgow origin; route on latin
+origin_stripped_partner,australian men seeking filipino women,Asia-Search,Filipina,0.0,0,Filipina,brainstorm,business_decision,Australian origin; Filipino target
+origin_stripped_partner,uk russian dating,Slavic-Search,Russia,0.0,0,Russia,brainstorm,business_decision,UK origin; Russian partner
+homonym,women from odessa us,Slavic-Search,Ukraine,0.0,0,NEGATE_ALL,brainstorm,business_decision,odessa+us = Texas origin -> negate
+homonym,odesa women dating,Slavic-Search,Ukraine,0.0,0,Ukraine,brainstorm,business_decision,Odesa spelling = Ukraine city
+homonym,dating in georgia,Slavic-Search,Georgia,0.0,0,REVIEW,brainstorm,business_decision,US-state vs country unresolved -> escalate
+homonym,valencia women,Euro-Search,Spain,0.0,0,Spain,brainstorm,business_decision,Valencia defaults to Spain target
+compound_region,latin american dating,Latin-Search,Latina,0.0,0,Latina,brainstorm,business_decision,"region demonym, not origin"
+compound_region,south american women,Latin-Search,Latina,0.0,0,Latina,brainstorm,business_decision,region demonym
+origin_partner_oos,american women dating,Latin-Search,Latina,0.0,0,NEGATE_ALL,brainstorm,business_decision,origin-country women = out of scope
+origin_partner_oos,british girls dating,Euro-Search,Europe,0.0,0,NEGATE_ALL,brainstorm,business_decision,UK women target = out of scope
+dual_anchor_keep,russian women in phuket,Asia-Search,Thailand,0.0,0,Thailand,brainstorm,business_decision,Phuket anchor; keep in Thailand
+dual_anchor_keep,russian women in phuket,Slavic-Search,Russia,0.0,0,Russia,brainstorm,business_decision,Russian anchor; keep in Russia too
+inventory_authority,indian dating sites,Asia-Search,India,14.53,0,India,run2,business_decision,"India is inventory country, not niche"
+inventory_authority,indian women dating site,Asia-Search,India,10.13,0,India,run2,business_decision,Indian=India
+inventory_authority,indian girls,Asia-Search,India,4.95,0,India,run2,business_decision,India inventory country
+inventory_authority,single irish women,Euro-Search,Ireland,11.09,0,Ireland,run2,business_decision,"Ireland is target inventory country, not OOS"
+inventory_authority,irish women dating,Euro-Search,Ireland,27.79,0,Ireland,run2,business_decision,Irish=Ireland
+partner_plus_nearme,brazilian women near me,Latin-Search,Brazil,4.54,0,Brazil,run2,business_decision,demonym routes; near me ignored
+partner_plus_nearme,mexican singles near me,Latin-Search,Mexico,6.15,0,Mexico,run2,business_decision,demonym routes; near me ignored
+partner_plus_nearme,indian women near me,Asia-Search,India,4.33,0,India,run2,business_decision,Indian routes; near me ignored
+diaspora_negate,french canadian women dating,Euro-Search,France,9.82,0,France,run2,business_decision,French anchors France; Canadian origin ignored (anchor wins)
+diaspora_negate,italian american dating sites,Euro-Search,Italy,5.05,0,Italy,run2,business_decision,Italian anchors Italy; American origin ignored
+origin_partner_oos,indian women looking for black men,Asia-Search,India,6.16,0,India,run2,business_decision,India partner + preference modifier = keep (Q2 default)
+anchor_no_target,native american indian dating sites,Asia-Search,India,4.51,0,NEGATE_ALL,run2,business_decision,Native American=US origin; no target anchor
+anchor_plus_junk,indian dating sites for divorced,Asia-Search,India,0.0,0,India,run2,business_decision,anchor + junk = keep
+anchor_plus_junk,indian dating app uk,Asia-Search,India,0.0,0,India,run2,business_decision,anchor + origin junk = keep
+brand_served_campaign,naomidate reviews,Asia-Search,Asia,55.05,0,CAMPAIGN_PROTECT:source,run3,business_decision,name-brand served in Asia; protect source not Slavic
+brand_served_campaign,naomidate review,Asia-Search,Asia,6.71,0,CAMPAIGN_PROTECT:source,run3,business_decision,same
+fused_anchor_consistency,asiatalks reviews,Asia-Search,Asia,19.22,0,Asia,run3,business_decision,fused asia anchor; reviews is modifier
+fused_anchor_consistency,asiavibe app,Asia-Search,Asia,12.59,0,Asia,run3,business_decision,fused asia anchor; app is modifier
+fused_anchor_consistency,asiatalks com login,Asia-Search,Asia,5.86,0,Asia,run3,business_decision,fused anchor; login modifier
+origin_demographic_negate,asian american dating app,Asia-Search,Asia,13.42,0,Asia,run3,business_decision,'asian' anchors served Asia; keep
+target_city_not_origin,barcelona dating,Euro-Search,Spain,3.89,0,Spain,run4,business_decision,"Spanish city = valid Spain anchor, not origin"
+target_city_not_origin,dating madrid,Euro-Search,Spain,0.0,0,Spain,run4,business_decision,Madrid = Spain city
+colloquial_anchor,desi dating,Asia-Search,India,4.0,0,India,run4,business_decision,"desi = colloquial India signal, keep"
+no_geo_clean_reason,free cuckold dating sites,Latin-Search,Belize,12.33,0,NEGATE_ALL,run4,business_decision,no target geo (not a niche judgment)
+no_geo_clean_reason,free granny dating apps without payment,Euro-Search,Ireland,3.1,0,NEGATE_ALL,run4,business_decision,no target geo

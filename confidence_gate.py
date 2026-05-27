@@ -1,10 +1,10 @@
 from __future__ import annotations
 """
-Stage 7: Confidence Gate
-Applies score threshold to LLM-classified terms.
-  score >= config.SCORE_THRESHOLD → KEEP
-  score <  config.SCORE_THRESHOLD → NEGATE at ad group level
-Regex-decided terms pass through unchanged (regex decisions are deterministic).
+Stage 6: sharp own-anchor confidence gate.
+
+Haiku keeps can apply at high confidence. Haiku negates only apply directly when
+the served ad group is not named by the term. Own-anchor negates, guard-flagged
+rows, brand-compound rows, REVIEW, and low-confidence rows go to Sonnet.
 """
 
 import os
@@ -13,44 +13,111 @@ import time
 
 sys.path.insert(0, os.path.dirname(__file__))
 import config
+import escalate
+import scope_router
+from verticals.dating_geo.geo_anchor_map import build_anchor_index
+from verticals.dating_geo.geo_gate import route_decision
+
+
+def _g(row: dict, *names: str, default=None):
+    for name in names:
+        if name in row:
+            return row[name]
+    return default
+
+
+def gate(records, idx, resolve_action, escalate_fn, log=None):
+    """Package-compatible gate used by eval harnesses.
+
+    `escalate_fn` receives unique terms and returns `{term: sonnet_record}`.
+    """
+    apply_rows = []
+    queue = []
+
+    for row in records:
+        served_ag = _g(row, "served_ad_group", "ad_group_name")
+        if row.get("force_keep_in") == served_ag:
+            row["action"] = "KEEP"
+            row["gate"] = "apply"
+            apply_rows.append(row)
+            continue
+
+        row["action"] = resolve_action(row.get("route"), served_ag)
+        flag = str(row.get("flag") or "")
+        guard_flagged = any(marker in flag for marker in ("GUARD2", "GUARD3", "GUARD4"))
+        protected_brand = row.get("level") == "brand_compound"
+        decision = route_decision(
+            row,
+            idx,
+            served_ag,
+            guard_flagged=guard_flagged,
+            protected_brand=protected_brand,
+        )
+        row["gate"] = "escalate_guard" if decision == "escalate" and guard_flagged else decision
+        if decision == "apply":
+            apply_rows.append(row)
+        else:
+            queue.append(row)
+            if log is not None:
+                log.append(
+                    (
+                        row.get("term"),
+                        served_ag,
+                        row.get("route"),
+                        row.get("action"),
+                        "guard"
+                        if guard_flagged
+                        else "brand"
+                        if protected_brand
+                        else "own_anchor_negate"
+                        if row.get("action") == "NEGATE"
+                        else "low_conf",
+                    )
+                )
+
+    sonnet_by_term = escalate_fn(sorted({row["term"] for row in queue})) if queue else {}
+    for row in queue:
+        sonnet_row = sonnet_by_term.get(row["term"])
+        if sonnet_row is not None:
+            row.update(sonnet_row)
+            row["source"] = "sonnet"
+            row["escalated"] = True
+            row["action"] = resolve_action(row.get("route"), _g(row, "served_ad_group", "ad_group_name"))
+        apply_rows.append(row)
+
+    return apply_rows, queue
 
 
 def run(
-    regex_decided: list[dict],
-    llm_classified: list[dict],
-) -> list[dict]:
-    """
-    Returns a flat list of all terms with decision/confidence fields set,
-    ready for scope_router.
-    """
+    haiku_results: list[dict],
+    inventory_text: str,
+    inventory: dict[str, str],
+) -> tuple[list[dict], int, float, dict[str, int]]:
     t0 = time.time()
+    idx = build_anchor_index(inventory)
+    resolve_action = scope_router.make_resolver(inventory, config.load_account_config())
 
-    result = list(regex_decided)
-    negate_count = 0
-    keep_count = 0
+    queue_terms: list[str] = []
 
-    for t in llm_classified:
-        score = t.get("llm_score", config.SCORE_THRESHOLD)
-        t["score"] = score
-        t["confidence"] = str(score)
-        t["anchor_found"] = t.get("llm_anchor")
-        t["reason"] = t.get("llm_reason", "")
-        t["source"] = "llm"
-        if score < config.SCORE_THRESHOLD:
-            if config.DEFER_NEGATE_SCORE is not None and score == config.DEFER_NEGATE_SCORE:
-                t["decision"] = "DEFER"
-            else:
-                t["decision"] = "NEGATE"
-            negate_count += 1
-        else:
-            t["decision"] = "KEEP"
-            keep_count += 1
-        result.append(t)
+    def collect_terms(terms: list[str]) -> dict[str, dict]:
+        queue_terms[:] = terms
+        return {}
+
+    apply_probe, queue = gate(
+        [dict(row) for row in haiku_results],
+        idx,
+        resolve_action,
+        collect_terms,
+    )
+
+    queued_ids = {id(row) for row in queue}
+    apply_rows = [row for row in apply_probe if id(row) not in queued_ids]
+    sonnet_rows, sonnet_calls, sonnet_cost, sonnet_usage = escalate.run(queue, inventory_text)
+    result = apply_rows + sonnet_rows
 
     elapsed = time.time() - t0
     print(
-        f"Stage 7 — confidence_gate: {len(regex_decided)} regex + "
-        f"{negate_count} LLM-negate + {keep_count} LLM-keep "
-        f"(in {elapsed:.3f}s)"
+        f"Stage 6 — confidence_gate: {len(apply_rows)} Haiku apply, "
+        f"{len(queue)} escalated to Sonnet (in {elapsed:.1f}s)"
     )
-    return result
+    return result, sonnet_calls, sonnet_cost, sonnet_usage

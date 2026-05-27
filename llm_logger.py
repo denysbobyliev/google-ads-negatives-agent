@@ -16,11 +16,11 @@ def _append_jsonl(path: str, record: dict) -> None:
         f.write(json.dumps(record) + "\n")
 
 
-def log_llm_failure(term: str, region_key: str) -> None:
+def log_llm_failure(term: str, context: str) -> None:
     path = os.path.join(config.LOGS_DIR, "llm_failures.jsonl")
     _append_jsonl(path, {
         "ts": datetime.now(timezone.utc).isoformat(),
-        "region_key": region_key,
+        "context": context,
         "term": term,
     })
 

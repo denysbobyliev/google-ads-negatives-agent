@@ -31,8 +31,6 @@ def run(
     date_range = f"segments.date BETWEEN '{start}' AND '{today}'"
 
     ag_ids = [ag["ad_group_id"] for ag in scope]
-    ag_meta = {ag["ad_group_id"]: ag for ag in scope}
-
     # Chunk to avoid query size limits
     chunk_size = 100
     raw: dict[tuple, dict] = {}
@@ -56,8 +54,10 @@ def run(
                 metrics.conversions_value
             FROM search_term_view
             WHERE ad_group.id IN ({ids_csv})
+                AND ad_group.status = 'ENABLED'
+                AND campaign.status = 'ENABLED'
                 AND {date_range}
-                AND search_term_view.status NOT IN ('EXCLUDED', 'ADDED_EXCLUDED')
+                AND search_term_view.status NOT IN ('ADDED', 'EXCLUDED', 'ADDED_EXCLUDED')
             ORDER BY metrics.cost_micros DESC
         """
         response = ga_service.search(customer_id=customer_id, query=query)
@@ -74,7 +74,6 @@ def run(
                     "campaign_id": str(row.campaign.id),
                     "campaign_name": row.campaign.name,
                     "campaign_resource": row.campaign.resource_name,
-                    "region_key": ag_meta[ag_id]["region_key"],
                     "clicks": 0,
                     "cost": 0.0,
                     "conversions": 0.0,

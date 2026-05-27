@@ -1,28 +1,17 @@
 thresholds:
   cost: 3.0
   conversion_value_protection: 100.0
-  score: 6
 
 caps:
   max_ad_group_negatives_per_run: 20
   max_campaign_negatives_per_run: 50
 
-defer:
-  negate_score: 3
-
-concatenation:
-  enabled: true
-  min_anchor_length: 4
-  # Anchors with known same-domain collisions inside dating-niche traffic.
-  # Populate reactively from run audits. Keys are anchor strings;
-  # values are full tokens where substring match should be suppressed.
-  exclude_within:
-    asia: [caucasian, caucasians]
-    asian: [caucasian, caucasians]
-
 llm:
-  model: claude-haiku-4-5-20251001
+  haiku_model: claude-haiku-4-5
+  sonnet_model: claude-sonnet-4-6
   batch_size: 50
+  use_batch_api: true
+  gate_high_confidence: 0.85
   prompt_cache: true
   cost_per_1k_tokens:
     input: 0.003

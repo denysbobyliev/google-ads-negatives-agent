@@ -37,11 +37,11 @@ class CacheBehaviorTests(unittest.TestCase):
 
     def test_dedupe_accepts_legacy_cache_entries(self) -> None:
         with open(config.CLASSIFIED_TERMS_PATH, "w", encoding="utf-8") as f:
-            json.dump([{"region_key": "ukraine", "term": "ukrainian dating"}], f)
+            json.dump([{"ad_group_name": "Ukraine", "term": "ukrainian dating"}], f)
 
         fresh = dedupe_cache.run([
-            {"region_key": "ukraine", "term": "ukrainian dating"},
-            {"region_key": "poland", "term": "polish dating"},
+            {"ad_group_name": "Ukraine", "term": "ukrainian dating"},
+            {"ad_group_name": "Poland", "term": "polish dating"},
         ])
 
         self.assertEqual([t["term"] for t in fresh], ["polish dating"])
@@ -49,11 +49,12 @@ class CacheBehaviorTests(unittest.TestCase):
     def test_update_cache_writes_profile_metadata(self) -> None:
         update_cache.run([
             {
-                "region_key": "ukraine",
+                "ad_group_name": "Ukraine",
+                "campaign_name": "Slavic-Search",
                 "term": "ukrainian dating",
                 "decision": "KEEP",
                 "confidence": "high",
-                "source": "regex",
+                "source": "haiku",
             }
         ])
 

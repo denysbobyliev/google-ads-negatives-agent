@@ -1,22 +1,6 @@
 from __future__ import annotations
 """
-Stage 8: Scope Router
-Routes every NEGATE decision to exactly one scope:
-
-  AD GROUP LEVEL — all negations land here
-    - regex source (sibling match from Stage 5): term explicitly belongs to a
-      different regional ad group → negate at the landing ad group only
-    - LLM NEGATE (any reason): negate at the landing ad group only
-
-  KEEP → target_scope="none", no action
-
-  campaign_level is always empty — campaign-level negation is not done
-  automatically. The caller still receives the list for future use.
-
-Rationale: negate conservatively. A term that misbehaved in one ad group
-should be excluded there. Other ad groups in the same campaign are unaffected
-until evidence accumulates. LLM terms that happen to share an anchor with a
-known region route to AG-level just like everything else.
+Stage 7: Route classifier output to concrete actions per served ad group.
 """
 
 import os
@@ -27,33 +11,105 @@ sys.path.insert(0, os.path.dirname(__file__))
 import config
 
 
-def run(terms: list[dict]) -> tuple[list[dict], list[dict], list[dict]]:
+def campaign_of(ad_group: str, inventory: dict[str, str]) -> str | None:
+    return inventory.get(ad_group)
+
+
+def lang_keepset(lang: str, inventory: dict[str, str], cfg: dict | None = None) -> set[str]:
+    cfg = cfg or config.load_account_config()
+    language_map = cfg.get("language_map", {})
+    generals = cfg.get("generals", {})
+
+    countries = {country for country in language_map.get(lang, []) if country in inventory}
+    campaigns = {inventory[country] for country in countries if country in inventory}
+    campaign_generals = {
+        general for campaign, general in generals.items()
+        if campaign in campaigns and general in inventory
+    }
+    return countries | campaign_generals
+
+
+def route_to_action(
+    route: str | None,
+    served_ag: str,
+    inventory: dict[str, str],
+    cfg: dict | None = None,
+) -> str:
+    """Pure route-string resolver. Returns KEEP, NEGATE, or NOOP."""
+    cfg = cfg or config.load_account_config()
+    served_campaign = campaign_of(served_ag, inventory)
+
+    if route in (None, "", "REVIEW"):
+        return "NOOP"
+    if route == "NEGATE_ALL":
+        return "NEGATE"
+    if route == "CAMPAIGN_PROTECT:source":
+        return "KEEP"
+    if route.startswith("CAMPAIGN_PROTECT:"):
+        target_campaign = route.split(":", 1)[1]
+        return "KEEP" if served_campaign == target_campaign else "NEGATE"
+    if route.startswith("LANG_KEEP:"):
+        lang = route.split(":", 1)[1]
+        return "KEEP" if served_ag in lang_keepset(lang, inventory, cfg) else "NEGATE"
+    return "KEEP" if route == served_ag else "NEGATE"
+
+
+def make_resolver(inventory: dict[str, str], cfg: dict | None = None):
+    cfg = cfg or config.load_account_config()
+    return lambda route, served_ag: route_to_action(route, served_ag, inventory, cfg)
+
+
+def resolve(route: str, served_ag: str, inventory: dict[str, str], row: dict | None = None) -> str:
+    """Return KEEP, NEGATE, or NOOP for this served ad-group instance."""
+    if row and row.get("force_keep_in") == served_ag:
+        return "KEEP"
+    return route_to_action(route, served_ag, inventory)
+
+
+def _mark_common(row: dict, action: str) -> None:
+    row["action"] = action
+    row["decision"] = "KEEP" if action in {"KEEP", "NOOP"} else "NEGATE"
+    row["score"] = row.get("confidence")
+    row["anchor_found"] = row.get("route")
+
+
+def run(
+    terms: list[dict],
+    inventory: dict[str, str],
+) -> tuple[list[dict], list[dict], list[dict]]:
     """
-    Returns (ag_level, campaign_level, keep_terms).
-    campaign_level is always empty — all negations are AG-level.
+    Returns (ad_group_negatives, campaign_negatives, keep_or_noop_terms).
+    NEGATE_ALL is routed to campaign-level negatives for the served campaign.
     """
     t0 = time.time()
 
     ag_level = []
-    campaign_level: list[dict] = []
+    campaign_level = []
     keep_terms = []
 
-    for t in terms:
-        decision = t.get("decision", "KEEP")
+    for original in terms:
+        row = dict(original)
+        route = row.get("route", "REVIEW")
+        served_ag = row.get("ad_group_name", "")
+        action = resolve(route, served_ag, inventory, row)
+        _mark_common(row, action)
 
-        if decision not in ("NEGATE", "DEFER"):
-            t["target_scope"] = "none"
-            keep_terms.append(t)
+        if action != "NEGATE":
+            row["target_scope"] = "none"
+            keep_terms.append(row)
             continue
 
-        anchor = t.get("anchor_found") or t.get("llm_anchor") or t.get("regex_anchor")
-        t["anchor_found"] = anchor
-        t["target_scope"] = "ad_group"
-        ag_level.append(t)
+        if route == "NEGATE_ALL":
+            row["target_scope"] = "campaign"
+            campaign_level.append(row)
+        else:
+            row["target_scope"] = "ad_group"
+            ag_level.append(row)
 
     elapsed = time.time() - t0
     print(
-        f"Stage 8 — scope_router: {len(ag_level)} AG-level, "
-        f"{len(keep_terms)} KEEP (in {elapsed:.1f}s)"
+        f"Stage 7 — scope_router: {len(ag_level)} AG negatives, "
+        f"{len(campaign_level)} campaign negatives, "
+        f"{len(keep_terms)} keep/noop (in {elapsed:.1f}s)"
     )
     return ag_level, campaign_level, keep_terms

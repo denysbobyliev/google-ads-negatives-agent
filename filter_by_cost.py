@@ -30,6 +30,8 @@ def run(terms: list[dict]) -> tuple[list[dict], list[dict], list[dict]]:
     for t in terms:
         if t["conversions_value"] >= config.CV_PROTECTION_THRESHOLD:
             t["decision"] = "PROTECTED"
+            t["route"] = "PROTECTED"
+            t["action"] = "KEEP"
             t["confidence"] = None
             t["source"] = None
             t["target_scope"] = "none"

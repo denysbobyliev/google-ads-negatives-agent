@@ -123,8 +123,12 @@ def _build_ag_operations(
 
         new_ops = []
         already_exists = 0
+        proposed: set[str] = set()
         for t in terms_to_upload:
             dedup_key = f"EXACT::{t['term'].lower().strip()}"
+            if dedup_key in proposed:
+                continue
+            proposed.add(dedup_key)
             if dedup_key in existing:
                 already_exists += 1
                 continue
@@ -166,8 +170,12 @@ def _build_campaign_operations(
         camp_id = camp_resource.split("/")[-1]
         existing = existing_campaign_negatives.get(camp_id, set())
         new_ops = []
+        proposed: set[str] = set()
         for t in terms:
             dedup_key = f"EXACT::{t['term'].lower().strip()}"
+            if dedup_key in proposed:
+                continue
+            proposed.add(dedup_key)
             if dedup_key in existing:
                 continue
             operation = client.get_type("CampaignCriterionOperation")
