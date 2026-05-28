@@ -47,7 +47,7 @@ COUNTRY_KNOWLEDGE = {
     "France":      (["french"], ["paris","lyon","marseille","toulouse","bordeaux","lille","nantes","strasbourg","montpellier"]),  # 'nice' too risky (adjective)
     "Italy":       (["italian","italia"], ["rome","roma","milan","milano","naples","napoli","turin","torino","florence","firenze","venice","venezia","bologna","verona","palermo"]),
     "Spain":       (["spanish","spaniard","espana","españa"], ["madrid","barcelona","seville","sevilla","malaga","málaga","bilbao","valencia","alicante","granada","zaragoza"]),
-    "Ireland":     (["irish"], ["dublin","cork","galway","limerick","waterford"]),
+    "Ireland":     (["irish"], ["dublin","cork","galway","limerick","waterford","tralee"]),
     "Denmark":     (["danish","dane"], ["copenhagen","kobenhavn","aarhus","odense","aalborg"]),
     "Sweden":      (["swedish","swede"], ["stockholm","gothenburg","goteborg","göteborg","malmo","malmö","uppsala"]),
     "Norway":      (["norwegian"], ["oslo","bergen","trondheim","stavanger","tromso","tromsø"]),

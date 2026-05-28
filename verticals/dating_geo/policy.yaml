@@ -1,5 +1,5 @@
 thresholds:
-  cost: 3.0
+  cost: 1.0
   conversion_value_protection: 100.0
 
 caps:

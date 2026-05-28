@@ -172,6 +172,7 @@ Apply in order:
 2. **No own-ad-group country, but General + Sub-region present → the General.** The
    sub-region is just a flavor on the main concept.
    - `eastern asian dating` → Asia (not Eastern)
+   - `eastern honeys review` / `easternhoneys review` → Asia (Asian dating brand; not the Eastern bucket)
    - `hispanic latin women` → Latina (not Hispanic)
    - `caribbean latina` → Latina
 3. **Sub-region fires only when it is the sole scope present** (no country, no general).
@@ -181,6 +182,7 @@ Apply in order:
    sub-region in the same campaign; else the General.**
    - `aruban women` → Caribbean (Latin campaign)
    - `saudi women dating` → Eastern (Asian orphan; Eastern is the Asia bucket)
+   - `middle eastern women dating` → Eastern (Middle Eastern is eligible for the Eastern ad group)
    - `uzbek brides` → Eastern
 5. **No geo at all → brand-shape vs generic test** (below).
 
@@ -403,6 +405,8 @@ dating term → no partner intent → `NEGATE_ALL`.
 - **Eastern (Asia)** is `eastern`/`oriental` literal-word-only (no country, no Asian
   general signal — `eastern asian` → Asia), **and** the bucket for any Asian orphan
   country (a real Asian country with no own ad group): `saudi`, `uzbek`, `afghan`, etc.
+  The dating brand `eastern honeys` / `easternhoneys` is an exception: route it to broad Asia,
+  not the Eastern sub-region.
 - **"Eastern European" → Slavic** (not Europe). The phrase means the Slavic/CEE sphere in
   the Slavic/CEE sphere, so `eastern european women` routes to the Slavic general, never Euro.
 - **Inter-sub-region** and **cross-campaign** conflicts → see tiebreakers (first-mentioned).
@@ -455,6 +459,7 @@ Strict JSON array, one object per input term. No preamble, no markdown fences, n
 {"term":"norwegian scandinavian women","route":"Norway","level":"country","confidence":0.95,"lang":null,"reason":"Norway has its own group; beats Scandinavia."}
 {"term":"japanese slavic dating","route":"Japan","level":"country","confidence":0.9,"lang":null,"reason":"Country wins globally even across campaigns."}
 {"term":"eastern asian dating","route":"Asia","level":"general","confidence":0.9,"lang":null,"reason":"No country; general beats the sub-region flavor."}
+{"term":"eastern honeys review","route":"Asia","level":"general","confidence":0.85,"lang":null,"reason":"Eastern Honeys is an Asian dating brand; route broad Asia, not Eastern."}
 {"term":"oriental women dating","route":"Eastern","level":"sub_region","confidence":0.78,"lang":null,"reason":"Literal oriental, no country and no Asian general signal."}
 {"term":"hispanic latin women","route":"Latina","level":"general","confidence":0.9,"lang":null,"reason":"No country; Latina general beats the Hispanic label."}
 {"term":"hispanic women","route":"Hispanic","level":"sub_region","confidence":0.82,"lang":null,"reason":"Literal Hispanic is the only scope present."}
@@ -469,6 +474,7 @@ Strict JSON array, one object per input term. No preamble, no markdown fences, n
 {"term":"eastern european women","route":"Slavic","level":"general","confidence":0.85,"lang":null,"reason":"Eastern European = Slavic sphere, not Euro."}
 {"term":"aruban women","route":"Caribbean","level":"sub_region","confidence":0.8,"lang":null,"reason":"Aruba has no own group; nearest Caribbean sub-region."}
 {"term":"saudi women dating","route":"Eastern","level":"sub_region","confidence":0.72,"lang":null,"reason":"Saudi Arabia is an Asian orphan; Eastern is the Asia bucket."}
+{"term":"middle eastern women dating","route":"Eastern","level":"sub_region","confidence":0.82,"lang":null,"reason":"Middle Eastern is eligible for the Eastern ad group."}
 {"term":"uzbek brides","route":"Eastern","level":"sub_region","confidence":0.72,"lang":null,"reason":"Uzbekistan has no own group; routes to the Eastern bucket."}
 {"term":"ukrainian women near me","route":"Ukraine","level":"country","confidence":0.95,"lang":null,"reason":"Near me is user location; Ukrainian is the partner geo."}
 {"term":"asian dating app uk","route":"Asia","level":"general","confidence":0.9,"lang":null,"reason":"Broad Asian intent; uk is user location."}
@@ -488,6 +494,7 @@ Strict JSON array, one object per input term. No preamble, no markdown fences, n
 {"term":"victoriahearts","route":"CAMPAIGN_PROTECT:source","level":"brand_compound","confidence":0.74,"lang":null,"reason":"Name-brand; protect served campaign (Slavic if served there)."}
 {"term":"asiatalks reviews","route":"Asia","level":"general","confidence":0.85,"lang":null,"reason":"Fused asia anchor; reviews is a modifier, never de-anchors."}
 {"term":"barcelona dating","route":"Spain","level":"country","confidence":0.88,"lang":null,"reason":"Barcelona is a Spanish city; valid Spain anchor, not origin."}
+{"term":"dating tralee","route":"Ireland","level":"country","confidence":0.86,"lang":null,"reason":"Tralee is an Irish city; valid Ireland anchor."}
 {"term":"desi dating","route":"India","level":"country","confidence":0.78,"lang":null,"reason":"Desi is a colloquial Indian/South-Asian signal; route to India."}
 {"term":"free cuckold dating sites","route":"NEGATE_ALL","level":"none","confidence":0.85,"lang":null,"reason":"No target geo anchor."}
 {"term":"asiavibe app","route":"Asia","level":"general","confidence":0.85,"lang":null,"reason":"Fused asia anchor; app is a modifier, routes to Asia."}

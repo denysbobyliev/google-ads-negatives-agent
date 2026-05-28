@@ -272,3 +272,6 @@ target_city_not_origin,dating madrid,Euro-Search,Spain,0.0,0,Spain,run4,business
 colloquial_anchor,desi dating,Asia-Search,India,4.0,0,India,run4,business_decision,"desi = colloquial India signal, keep"
 no_geo_clean_reason,free cuckold dating sites,Latin-Search,Belize,12.33,0,NEGATE_ALL,run4,business_decision,no target geo (not a niche judgment)
 no_geo_clean_reason,free granny dating apps without payment,Euro-Search,Ireland,3.1,0,NEGATE_ALL,run4,business_decision,no target geo
+asian_brand_general,eastern honeys review,Asia-Search,Asia,10.79,0,Asia,run5,business_decision,"Eastern Honeys is an Asian dating brand; broad Asia, not Eastern sub-region"
+subregion,middle eastern women dating,Asia-Search,Eastern,17.62,0,Eastern,run5,business_decision,Middle Eastern is eligible for Eastern ad group
+target_city_not_origin,dating tralee,Euro-Search,Ireland,1.1,0,Ireland,run5,business_decision,Tralee is an Irish city; keep in Ireland
