@@ -67,7 +67,7 @@ legacy_ignore:        # never route here; superseded by the General
 
 sub_regions:          # declare only what the model can't infer from world knowledge
   Asia-Search:
-    Eastern:        eastern_oriental_plus_asian_orphans
+    Eastern/Oriental: eastern_oriental_plus_asian_orphans
     # fires on literal "eastern"/"oriental" (no country, no "asian" general signal),
     # AND is the bucket for any Asian country that has no own ad group.
   Euro-Search:
@@ -93,6 +93,9 @@ tiebreakers:
   inter_sub_region: first_mentioned   # two sub-regions, same campaign, no country
   cross_campaign:   first_mentioned   # two campaign-generals, no country
   female_name_brand: served           # Slavic vs Euro -> protect the campaign it served in
+
+route_aliases:
+  Eastern: Eastern/Oriental
 
 suppressed_geos: []     # (unused — kept for future; not driving any rule today)
 
@@ -172,7 +175,7 @@ Apply in order:
 2. **No own-ad-group country, but General + Sub-region present → the General.** The
    sub-region is just a flavor on the main concept.
    - `eastern asian dating` → Asia (not Eastern)
-   - `eastern honeys review` / `easternhoneys review` → Asia (Asian dating brand; not the Eastern bucket)
+   - `eastern honeys review` / `easternhoneys review` → CAMPAIGN_PROTECT:Asia-Search (Asian dating brand; allowed across Asian ad groups, not the Eastern/Oriental bucket)
    - `hispanic latin women` → Latina (not Hispanic)
    - `caribbean latina` → Latina
 3. **Sub-region fires only when it is the sole scope present** (no country, no general).
@@ -181,9 +184,9 @@ Apply in order:
 4. **Orphan country** (real country, no own ad group) **→ most specific applicable
    sub-region in the same campaign; else the General.**
    - `aruban women` → Caribbean (Latin campaign)
-   - `saudi women dating` → Eastern (Asian orphan; Eastern is the Asia bucket)
-   - `middle eastern women dating` → Eastern (Middle Eastern is eligible for the Eastern ad group)
-   - `uzbek brides` → Eastern
+   - `saudi women dating` → Eastern/Oriental (Asian orphan; Eastern/Oriental is the Asia bucket)
+   - `middle eastern women dating` → Eastern/Oriental (Middle Eastern is eligible for the Eastern/Oriental ad group)
+   - `uzbek brides` → Eastern/Oriental
 5. **No geo at all → brand-shape vs generic test** (below).
 
 ---
@@ -405,8 +408,8 @@ dating term → no partner intent → `NEGATE_ALL`.
 - **Eastern (Asia)** is `eastern`/`oriental` literal-word-only (no country, no Asian
   general signal — `eastern asian` → Asia), **and** the bucket for any Asian orphan
   country (a real Asian country with no own ad group): `saudi`, `uzbek`, `afghan`, etc.
-  The dating brand `eastern honeys` / `easternhoneys` is an exception: route it to broad Asia,
-  not the Eastern sub-region.
+  The dating brand `eastern honeys` / `easternhoneys` is an exception: route it to
+  `CAMPAIGN_PROTECT:Asia-Search`, not the Eastern/Oriental sub-region.
 - **"Eastern European" → Slavic** (not Europe). The phrase means the Slavic/CEE sphere in
   the Slavic/CEE sphere, so `eastern european women` routes to the Slavic general, never Euro.
 - **Inter-sub-region** and **cross-campaign** conflicts → see tiebreakers (first-mentioned).
@@ -459,8 +462,8 @@ Strict JSON array, one object per input term. No preamble, no markdown fences, n
 {"term":"norwegian scandinavian women","route":"Norway","level":"country","confidence":0.95,"lang":null,"reason":"Norway has its own group; beats Scandinavia."}
 {"term":"japanese slavic dating","route":"Japan","level":"country","confidence":0.9,"lang":null,"reason":"Country wins globally even across campaigns."}
 {"term":"eastern asian dating","route":"Asia","level":"general","confidence":0.9,"lang":null,"reason":"No country; general beats the sub-region flavor."}
-{"term":"eastern honeys review","route":"Asia","level":"general","confidence":0.85,"lang":null,"reason":"Eastern Honeys is an Asian dating brand; route broad Asia, not Eastern."}
-{"term":"oriental women dating","route":"Eastern","level":"sub_region","confidence":0.78,"lang":null,"reason":"Literal oriental, no country and no Asian general signal."}
+{"term":"eastern honeys review","route":"CAMPAIGN_PROTECT:Asia-Search","level":"brand_compound","confidence":0.85,"lang":null,"reason":"Eastern Honeys is an Asian dating brand; protect all Asian ad groups, not Eastern/Oriental."}
+{"term":"oriental women dating","route":"Eastern/Oriental","level":"sub_region","confidence":0.78,"lang":null,"reason":"Literal oriental, no country and no Asian general signal."}
 {"term":"hispanic latin women","route":"Latina","level":"general","confidence":0.9,"lang":null,"reason":"No country; Latina general beats the Hispanic label."}
 {"term":"hispanic women","route":"Hispanic","level":"sub_region","confidence":0.82,"lang":null,"reason":"Literal Hispanic is the only scope present."}
 {"term":"caribbean latina singles","route":"Latina","level":"general","confidence":0.88,"lang":null,"reason":"General beats sub-region when both present and no country."}
@@ -473,9 +476,9 @@ Strict JSON array, one object per input term. No preamble, no markdown fences, n
 {"term":"malaysian chinese dating","route":"Malaysia","level":"country","confidence":0.6,"lang":null,"reason":"Two countries; first-mentioned wins -> Malaysia."}
 {"term":"eastern european women","route":"Slavic","level":"general","confidence":0.85,"lang":null,"reason":"Eastern European = Slavic sphere, not Euro."}
 {"term":"aruban women","route":"Caribbean","level":"sub_region","confidence":0.8,"lang":null,"reason":"Aruba has no own group; nearest Caribbean sub-region."}
-{"term":"saudi women dating","route":"Eastern","level":"sub_region","confidence":0.72,"lang":null,"reason":"Saudi Arabia is an Asian orphan; Eastern is the Asia bucket."}
-{"term":"middle eastern women dating","route":"Eastern","level":"sub_region","confidence":0.82,"lang":null,"reason":"Middle Eastern is eligible for the Eastern ad group."}
-{"term":"uzbek brides","route":"Eastern","level":"sub_region","confidence":0.72,"lang":null,"reason":"Uzbekistan has no own group; routes to the Eastern bucket."}
+{"term":"saudi women dating","route":"Eastern/Oriental","level":"sub_region","confidence":0.72,"lang":null,"reason":"Saudi Arabia is an Asian orphan; Eastern/Oriental is the Asia bucket."}
+{"term":"middle eastern women dating","route":"Eastern/Oriental","level":"sub_region","confidence":0.82,"lang":null,"reason":"Middle Eastern is eligible for the Eastern/Oriental ad group."}
+{"term":"uzbek brides","route":"Eastern/Oriental","level":"sub_region","confidence":0.72,"lang":null,"reason":"Uzbekistan has no own group; routes to the Eastern/Oriental bucket."}
 {"term":"ukrainian women near me","route":"Ukraine","level":"country","confidence":0.95,"lang":null,"reason":"Near me is user location; Ukrainian is the partner geo."}
 {"term":"asian dating app uk","route":"Asia","level":"general","confidence":0.9,"lang":null,"reason":"Broad Asian intent; uk is user location."}
 {"term":"free dating apps uk","route":"NEGATE_ALL","level":"none","confidence":0.9,"lang":null,"reason":"User-location plus generic only; no partner geo."}

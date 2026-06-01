@@ -15,6 +15,17 @@ def campaign_of(ad_group: str, inventory: dict[str, str]) -> str | None:
     return inventory.get(ad_group)
 
 
+def inventory_route(route: str, inventory: dict[str, str], cfg: dict | None = None) -> str:
+    """Map canonical prompt routes to the current inventory name when an ad group was renamed."""
+    cfg = cfg or config.load_account_config()
+    if route in inventory:
+        return route
+    alias = cfg.get("route_aliases", {}).get(route)
+    if alias in inventory:
+        return alias
+    return route
+
+
 def lang_keepset(lang: str, inventory: dict[str, str], cfg: dict | None = None) -> set[str]:
     cfg = cfg or config.load_account_config()
     language_map = cfg.get("language_map", {})
@@ -51,7 +62,7 @@ def route_to_action(
     if route.startswith("LANG_KEEP:"):
         lang = route.split(":", 1)[1]
         return "KEEP" if served_ag in lang_keepset(lang, inventory, cfg) else "NEGATE"
-    return "KEEP" if route == served_ag else "NEGATE"
+    return "KEEP" if inventory_route(route, inventory, cfg) == served_ag else "NEGATE"
 
 
 def make_resolver(inventory: dict[str, str], cfg: dict | None = None):

@@ -32,20 +32,20 @@ brand_compound_nogeo,знакомство,Slavic-Search,Russia,3.75,0,NEGATE_ALL
 brand_mainstream,ashley madison,Latin-Search,Latina,37.07,0,NEGATE_ALL,confirm,agree/confirm,
 brand_mainstream,lavalife dating,Euro-Search,Scandinavia,26.94,0,NEGATE_ALL,confirm,agree/confirm,
 brand_mainstream,tantan dating app,Asia-Search,Asia,6.44,1,NEGATE_ALL,confirm,agree/confirm,
-language_keep,rencontre arabe montreal,Asia-Search,Eastern,6.98,0,Eastern,override,triage_miss(geo/brand I failed to detect),keep where served
+language_keep,rencontre arabe montreal,Asia-Search,Eastern/Oriental,6.98,0,Eastern/Oriental,override,triage_miss(geo/brand I failed to detect),keep where served
 language_review,paginas de citas reales,Euro-Search,Spain,6.58,0,Spain,override,triage_miss(geo/brand I failed to detect),keep where served
 language_review,paginas reales de citas,Euro-Search,Spain,6.4,0,Spain,override,triage_miss(geo/brand I failed to detect),keep where served
 subregion,scandinavian dating app,Euro-Search,Scandinavia,28.22,0,Scandinavia,agree,agree/confirm,
 subregion,dating scandinavian women,Euro-Search,Scandinavia,16.75,0,Scandinavia,agree,agree/confirm,
-subregion,oriental dating sites,Asia-Search,Eastern,14.46,0,Eastern,agree,agree/confirm,
+subregion,oriental dating sites,Asia-Search,Eastern/Oriental,14.46,0,Eastern/Oriental,agree,agree/confirm,
 subregion,meet hispanic women,Latin-Search,Hispanic,11.33,0,Hispanic,agree,agree/confirm,
-subregion,meet middle eastern women,Asia-Search,Eastern,10.36,0,Eastern,agree,agree/confirm,
+subregion,meet middle eastern women,Asia-Search,Eastern/Oriental,10.36,0,Eastern/Oriental,agree,agree/confirm,
 subregion,scandinavian dating sites,Euro-Search,Scandinavia,8.9,0,Scandinavia,agree,agree/confirm,
 subregion,hispanic dating sites,Latin-Search,Hispanic,5.73,0,Hispanic,agree,agree/confirm,
 subregion,date scandinavian women,Euro-Search,Scandinavia,4.79,0,Scandinavia,agree,agree/confirm,
-subregion,middle eastern dating app,Asia-Search,Eastern,4.45,0,Eastern,agree,agree/confirm,
+subregion,middle eastern dating app,Asia-Search,Eastern/Oriental,4.45,0,Eastern/Oriental,agree,agree/confirm,
 subregion,caribbean dating sites,Latin-Search,Caribbean,3.81,0,Caribbean,agree,agree/confirm,
-subregion,date middle eastern women,Asia-Search,Eastern,3.78,0,Eastern,agree,agree/confirm,
+subregion,date middle eastern women,Asia-Search,Eastern/Oriental,3.78,0,Eastern/Oriental,agree,agree/confirm,
 subregion,scandinavian dating uk,Euro-Search,Scandinavia,3.26,0,Scandinavia,agree,agree/confirm,
 general,free asian dating sites,Asia-Search,Asia,141.01,0,Asia,agree,agree/confirm,
 general,asian dating sites,Asia-Search,Asia,117.72,0,Asia,agree,agree/confirm,
@@ -171,19 +171,19 @@ generic_negate,successful dating apps,Latin-Search,Latina,16.67,0,NEGATE_ALL,agr
 generic_negate,one dating app,Slavic-Search,Ukraine,15.2,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,free online dating,Asia-Search,Korea,13.77,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,free adult dating sites,Latin-Search,Bolivia,12.64,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,dating sites australia,Asia-Search,Eastern,12.37,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,dating sites australia,Asia-Search,Eastern/Oriental,12.37,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,free cuckold dating sites,Latin-Search,Belize,12.33,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,fresh singles reviews,Asia-Search,Eastern,12.0,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,free dating site australia,Asia-Search,Eastern,11.92,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,fresh singles reviews,Asia-Search,Eastern/Oriental,12.0,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,free dating site australia,Asia-Search,Eastern/Oriental,11.92,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,expatica dating,Euro-Search,Switzerland,11.62,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,flirtseeker,Euro-Search,Denmark,11.05,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,bumblebee dating site,Euro-Search,Liechtenstein,10.92,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,single woman for relationship,Asia-Search,Eastern,10.8,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,single woman for relationship,Asia-Search,Eastern/Oriental,10.8,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,japansdates review,Asia-Search,Japan,10.78,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,hua hin dating sites,Asia-Search,Thailand,10.66,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,dating sites uk,Euro-Search,Malta,10.62,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,free mature dating sites near me,Slavic-Search,Georgia,10.53,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,golden age souls dating site review,Asia-Search,Eastern,10.32,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,golden age souls dating site review,Asia-Search,Eastern/Oriental,10.32,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,arranged dating site,Euro-Search,Ireland,10.23,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,is japansdates legit,Asia-Search,Japan,10.1,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,de dating sites,Euro-Search,Germany,9.86,0,Germany,override,triage_miss(geo/brand I failed to detect),keep where served
@@ -193,18 +193,18 @@ generic_negate,match dating app,Euro-Search,Cyprus,9.45,0,NEGATE_ALL,agree,agree
 generic_negate,japansdates com reviews,Asia-Search,Japan,9.32,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,free dating apps without payment in usa,Asia-Search,Asia,9.31,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,international cupid dating app,Slavic-Search,Ukraine,9.14,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,lumy dating app,Asia-Search,Eastern,9.1,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,lumy dating app,Asia-Search,Eastern/Oriental,9.1,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,italianpeoplemeet com,Euro-Search,Italy,9.01,0,Italy,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,top free dating apps,Asia-Search,Asia,8.93,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,sukara dates,Asia-Search,Asia,8.93,0,Asia,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,girls near me for dating,Latin-Search,Haiti,8.77,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,meet italians,Euro-Search,Italy,8.69,0,Italy,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,is japansdates a legit dating site,Asia-Search,Asia,8.63,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,london ontario dating sites,Asia-Search,Eastern,8.42,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,mature flirts reviews trustpilot,Asia-Search,Eastern,8.3,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,london ontario dating sites,Asia-Search,Eastern/Oriental,8.42,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,mature flirts reviews trustpilot,Asia-Search,Eastern/Oriental,8.3,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,kyrgyzstan dating app,Asia-Search,Kyrgyzstan,8.24,1,Kyrgyzstan,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,online free dating app without payment,Asia-Search,Vietnam,8.17,0,NEGATE_ALL,agree,agree/confirm,
-generic_negate,mature women dating,Asia-Search,Eastern,8.15,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,mature women dating,Asia-Search,Eastern/Oriental,8.15,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,equestrian dating site,Euro-Search,Scandinavia,8.12,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,where to meet nice women,Euro-Search,France,7.97,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,dating apps free,Latin-Search,Caribbean,7.82,0,NEGATE_ALL,agree,agree/confirm,
@@ -272,6 +272,8 @@ target_city_not_origin,dating madrid,Euro-Search,Spain,0.0,0,Spain,run4,business
 colloquial_anchor,desi dating,Asia-Search,India,4.0,0,India,run4,business_decision,"desi = colloquial India signal, keep"
 no_geo_clean_reason,free cuckold dating sites,Latin-Search,Belize,12.33,0,NEGATE_ALL,run4,business_decision,no target geo (not a niche judgment)
 no_geo_clean_reason,free granny dating apps without payment,Euro-Search,Ireland,3.1,0,NEGATE_ALL,run4,business_decision,no target geo
-asian_brand_general,eastern honeys review,Asia-Search,Asia,10.79,0,Asia,run5,business_decision,"Eastern Honeys is an Asian dating brand; broad Asia, not Eastern sub-region"
-subregion,middle eastern women dating,Asia-Search,Eastern,17.62,0,Eastern,run5,business_decision,Middle Eastern is eligible for Eastern ad group
+asian_brand_general,eastern honeys review,Asia-Search,Asia,10.79,0,CAMPAIGN_PROTECT:Asia-Search,run5,business_decision,"Eastern Honeys is an Asian dating brand; allow across Asian ad groups"
+asian_brand_general,eastern honeys review,Asia-Search,Eastern/Oriental,3.2264,0,CAMPAIGN_PROTECT:Asia-Search,run6,business_decision,"Eastern Honeys is broad Asian; do not negate inside Eastern/Oriental"
+subregion,middle eastern women dating,Asia-Search,Eastern/Oriental,17.62,0,Eastern/Oriental,run5,business_decision,Middle Eastern is eligible for Eastern/Oriental ad group
 target_city_not_origin,dating tralee,Euro-Search,Ireland,1.1,0,Ireland,run5,business_decision,Tralee is an Irish city; keep in Ireland
+target_city_not_origin,trinidad dating sites,Latin-Search,Cuba,3.95,0,Cuba,run6,business_decision,Trinidad is also a Cuba city; keep in Cuba

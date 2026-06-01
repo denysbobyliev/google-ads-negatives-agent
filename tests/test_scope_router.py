@@ -23,6 +23,18 @@ class ScopeRouterTests(unittest.TestCase):
         self.assertEqual(scope_router.resolve("Japan", "Japan", self.inventory), "KEEP")
         self.assertEqual(scope_router.resolve("Japan", "Asia", self.inventory), "NEGATE")
 
+    def test_route_alias_keeps_renamed_ad_group(self) -> None:
+        inventory = {**self.inventory, "Eastern/Oriental": "Asia-Search"}
+        cfg = {"route_aliases": {"Eastern": "Eastern/Oriental"}}
+        self.assertEqual(
+            scope_router.route_to_action("Eastern", "Eastern/Oriental", inventory, cfg),
+            "KEEP",
+        )
+        self.assertEqual(
+            scope_router.route_to_action("Eastern", "Japan", inventory, cfg),
+            "NEGATE",
+        )
+
     def test_campaign_protect_keeps_campaign_zone(self) -> None:
         self.assertEqual(
             scope_router.resolve("CAMPAIGN_PROTECT:Asia-Search", "Japan", self.inventory),

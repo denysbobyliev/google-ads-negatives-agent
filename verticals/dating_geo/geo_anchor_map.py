@@ -83,7 +83,7 @@ COUNTRY_KNOWLEDGE = {
     "Brazil":      (["brazilian","brasil"], ["rio","salvador","brasilia","curitiba","fortaleza","recife","belo horizonte"]),  # 'sao paulo' multiword below
     "Mexico":      (["mexican","mexico"], ["guadalajara","cancun","tijuana","monterrey","puebla","merida","queretaro"]),
     "Colombia":    (["colombian"], ["bogota","medellin","cali","cartagena","barranquilla"]),
-    "Cuba":        (["cuban"], ["havana"]),
+    "Cuba":        (["cuban"], ["havana","trinidad"]),
     "Jamaica":     (["jamaican","jamaica"], ["kingston","montego bay"]),
     "Costa Rica":  (["costa rican","costarican","costa rica"], ["san jose"]),
     "Dominican Republic": (["dominican","dominicana","dominicano","dominican republic"], ["santo domingo","punta cana","santiago de los caballeros"]),
