@@ -52,7 +52,7 @@ class ConfigProfileTests(unittest.TestCase):
     def test_default_policy_is_loaded_from_vertical_file(self) -> None:
         config.apply_account_profile(config.DEFAULT_ACCOUNT_PROFILE)
 
-        self.assertEqual(config.COST_THRESHOLD, 3.0)
+        self.assertEqual(config.COST_THRESHOLD, 1.0)
         self.assertEqual(config.CV_PROTECTION_THRESHOLD, 100.0)
         self.assertEqual(config.SCORE_THRESHOLD, 6)
         self.assertEqual(config.MAX_AG_NEGATIVES_PER_RUN, 20)

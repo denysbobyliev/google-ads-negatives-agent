@@ -15,11 +15,13 @@ class GuardTests(unittest.TestCase):
         self.inventory = {
             "Asia": "Asia-Search",
             "China": "Asia-Search",
+            "Cuba": "Latin-Search",
             "Denmark": "Euro-Search",
             "Filipina": "Asia-Search",
             "Germany": "Euro-Search",
             "India": "Asia-Search",
             "Indonesia": "Asia-Search",
+            "Iberia": "Euro-Search",
             "Ireland": "Euro-Search",
             "Japan": "Asia-Search",
             "Jamaica": "Latin-Search",
@@ -28,6 +30,7 @@ class GuardTests(unittest.TestCase):
             "Russia": "Slavic-Search",
             "Spain": "Euro-Search",
             "Thailand": "Asia-Search",
+            "Trinidad and Tobago": "Latin-Search",
             "Ukraine": "Slavic-Search",
         }
         self.idx = vertical_loader.build_anchor_index(self.inventory)
@@ -36,7 +39,7 @@ class GuardTests(unittest.TestCase):
     def apply_one(self, row: dict) -> dict:
         return guards.run_guards(dict(row), self.inventory, self.idx, self.resolve_action)
 
-    def test_guard1_is_telemetry_not_route_rewrite(self) -> None:
+    def test_served_anchor_route_negate_forces_keep(self) -> None:
         result = self.apply_one(
             {
                 "term": "danish dating site",
@@ -47,7 +50,9 @@ class GuardTests(unittest.TestCase):
         )
 
         self.assertEqual(result["route"], "Scandinavia")
+        self.assertEqual(result["force_keep_in"], "Denmark")
         self.assertIn("GUARD1/telemetry", result["flag"])
+        self.assertIn("GUARD6", result["flag"])
 
     def test_served_anchor_detector_catches_inventory_country_and_city(self) -> None:
         self.assertTrue(
@@ -160,6 +165,77 @@ class GuardTests(unittest.TestCase):
             ["CAMPAIGN_PROTECT:source", "CAMPAIGN_PROTECT:source"],
         )
         self.assertTrue(all("GUARD4" in row["flag"] for row in results))
+
+    def test_geo_bearing_negates_escalate_to_sonnet(self) -> None:
+        row = {
+            "term": "is koreadates a legit website",
+            "ad_group_name": "Asia",
+            "route": "Korea",
+            "action": "NEGATE",
+            "confidence": 0.90,
+            "level": "country",
+        }
+
+        self.assertEqual(
+            vertical_loader.route_decision(row, self.idx, "Asia"),
+            "escalate",
+        )
+
+    def test_plain_generic_negate_can_still_apply(self) -> None:
+        row = {
+            "term": "online dating sites",
+            "ad_group_name": "Poland",
+            "route": "NEGATE_ALL",
+            "action": "NEGATE",
+            "confidence": 0.95,
+            "level": "none",
+        }
+
+        self.assertEqual(
+            vertical_loader.route_decision(row, self.idx, "Poland"),
+            "apply",
+        )
+
+    def test_sensitive_community_negates_escalate_to_sonnet(self) -> None:
+        row = {
+            "term": "free muslim dating sites",
+            "ad_group_name": "Iberia",
+            "route": "NEGATE_ALL",
+            "action": "NEGATE",
+            "confidence": 0.85,
+            "level": "none",
+        }
+
+        self.assertEqual(
+            vertical_loader.route_decision(row, self.idx, "Iberia"),
+            "escalate",
+        )
+
+    def test_trinidad_without_tobago_keeps_in_cuba_as_dual_anchor(self) -> None:
+        result = self.apply_one(
+            {
+                "term": "trinidadian women dating",
+                "ad_group_name": "Cuba",
+                "route": "Trinidad and Tobago",
+                "confidence": 0.93,
+            }
+        )
+
+        self.assertEqual(result["force_keep_in"], "Cuba")
+        self.assertIn("GUARD2", result["flag"])
+
+    def test_sensitive_community_negate_all_keeps_served_group(self) -> None:
+        result = self.apply_one(
+            {
+                "term": "free muslim dating sites",
+                "ad_group_name": "Iberia",
+                "route": "NEGATE_ALL",
+                "confidence": 0.85,
+            }
+        )
+
+        self.assertEqual(result["force_keep_in"], "Iberia")
+        self.assertIn("GUARD5", result["flag"])
 
 
 if __name__ == "__main__":

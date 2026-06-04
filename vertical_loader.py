@@ -40,3 +40,7 @@ def route_decision(*args, **kwargs):
 
 def served_anchor_in_term(*args, **kwargs) -> bool:
     return bool(load_module("geo_gate").served_anchor_in_term(*args, **kwargs))
+
+
+def has_sensitive_community(term: str) -> bool:
+    return bool(load_module("geo_gate").has_sensitive_community(term))

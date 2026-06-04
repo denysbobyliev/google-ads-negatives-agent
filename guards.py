@@ -35,6 +35,14 @@ What changed and why (from the run report + the gate redesign):
 
   GUARD4  — UNCHANGED (coined/ethnic brand -> CAMPAIGN_PROTECT:source). Keep as-is.
 
+  GUARD5  — Community dating terms (muslim/christian/jewish/etc.) are not campaign-level
+            negatives by default. If the model emits NEGATE_ALL for one in a real served
+            group, keep the served instance and leave any broader policy call to humans.
+
+  GUARD6  — If the term names its served group and the model routes it to another concrete
+            group, keep the served instance. This enforces the governing principle for
+            served anchors while still allowing true no-geo NEGATE_ALL decisions to stand.
+
 Guards run 1->2->3 on every record; each is deterministic, cheap, logged, account-portable.
 Interface: each guard takes (rec, inventory, idx) and a resolve_action(route, served) for the
 "would this instance negate?" test. rec is a dict/obj with term, served_ad_group/ad_group_name,
@@ -154,8 +162,8 @@ def guard_brand_protect(rec, inventory, idx):
     is the deterministic enforcement of that policy (fixes the run-3 'naomidate forced to
     Slavic then negated' bug). Brand RECOGNITION stays the model's job (doctrine brand-shape
     test); this only enforces protection once a term is recognized as a brand. Fused GEO-anchor
-    brands (koreadates, asiacharm) are level country/general, not brand_compound, so they are
-    untouched and route on their anchor."""
+    brands (koreadates, asiacharm) are usually level country/general, so the row-aware gate/Sonnet
+    path handles whether they stay in a compatible broad served group."""
     if _g(rec, "level") == "brand_compound" and _g(rec, "route") != "CAMPAIGN_PROTECT:source":
         prev = _g(rec, "flag", default="") or ""
         note = f"GUARD4 {_g(rec, 'route')}->CAMPAIGN_PROTECT:source (coined brand protects served campaign)"
@@ -181,6 +189,38 @@ def guard_campaign_brand_protect(rec, cfg):
     return rec
 
 
+def guard_sensitive_community_keep(rec, inventory):
+    """Do not campaign-negative religion/community dating terms from a scoped served group."""
+    served = _served(rec)
+    if (
+        _g(rec, "route") == "NEGATE_ALL"
+        and served in inventory
+        and vertical_loader.has_sensitive_community(_g(rec, "term") or "")
+    ):
+        _set(rec, "force_keep_in", served)
+        prev = _g(rec, "flag", default="") or ""
+        note = f"GUARD5 keep in {served} (community dating term; not campaign-level negative)"
+        _set(rec, "flag", (prev + " | " + note).strip(" |") if prev else note)
+    return rec
+
+
+def guard_served_anchor_keep(rec, inventory, idx, resolve_action):
+    served = _served(rec)
+    route = _g(rec, "route")
+    if route == "NEGATE_ALL":
+        return rec
+    if (
+        served in inventory
+        and resolve_action(route, served) == "NEGATE"
+        and vertical_loader.served_anchor_in_term(served, _g(rec, "term"), idx)
+    ):
+        _set(rec, "force_keep_in", served)
+        prev = _g(rec, "flag", default="") or ""
+        note = f"GUARD6 keep in {served} (term names served group)"
+        _set(rec, "flag", (prev + " | " + note).strip(" |") if prev else note)
+    return rec
+
+
 # ---- runner ----------------------------------------------------------------------------
 def run_guards(rec, inventory, idx, resolve_action, account_config=None):
     """Apply guards in order: GUARD4 (brand normalize) -> GUARD1 (telemetry) ->
@@ -190,7 +230,9 @@ def run_guards(rec, inventory, idx, resolve_action, account_config=None):
     rec = guard_campaign_brand_protect(rec, cfg)                    # configured brand -> configured campaign
     rec = guard_served_country_wins(rec, inventory, idx)             # telemetry
     rec = guard_dual_anchor_keep(rec, inventory, idx, resolve_action)  # dual-anchor keep
+    rec = guard_served_anchor_keep(rec, inventory, idx, resolve_action)  # own-anchor keep
     rec = guard_quarantine_invented_policy(rec, inventory, idx)      # gender-policy backstop
+    rec = guard_sensitive_community_keep(rec, inventory)             # community terms stay scoped
     return rec
 
 

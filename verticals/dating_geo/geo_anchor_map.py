@@ -98,6 +98,7 @@ COUNTRY_KNOWLEDGE = {
     "Haiti":       (["haitian","haiti"], []),
     "Puerto Rico": (["puerto rican","puertorican","puerto rico"], []),
     "Panama":      (["panamanian"], []),               # bare 'panama' is a homonym (below)
+    "Trinidad and Tobago": (["trinidadian","tobagonian","trinidad","tobago"], []),
 }
 
 # Multiword cities (matched as substrings; safe because they contain a space/are distinctive)
@@ -130,7 +131,7 @@ GENERAL_STEMS = {
 }
 # Multiword general/region phrases (precedence handled downstream; here we only DETECT geo).
 GENERAL_PHRASES = ["latin american","south american","central american","north american",
-                   "eastern european","eastern europe",
+                   "eastern european","eastern europe","east european","east europe",
                    # fused (no-space) variants seen in concatenated brand/query tokens
                    "latinamerican","southamerican","easterneuropean"]
 
@@ -172,7 +173,7 @@ SUBREGION_STEMS = {
     "Benelux":       ["benelux"],
     "Balkan":        ["balkans","balkan"],
     "Baltic":        ["baltic"],
-    "Eastern Europe":["eastern european","eastern europe"],
+    "Eastern Europe":["eastern european","eastern europe","east european","east europe"],
     "Caribbean":     ["caribbean","carib"],
     "Hispanic":      ["hispanic"],
 }

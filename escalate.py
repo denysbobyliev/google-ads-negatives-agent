@@ -37,6 +37,31 @@ def build_escalation_message(terms: list[str]) -> str:
     )
 
 
+def build_row_escalation_message(rows: list[dict]) -> str:
+    numbered = "\n".join(
+        (
+            f"{i + 1}. term={row.get('term', '')!r}; "
+            f"served_ad_group={row.get('ad_group_name') or row.get('served_ad_group') or ''!r}; "
+            f"served_campaign={row.get('campaign_name') or row.get('served_campaign') or ''!r}; "
+            f"first_pass_route={row.get('route', '')!r}; "
+            f"first_pass_action={row.get('action', '')!r}; "
+            f"first_pass_reason={row.get('reason', '')!r}"
+        )
+        for i, row in enumerate(rows)
+    )
+    return (
+        "These rows were escalated because a first pass might create a false negative. "
+        "You are the final decision-maker for each served instance - there is no human "
+        "review after you. Use the served_ad_group and served_campaign context. If the "
+        "term is acceptable where it was found, route it to that served_ad_group. "
+        "Prefer KEEP/NOOP safety over auto-negating nuanced geo, ethnic-brand, city/"
+        "homonym, or community terms. Return ONLY a JSON array, one object per row in "
+        "the same order, per the Output Contract. The term field must match the input "
+        "term; no prose, no fences.\n\nRows:\n"
+        f"{numbered}"
+    )
+
+
 def escalate_terms(
     terms: list[str],
     inventory_text: str,
@@ -92,6 +117,42 @@ def escalate(terms: list[str], inventory_text: str) -> list[dict]:
     return [predictions.get(term.lower().strip(), _review_result(term)) for term in terms]
 
 
+def _escalate_rows(
+    term_rows: list[dict],
+    inventory_text: str,
+) -> tuple[list[dict], int, float, dict[str, int]]:
+    client = anthropic.Anthropic(api_key=config.ANTHROPIC_API_KEY)
+    usage = _empty_usage()
+    escalated: list[dict] = []
+    calls = 0
+
+    for i in range(0, len(term_rows), config.LLM_BATCH_SIZE):
+        batch = term_rows[i : i + config.LLM_BATCH_SIZE]
+        msg = client.messages.create(
+            model=config.SONNET_MODEL,
+            max_tokens=max(512, 120 * len(batch)),
+            temperature=0,
+            system=build_system_block(inventory_text),
+            messages=[{"role": "user", "content": build_row_escalation_message(batch)}],
+        )
+        calls += 1
+        add_usage(usage, _usage_tokens(msg))
+
+        parsed = parse_json_array(msg.content[0].text)
+        if parsed is None or len(parsed) != len(batch):
+            for row in batch:
+                log_llm_failure(row["term"], "sonnet_row")
+                result = _review_result(row["term"])
+                escalated.append({**row, **result, "source": "sonnet", "escalated": True})
+            continue
+
+        for row, obj in zip(batch, parsed):
+            result = _normalize_result(obj, row["term"])
+            escalated.append({**row, **result, "source": "sonnet", "escalated": True})
+
+    return escalated, calls, _estimated_cost(usage), usage
+
+
 def run(
     term_rows: list[dict],
     inventory_text: str,
@@ -101,23 +162,12 @@ def run(
         print("Stage 6b — escalate: 0 terms, skipped")
         return [], 0, 0.0, _empty_usage()
 
-    predictions, calls, estimated_cost, usage = escalate_terms(
-        [t["term"] for t in term_rows],
-        inventory_text,
-    )
-
-    escalated = []
-    for row in term_rows:
-        result = predictions.get(row["term"], _review_result(row["term"]))
-        updated = {**row, **result}
-        updated["source"] = "sonnet"
-        updated["escalated"] = True
-        escalated.append(updated)
+    escalated, calls, estimated_cost, usage = _escalate_rows(term_rows, inventory_text)
 
     elapsed = time.time() - t0
     print(
         f"Stage 6b — escalate: {len(escalated)} rows, "
-        f"{len(predictions)} unique terms, {calls} API calls, "
+        f"{len({row['term'] for row in escalated})} unique terms, {calls} API calls, "
         f"{format_usage(usage)}, "
         f"estimated_cost=${estimated_cost:.4f} (in {elapsed:.1f}s)"
     )

@@ -1,13 +1,14 @@
 test_category,term,served_campaign,served_ad_group,cost,conv,final_route,source,kind,note
-country_wins_multi,ukraine women in ireland,Slavic-Search,Ukraine,9.53,0,Ireland,agree,business_decision,served location wins (corrected)
+country_wins_multi,ukraine women in ireland,Slavic-Search,Ukraine,9.53,0,Ukraine,override,business_decision,dual target-geo term should keep where found when served group is a valid anchor
 country_wins_multi,malaysian chinese dating,Asia-Search,Malaysia,5.42,0,Malaysia,override,business_decision,
 country_wins_multi,russian girls in phuket,Asia-Search,Thailand,5.05,0,Thailand,override,business_decision,"Phuket=Thai market, served location wins (corrected)"
-eastern_euro_RULE,eastern european girls,Slavic-Search,Eastern Europe,14.98,0,Slavic,confirm,agree/confirm,
-eastern_euro_RULE,eastern european cupid,Slavic-Search,Eastern Europe,14.76,0,Slavic,confirm,agree/confirm,
-eastern_euro_RULE,dating eastern european women,Slavic-Search,Eastern Europe,6.96,0,Slavic,confirm,agree/confirm,
-eastern_euro_RULE,eastern european women,Slavic-Search,Eastern Europe,6.14,0,Slavic,confirm,agree/confirm,
-eastern_euro_RULE,eastern european woman,Slavic-Search,Eastern Europe,5.64,0,Slavic,confirm,agree/confirm,
-eastern_euro_RULE,eastern europe dating,Slavic-Search,Eastern Europe,5.39,0,Slavic,confirm,agree/confirm,
+eastern_euro_RULE,eastern european girls,Slavic-Search,Eastern Europe,14.98,0,Eastern Europe,override,business_decision,dedicated Eastern Europe ad group in this campaign keeps served Eastern Europe terms
+eastern_euro_RULE,eastern european cupid,Slavic-Search,Eastern Europe,14.76,0,Eastern Europe,override,business_decision,dedicated Eastern Europe ad group in this campaign keeps served Eastern Europe terms
+eastern_euro_RULE,dating eastern european women,Slavic-Search,Eastern Europe,6.96,0,Eastern Europe,override,business_decision,dedicated Eastern Europe ad group in this campaign keeps served Eastern Europe terms
+eastern_euro_RULE,eastern european women,Slavic-Search,Eastern Europe,6.14,0,Eastern Europe,override,business_decision,dedicated Eastern Europe ad group in this campaign keeps served Eastern Europe terms
+eastern_euro_RULE,eastern european woman,Slavic-Search,Eastern Europe,5.64,0,Eastern Europe,override,business_decision,dedicated Eastern Europe ad group in this campaign keeps served Eastern Europe terms
+eastern_euro_RULE,eastern europe dating,Slavic-Search,Eastern Europe,5.39,0,Eastern Europe,override,business_decision,dedicated Eastern Europe ad group in this campaign keeps served Eastern Europe terms
+eastern_euro_RULE,dating east european women,Slavic-Search,Eastern Europe,3.2494,0,Eastern Europe,run8,business_decision,dedicated Eastern Europe ad group in this campaign keeps served East European terms
 language_to_country,randki uk,Euro-Search,Scandinavia,136.46,0,Poland,override,business_decision,keep only in Polish
 language_to_country,polskie randki w uk za darmo,Slavic-Search,Poland,10.45,0,Poland,confirm,agree/confirm,
 language_to_country,randki uk,Slavic-Search,Poland,10.31,0,Poland,confirm,agree/confirm,
@@ -86,17 +87,18 @@ country_via_city_or_foreign,philippines dating sites for foreigners,Asia-Search,
 country_via_city_or_foreign,app de citas en españa,Euro-Search,Spain,15.99,0,Spain,agree,agree/confirm,
 country_via_city_or_foreign,dating app españa,Euro-Search,Spain,14.99,0,Spain,agree,agree/confirm,
 country_via_city_or_foreign,best dating site for philippines,Asia-Search,Filipina,14.36,0,Filipina,agree,agree/confirm,
-country_via_city_or_foreign,thaicupid free,Asia-Search,Asia,14.07,0,Thailand,agree,agree/confirm,
+country_via_city_or_foreign,thaicupid free,Asia-Search,Asia,14.07,0,Asia,override,business_decision,ethnic dating brand served in broad Asia should stay in Asia
 country_via_city_or_foreign,ukrainecharm,Slavic-Search,Ukraine,12.65,0,Ukraine,agree,agree/confirm,
-country_via_city_or_foreign,koreadates legit,Asia-Search,Asia,11.0,1,Korea,agree,agree/confirm,
+country_via_city_or_foreign,koreadates legit,Asia-Search,Asia,11.0,1,Asia,override,business_decision,ethnic dating brand served in broad Asia should stay in Asia
 country_via_city_or_foreign,free philippines dating site,Asia-Search,Filipina,10.32,0,Filipina,agree,agree/confirm,
 country_via_city_or_foreign,koreandating,Asia-Search,Korea,9.84,0,Korea,agree,agree/confirm,
-country_via_city_or_foreign,koreadates reviews,Asia-Search,Asia,9.84,0,Korea,agree,agree/confirm,
+country_via_city_or_foreign,koreadates reviews,Asia-Search,Asia,9.84,0,Asia,override,business_decision,ethnic dating brand served in broad Asia should stay in Asia
 country_via_city_or_foreign,popular dating apps in philippines,Asia-Search,Filipina,9.64,0,Filipina,agree,agree/confirm,
 country_via_city_or_foreign,best dating apps for philippines,Asia-Search,Filipina,9.41,0,Filipina,agree,agree/confirm,
 country_via_city_or_foreign,online dating philippines,Asia-Search,Filipina,9.35,0,Filipina,agree,agree/confirm,
 country_via_city_or_foreign,dating philippines woman,Asia-Search,Filipina,9.0,1,Filipina,agree,agree/confirm,
-country_via_city_or_foreign,is koreadates legit,Asia-Search,Asia,8.81,0,Korea,agree,agree/confirm,
+country_via_city_or_foreign,is koreadates legit,Asia-Search,Asia,8.81,0,Asia,override,business_decision,ethnic dating brand served in broad Asia should stay in Asia
+country_via_city_or_foreign,is koreadates a legit website,Asia-Search,Asia,8.48,0,Asia,run8,business_decision,ethnic dating brand served in broad Asia should stay in Asia
 country_via_city_or_foreign,best philippines dating site,Asia-Search,Filipina,8.38,0,Filipina,agree,agree/confirm,
 country_via_city_or_foreign,philippines dating site,Asia-Search,Filipina,8.23,0,Filipina,agree,agree/confirm,
 country_clean,swedish dating app,Euro-Search,Sweden,158.97,0,Sweden,agree,agree/confirm,
@@ -180,11 +182,12 @@ generic_negate,flirtseeker,Euro-Search,Denmark,11.05,0,NEGATE_ALL,agree,agree/co
 generic_negate,bumblebee dating site,Euro-Search,Liechtenstein,10.92,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,single woman for relationship,Asia-Search,Eastern/Oriental,10.8,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,japansdates review,Asia-Search,Japan,10.78,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
-generic_negate,hua hin dating sites,Asia-Search,Thailand,10.66,0,NEGATE_ALL,agree,agree/confirm,
+country_via_city_or_foreign,hua hin dating sites,Asia-Search,Thailand,10.66,0,Thailand,override,business_decision,Hua Hin is a Thai city; keep in Thailand
 generic_negate,dating sites uk,Euro-Search,Malta,10.62,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,free mature dating sites near me,Slavic-Search,Georgia,10.53,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,golden age souls dating site review,Asia-Search,Eastern/Oriental,10.32,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,arranged dating site,Euro-Search,Ireland,10.23,0,NEGATE_ALL,agree,agree/confirm,
+community_keep,free muslim dating sites,Euro-Search,Iberia,2.53,0,Iberia,run8,business_decision,community dating term served in plausible regional group should stay where found
 generic_negate,is japansdates legit,Asia-Search,Japan,10.1,0,Japan,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,de dating sites,Euro-Search,Germany,9.86,0,Germany,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,perth dating,Asia-Search,Asia,9.63,0,NEGATE_ALL,agree,agree/confirm,
@@ -199,7 +202,7 @@ generic_negate,top free dating apps,Asia-Search,Asia,8.93,0,NEGATE_ALL,agree,agr
 generic_negate,sukara dates,Asia-Search,Asia,8.93,0,Asia,override,triage_miss(geo/brand I failed to detect),keep where served
 generic_negate,girls near me for dating,Latin-Search,Haiti,8.77,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,meet italians,Euro-Search,Italy,8.69,0,Italy,override,triage_miss(geo/brand I failed to detect),keep where served
-generic_negate,is japansdates a legit dating site,Asia-Search,Asia,8.63,0,NEGATE_ALL,agree,agree/confirm,
+generic_negate,is japansdates a legit dating site,Asia-Search,Asia,8.63,0,Asia,override,business_decision,ethnic dating brand served in broad Asia should stay in Asia
 generic_negate,london ontario dating sites,Asia-Search,Eastern/Oriental,8.42,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,mature flirts reviews trustpilot,Asia-Search,Eastern/Oriental,8.3,0,NEGATE_ALL,agree,agree/confirm,
 generic_negate,kyrgyzstan dating app,Asia-Search,Kyrgyzstan,8.24,1,Kyrgyzstan,override,triage_miss(geo/brand I failed to detect),keep where served
@@ -277,3 +280,7 @@ asian_brand_general,eastern honeys review,Asia-Search,Eastern/Oriental,3.2264,0,
 subregion,middle eastern women dating,Asia-Search,Eastern/Oriental,17.62,0,Eastern/Oriental,run5,business_decision,Middle Eastern is eligible for Eastern/Oriental ad group
 target_city_not_origin,dating tralee,Euro-Search,Ireland,1.1,0,Ireland,run5,business_decision,Tralee is an Irish city; keep in Ireland
 target_city_not_origin,trinidad dating sites,Latin-Search,Cuba,3.95,0,Cuba,run6,business_decision,Trinidad is also a Cuba city; keep in Cuba
+target_city_not_origin,trinidadian women dating,Latin-Search,Cuba,4.7642,0,Cuba,run7,business_decision,Trinidad without Tobago encountered in Cuba should stay in Cuba
+target_city_not_origin,dating site in trinidad,Latin-Search,Cuba,4.67,0,Cuba,run7,business_decision,Trinidad without Tobago encountered in Cuba should stay in Cuba
+target_city_not_origin,trinidad dating apps,Latin-Search,Cuba,3.52,0,Cuba,run7,business_decision,Trinidad without Tobago encountered in Cuba should stay in Cuba
+country_wins_multi,ukraine women in ireland,Euro-Search,Ireland,0.0,0,Ireland,run8,business_decision,dual target-geo term should keep where found when served group is a valid anchor

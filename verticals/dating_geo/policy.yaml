@@ -6,6 +6,9 @@ caps:
   max_ad_group_negatives_per_run: 20
   max_campaign_negatives_per_run: 50
 
+google_ads:
+  search_term_pull_workers: 4
+
 llm:
   haiku_model: claude-haiku-4-5
   sonnet_model: claude-sonnet-4-6

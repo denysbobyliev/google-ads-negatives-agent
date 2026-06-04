@@ -59,6 +59,7 @@ LLM_COST_PER_1K_OUTPUT_TOKENS = 0.015
 LLM_PROMPT_CACHE_ENABLED = True
 LLM_CACHE_WRITE_INPUT_MULTIPLIER = 1.25
 LLM_CACHE_READ_INPUT_MULTIPLIER = 0.10
+SEARCH_TERM_PULL_WORKERS = 4
 
 
 def _resolve_path(path: str) -> str:
@@ -100,7 +101,7 @@ def apply_policy(path: str | None = None) -> dict:
     global LLM_USE_BATCH_API, LLM_BATCH_POLL_SECONDS, LLM_BATCH_TIMEOUT_SECONDS
     global LLM_GATE_HIGH_CONFIDENCE, LLM_ESCALATE_BELOW_CONFIDENCE
     global LLM_COST_PER_1K_INPUT_TOKENS, LLM_COST_PER_1K_OUTPUT_TOKENS
-    global LLM_PROMPT_CACHE_ENABLED
+    global LLM_PROMPT_CACHE_ENABLED, SEARCH_TERM_PULL_WORKERS
 
     if path is not None:
         POLICY_YAML = _resolve_path(path)
@@ -142,6 +143,12 @@ def apply_policy(path: str | None = None) -> dict:
     costs = llm.get("cost_per_1k_tokens", {})
     LLM_COST_PER_1K_INPUT_TOKENS = float(costs.get("input", LLM_COST_PER_1K_INPUT_TOKENS))
     LLM_COST_PER_1K_OUTPUT_TOKENS = float(costs.get("output", LLM_COST_PER_1K_OUTPUT_TOKENS))
+
+    google_ads = policy.get("google_ads", {})
+    SEARCH_TERM_PULL_WORKERS = max(
+        1,
+        int(google_ads.get("search_term_pull_workers", SEARCH_TERM_PULL_WORKERS)),
+    )
 
     return policy
 

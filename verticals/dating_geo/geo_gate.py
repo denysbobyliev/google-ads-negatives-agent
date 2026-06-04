@@ -3,15 +3,17 @@ geo_gate.py
 ===========
 Deterministic geo-token detector and the gate rule that replaces "confidence >= HIGH
 licenses any Haiku decision" with "confidence licenses a Haiku KEEP, but a Haiku NEGATE
-is only allowed when the term carries NO target/ambiguous geo token."
+is only allowed when the term carries NO target/ambiguous geo token and no sensitive
+community signal."
 
 The detector answers ONE question: does this term carry a partner-geo signal (resolved,
 ambiguous, foreign-language, or fused) — as opposed to being pure generic / mainstream /
 origin-only? It does NOT route. Routing stays with the model. The detector only decides
 who is allowed to negate.
 
-Verdict.geo_bearing == True  => Haiku may NOT negate this term; defer to Sonnet.
-Verdict.geo_bearing == False => term is generic/origin-only; a Haiku NEGATE is trustworthy.
+Verdict.geo_bearing == True  => Haiku may NOT negate this term; defer to row-aware Sonnet.
+Verdict.geo_bearing == False => term is generic/origin-only; a Haiku NEGATE may be trustworthy
+                                unless the term carries a sensitive community signal.
 """
 import re
 import unicodedata
@@ -58,6 +60,24 @@ def _present(stem, term):
 _GLUE_CACHE = set()
 
 
+SENSITIVE_COMMUNITY_STEMS = {
+    "muslim", "muslims", "islam", "islamic",
+    "christian", "christians", "catholic", "catholics",
+    "jewish", "jew", "jews", "hindu", "hinduism",
+    "buddhist", "buddhists", "sikh", "sikhs",
+}
+
+
+def has_sensitive_community(term):
+    """True when a term names a religion/community segment.
+
+    This is not a route. It only prevents Haiku from turning these terms into
+    campaign-level negatives without Sonnet seeing the served context.
+    """
+    t = " " + _norm(term).strip() + " "
+    return any(_present(stem, t) for stem in SENSITIVE_COMMUNITY_STEMS)
+
+
 def _standalone(code, term):
     """ccTLD / language code used as a TLD signal: the FIRST or LAST token ('de dating sites',
     'neu de'), or a dotted form ('.de'). NOT interior — interior bare 'de'/'se' is almost
@@ -67,6 +87,18 @@ def _standalone(code, term):
     if not toks:
         return False
     return toks[0] == code or toks[-1] == code or ("." + code) in term
+
+
+def _present_own_anchor(stem, term):
+    if _present(stem, term):
+        return True
+    if " " in stem or len(stem) < 5:
+        return False
+    # City/region names sometimes appear as adjectival demonyms in search terms
+    # ("trinidadian" for Trinidad). Treat that as an own-anchor signal for
+    # escalation/keep guards, but keep it narrow so arbitrary mid-word matches
+    # still do not pass.
+    return bool(re.search(r'(?<![a-z])' + re.escape(stem) + r'(ian|an|ite)s?(?![a-z])', term))
 
 
 def detect_geo(term, idx):
@@ -142,7 +174,7 @@ def served_anchor_in_term(served_ag, term, idx):
     # when the term says 'eastern europe(an)'. (Fixes the GUARD2 substring collision.)
     if served_ag == "Eastern" and ("eastern europe" in t or "eastern european" in t):
         stems.discard("eastern")
-    if any(_present(s, t) for s in stems):
+    if any(_present_own_anchor(s, t) for s in stems):
         return True
     for stem, dest in idx.get("target", {}).items():
         if dest == served_ag and _present(stem, t):
@@ -161,20 +193,23 @@ HIGH = 0.85
 def route_decision(rec, idx, served_ag, guard_flagged=False, protected_brand=False):
     """Returns 'apply' or 'escalate'.
        - Haiku KEEP at >=HIGH                                  -> apply (cheap, safe)
-       - Haiku NEGATE at >=HIGH, not brand, term does NOT name -> apply (no-geo junk OR a
-         its own served group                                          clean cross-negation)
-       - Haiku NEGATE where the term NAMES its served group    -> escalate (false-negate sig)
+       - Haiku NEGATE at >=HIGH, term has no geo/community     -> apply (plain generic junk)
+       - Haiku NEGATE with any geo-bearing token               -> escalate to row-aware Sonnet
+       - Haiku NEGATE_ALL with sensitive community token       -> escalate to row-aware Sonnet
        - low-conf / brand-ambiguous / guard-flagged            -> escalate
-    Correct cross-negations (anchor points to a DIFFERENT existing group) stay on Haiku;
-    only own-group-naming negates and brand-ambiguous calls reach the keep-biased Sonnet,
-    whose bias is now aligned with the escalated set (these should usually be kept)."""
+    This spends more Sonnet on nuanced negatives, but prevents false-negates where Haiku
+    over-routes a compatible broad served group to a narrower group, misses a homonym/city,
+    or treats a religion/community segment as campaign-level junk."""
     if guard_flagged:
         return "escalate"
     action, conf = rec_action(rec), rec_conf(rec)
     if action == "KEEP" and conf >= HIGH:
         return "apply"
+    term = rec_term(rec)
+    verdict = detect_geo(term, idx)
     if (action == "NEGATE" and conf >= HIGH and not protected_brand
-            and not served_anchor_in_term(served_ag, rec_term(rec), idx)):
+            and not verdict.geo_bearing
+            and not has_sensitive_community(term)):
         return "apply"
     return "escalate"
 
